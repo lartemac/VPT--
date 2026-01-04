@@ -32,6 +32,26 @@
 
 ---
 
+### 全局配置文件同步设置
+
+**配置文件位置**：
+- 项目文件：`D:\cc-github\CLAUDE-global.md`（可编辑，通过 Git 同步）
+- 系统文件：`C:\Users\Administrator\.claude\CLAUDE.md`（Claude Code 读取位置，不可移动）
+
+**同步脚本**：
+- Windows: `D:\cc-github\sync-claude-config.bat`
+- macOS/Linux: `D:\cc-github\sync-claude-config.sh`
+
+**使用方法**：
+1. 编辑 `CLAUDE-global.md`
+2. 运行同步脚本将配置复制到系统位置
+3. 提交到 GitHub：`git add` + `git commit` + `git push`
+4. 换系统后先 `git pull`，再运行同步脚本
+
+**重要**：全局配置文件必须在系统特定位置才能生效，所以需要同步脚本
+
+---
+
 ### 启动方式确认
 
 **桌面快捷方式**：

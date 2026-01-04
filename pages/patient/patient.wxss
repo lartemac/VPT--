@@ -1,0 +1,146 @@
+/* pages/patient/patient.wxss */
+
+/* 搜索栏 */
+.search-bar {
+  padding: 20rpx;
+  background-color: #fff;
+  margin-bottom: 20rpx;
+}
+
+.search-input {
+  background-color: #f5f5f5;
+  border-radius: 50rpx;
+  padding: 20rpx 30rpx;
+  font-size: 28rpx;
+}
+
+/* 患者列表 */
+.patient-list {
+  padding: 0 20rpx;
+}
+
+.patient-item {
+  margin-bottom: 20rpx;
+}
+
+.patient-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.patient-name {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+  margin-right: 16rpx;
+}
+
+.patient-gender,
+.patient-age {
+  font-size: 26rpx;
+  color: #999;
+  margin-right: 12rpx;
+}
+
+.patient-info {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12rpx;
+}
+
+.info-item {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 8rpx;
+}
+
+.patient-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.visit-date {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.data-status {
+  font-size: 24rpx;
+  color: #52c41a;
+  font-weight: 500;
+}
+
+/* 表单 */
+.form-input {
+  background-color: #f5f5f5;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-textarea {
+  background-color: #f5f5f5;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  width: 100%;
+  min-height: 200rpx;
+  box-sizing: border-box;
+}
+
+.radio-group {
+  display: flex;
+  gap: 40rpx;
+}
+
+.radio-item {
+  display: flex;
+  align-items: center;
+}
+
+.radio-item text {
+  margin-left: 12rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.picker-view {
+  background-color: #f5f5f5;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+/* 按钮组 */
+.btn-group {
+  display: flex;
+  gap: 20rpx;
+  padding: 20rpx;
+}
+
+.btn {
+  flex: 1;
+  height: 88rpx;
+  line-height: 88rpx;
+  border-radius: 8rpx;
+  font-size: 32rpx;
+  border: none;
+}
+
+.btn-primary {
+  background-color: #1890ff;
+  color: #fff;
+}
+
+.btn-default {
+  background-color: #fff;
+  color: #333;
+  border: 1rpx solid #d9d9d9;
+}

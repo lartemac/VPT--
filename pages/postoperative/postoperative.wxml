@@ -1,0 +1,34 @@
+<!--pages/postoperative/postoperative.wxml-->
+<view class="container">
+  <view class="card">
+    <text class="title">术后回访数据</text>
+    <text class="subtitle">患者ID：{{patientId}}</text>
+
+    <view class="form-group">
+      <text class="form-label">回访日期</text>
+      <picker mode="date" value="{{form.visitDate}}" bindchange="onDateChange" data-field="visitDate">
+        <view class="picker-view">{{form.visitDate || '请选择日期'}}</view>
+      </picker>
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">术后恢复情况</text>
+      <textarea class="form-textarea" placeholder="请描述术后恢复情况" value="{{form.recovery}}" bindinput="onInputChange" data-field="recovery" />
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">并发症</text>
+      <textarea class="form-textarea" placeholder="请记录术后并发症" value="{{form.complications}}" bindinput="onInputChange" data-field="complications" />
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">随访记录</text>
+      <textarea class="form-textarea" placeholder="请填写随访记录" value="{{form.followUp}}" bindinput="onInputChange" data-field="followUp" />
+    </view>
+  </view>
+
+  <view class="btn-group">
+    <button class="btn btn-primary" bindtap="saveData">保存数据</button>
+    <button class="btn btn-default" bindtap="goBack">返回</button>
+  </view>
+</view>

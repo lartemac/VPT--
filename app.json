@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/patient/patient",
+    "pages/preoperative/preoperative",
+    "pages/intraoperative/intraoperative",
+    "pages/postoperative/postoperative",
+    "pages/export/export"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#1890ff",
+    "navigationBarTitleText": "VPT初诊数据",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f5f5f5"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#1890ff",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-active.png"
+      },
+      {
+        "pagePath": "pages/patient/patient",
+        "text": "患者",
+        "iconPath": "images/patient.png",
+        "selectedIconPath": "images/patient-active.png"
+      },
+      {
+        "pagePath": "pages/export/export",
+        "text": "导出",
+        "iconPath": "images/export.png",
+        "selectedIconPath": "images/export-active.png"
+      }
+    ]
+  },
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents"
+}

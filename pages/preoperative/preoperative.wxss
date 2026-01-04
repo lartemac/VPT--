@@ -1,0 +1,61 @@
+/* pages/preoperative/preoperative.wxss */
+
+.subtitle {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 20rpx;
+}
+
+.form-input {
+  background-color: #f5f5f5;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-textarea {
+  background-color: #f5f5f5;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  width: 100%;
+  min-height: 150rpx;
+  box-sizing: border-box;
+}
+
+.picker-view {
+  background-color: #f5f5f5;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.btn-group {
+  display: flex;
+  gap: 20rpx;
+  padding: 20rpx;
+}
+
+.btn {
+  flex: 1;
+  height: 88rpx;
+  line-height: 88rpx;
+  border-radius: 8rpx;
+  font-size: 32rpx;
+  border: none;
+}
+
+.btn-primary {
+  background-color: #1890ff;
+  color: #fff;
+}
+
+.btn-default {
+  background-color: #fff;
+  color: #333;
+  border: 1rpx solid #d9d9d9;
+}

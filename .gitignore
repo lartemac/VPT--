@@ -1,0 +1,20 @@
+# 微信小程序编译产物
+miniprogram_npm/
+.project.config.json
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 编辑器配置
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 日志
+*.log
+
+# 临时文件
+node_modules/
+.svn/

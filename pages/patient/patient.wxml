@@ -1,0 +1,105 @@
+<!--pages/patient/patient.wxml-->
+<view class="container">
+  <!-- 新增/编辑模式 -->
+  <view wx:if="{{mode === 'add' || mode === 'edit'}}">
+    <view class="card">
+      <text class="title">患者基本信息</text>
+
+      <view class="form-group">
+        <text class="form-label required">患者姓名</text>
+        <input class="form-input" placeholder="请输入患者姓名" value="{{form.name}}" bindinput="onInputChange" data-field="name" />
+      </view>
+
+      <view class="form-group">
+        <text class="form-label required">性别</text>
+        <radio-group class="radio-group" bindchange="onInputChange" data-field="gender">
+          <label class="radio-item">
+            <radio value="男" checked="{{form.gender === '男'}}" color="#1890ff" />
+            <text>男</text>
+          </label>
+          <label class="radio-item">
+            <radio value="女" checked="{{form.gender === '女'}}" color="#1890ff" />
+            <text>女</text>
+          </label>
+        </radio-group>
+      </view>
+
+      <view class="form-group">
+        <text class="form-label required">年龄</text>
+        <input class="form-input" type="number" placeholder="请输入年龄" value="{{form.age}}" bindinput="onInputChange" data-field="age" />
+      </view>
+
+      <view class="form-group">
+        <text class="form-label">联系电话</text>
+        <input class="form-input" type="number" placeholder="请输入联系电话" value="{{form.phone}}" bindinput="onInputChange" data-field="phone" />
+      </view>
+
+      <view class="form-group">
+        <text class="form-label">病历号</text>
+        <input class="form-input" placeholder="请输入病历号" value="{{form.medicalRecordNo}}" bindinput="onInputChange" data-field="medicalRecordNo" />
+      </view>
+
+      <view class="form-group">
+        <text class="form-label">初诊日期</text>
+        <picker mode="date" value="{{form.firstVisitDate}}" bindchange="onDateChange" data-field="firstVisitDate">
+          <view class="picker-view">{{form.firstVisitDate || '请选择日期'}}</view>
+        </picker>
+      </view>
+
+      <view class="form-group">
+        <text class="form-label">主诉</text>
+        <textarea class="form-textarea" placeholder="请输入主诉" value="{{form.chiefComplaint}}" bindinput="onInputChange" data-field="chiefComplaint" maxlength="500" />
+      </view>
+
+      <view class="form-group">
+        <text class="form-label">现病史</text>
+        <textarea class="form-textarea" placeholder="请输入现病史" value="{{form.presentIllness}}" bindinput="onInputChange" data-field="presentIllness" maxlength="1000" />
+      </view>
+
+      <view class="form-group">
+        <text class="form-label">既往史</text>
+        <textarea class="form-textarea" placeholder="请输入既往史" value="{{form.pastHistory}}" bindinput="onInputChange" data-field="pastHistory" maxlength="1000" />
+      </view>
+
+      <view class="form-group">
+        <text class="form-label">备注</text>
+        <textarea class="form-textarea" placeholder="请输入备注信息" value="{{form.remarks}}" bindinput="onInputChange" data-field="remarks" maxlength="500" />
+      </view>
+    </view>
+
+    <view class="btn-group">
+      <button class="btn btn-primary" bindtap="savePatient">保存患者信息</button>
+      <button class="btn btn-default" bindtap="goBack">返回</button>
+    </view>
+  </view>
+
+  <!-- 列表模式 -->
+  <view wx:if="{{mode === 'list'}}">
+    <view class="search-bar">
+      <input class="search-input" placeholder="搜索患者姓名或病历号" value="{{searchKeyword}}" bindinput="onSearchInput" />
+    </view>
+
+    <view class="patient-list">
+      <view wx:for="{{patientList}}" wx:key="_id" class="patient-item card" bindtap="viewPatient" data-id="{{item._id}}">
+        <view class="patient-header">
+          <text class="patient-name">{{item.name}}</text>
+          <text class="patient-gender">{{item.gender}}</text>
+          <text class="patient-age">{{item.age}}岁</text>
+        </view>
+        <view class="patient-info">
+          <text class="info-item" wx:if="{{item.medicalRecordNo}}">病历号：{{item.medicalRecordNo}}</text>
+          <text class="info-item" wx:if="{{item.phone}}">电话：{{item.phone}}</text>
+        </view>
+        <view class="patient-footer">
+          <text class="visit-date">初诊：{{item.firstVisitDate}}</text>
+          <text class="data-status">数据完整度：{{item.completeness || 0}}%</text>
+        </view>
+      </view>
+
+      <view wx:if="{{patientList.length === 0}}" class="empty">
+        <text class="empty-icon">📋</text>
+        <text class="empty-text">暂无患者数据</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,57 @@
+<!--pages/intraoperative/intraoperative.wxml-->
+<view class="container">
+  <view class="card">
+    <text class="title">术中数据</text>
+    <text class="subtitle">患者ID：{{patientId}}</text>
+
+    <view class="form-group">
+      <text class="form-label">手术日期</text>
+      <picker mode="date" value="{{form.surgeryDate}}" bindchange="onDateChange" data-field="surgeryDate">
+        <view class="picker-view">{{form.surgeryDate || '请选择日期'}}</view>
+      </picker>
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">手术方式</text>
+      <input class="form-input" placeholder="请输入手术方式" value="{{form.surgeryMethod}}" bindinput="onInputChange" data-field="surgeryMethod" />
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">麻醉方式</text>
+      <input class="form-input" placeholder="请输入麻醉方式" value="{{form.anesthesia}}" bindinput="onInputChange" data-field="anesthesia" />
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">手术时长（分钟）</text>
+      <input class="form-input" type="number" placeholder="请输入手术时长" value="{{form.duration}}" bindinput="onInputChange" data-field="duration" />
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">术中出血量（ml）</text>
+      <input class="form-input" type="number" placeholder="请输入出血量" value="{{form.bloodLoss}}" bindinput="onInputChange" data-field="bloodLoss" />
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">术中并发症</text>
+      <textarea class="form-textarea" placeholder="请描述术中并发症情况" value="{{form.complications}}" bindinput="onInputChange" data-field="complications" />
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">术中特殊情况</text>
+      <textarea class="form-textarea" placeholder="请描述术中特殊情况" value="{{form.specialNotes}}" bindinput="onInputChange" data-field="specialNotes" />
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">术中照片</text>
+      <button class="upload-btn" bindtap="uploadImage">上传照片</button>
+      <view class="image-list" wx:if="{{form.images && form.images.length > 0}}">
+        <image wx:for="{{form.images}}" wx:key="index" src="{{item}}" class="preview-image" mode="aspectFill" bindtap="previewImage" data-url="{{item}}" />
+      </view>
+    </view>
+  </view>
+
+  <view class="btn-group">
+    <button class="btn btn-primary" bindtap="saveData">保存数据</button>
+    <button class="btn btn-default" bindtap="goBack">返回</button>
+  </view>
+</view>

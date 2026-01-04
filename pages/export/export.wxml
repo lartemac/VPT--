@@ -1,0 +1,87 @@
+<!--pages/export/export.wxml-->
+<view class="container">
+  <view class="header">
+    <text class="title">数据导出</text>
+    <text class="subtitle">导出 CSV 格式用于统计分析</text>
+  </view>
+
+  <view class="card">
+    <text class="section-title">选择要导出的数据</text>
+
+    <view class="export-list">
+      <view class="export-item">
+        <view class="export-info">
+          <text class="export-title">患者基本信息</text>
+          <text class="export-desc">包括姓名、性别、年龄等基本信息</text>
+        </view>
+        <button class="export-btn" bindtap="exportData" data-type="patients" loading="{{exporting.patients}}">
+          {{exporting.patients ? '导出中...' : '导出'}}
+        </button>
+      </view>
+
+      <view class="export-item">
+        <view class="export-info">
+          <text class="export-title">术前检查数据</text>
+          <text class="export-desc">包括各项术前检查指标</text>
+        </view>
+        <button class="export-btn" bindtap="exportData" data-type="preoperative" loading="{{exporting.preoperative}}">
+          {{exporting.preoperative ? '导出中...' : '导出'}}
+        </button>
+      </view>
+
+      <view class="export-item">
+        <view class="export-info">
+          <text class="export-title">术中数据</text>
+          <text class="export-desc">包括手术过程相关数据</text>
+        </view>
+        <button class="export-btn" bindtap="exportData" data-type="intraoperative" loading="{{exporting.intraoperative}}">
+          {{exporting.intraoperative ? '导出中...' : '导出'}}
+        </button>
+      </view>
+
+      <view class="export-item">
+        <view class="export-info">
+          <text class="export-title">术后回访数据</text>
+          <text class="export-desc">包括术后恢复和回访记录</text>
+        </view>
+        <button class="export-btn" bindtap="exportData" data-type="postoperative" loading="{{exporting.postoperative}}">
+          {{exporting.postoperative ? '导出中...' : '导出'}}
+        </button>
+      </view>
+
+      <view class="export-item">
+        <view class="export-info">
+          <text class="export-title">全部数据（合并）</text>
+          <text class="export-desc">导出所有数据到一个文件</text>
+        </view>
+        <button class="export-btn primary" bindtap="exportAllData" loading="{{exporting.all}}">
+          {{exporting.all ? '导出中...' : '导出全部'}}
+        </button>
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <text class="section-title">导出说明</text>
+    <view class="tips-content">
+      <text class="tip-text">• CSV 文件可以使用 Excel、SPSS、R、Python 等软件打开</text>
+      <text class="tip-text">• 日期时间格式为：YYYY-MM-DD HH:mm:ss</text>
+      <text class="tip-text">• 导出的文件会保存在微信聊天记录中</text>
+      <text class="tip-text">• 图片附件不会包含在 CSV 中，需要单独下载</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <text class="section-title">最近导出</text>
+    <view class="history-list">
+      <view wx:for="{{exportHistory}}" wx:key="id" class="history-item">
+        <text class="history-time">{{item.time}}</text>
+        <text class="history-type">{{item.type}}</text>
+        <text class="history-count">{{item.count}} 条</text>
+      </view>
+      <view wx:if="{{exportHistory.length === 0}}" class="empty">
+        <text class="empty-text">暂无导出记录</text>
+      </view>
+    </view>
+  </view>
+</view>

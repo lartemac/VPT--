@@ -1,5 +1,12 @@
 # Claude Code 记忆文件
 
+> **重要提示**：本文件位于项目文件夹中，可通过 Git 同步到 GitHub，支持跨平台（Windows/macOS）和跨设备使用。
+
+## 文件位置
+- **Windows 路径**：`D:\cc-github\memory.md`
+- **macOS 路径**：`~/cc-github/memory.md` 或克隆项目的任意位置
+- **GitHub 仓库**：https://github.com/lartemac/VPT--
+
 ## 用户信息
 - **姓名**：FattyTiger
 - **身份**：产品经理 + 科研人员
@@ -10,6 +17,20 @@
 ---
 
 ## 2025-01-05 对话记录
+
+### 跨平台记忆文件迁移
+
+**迁移内容**：
+- ✅ 将 `E:\memory.md` 移至 `D:\cc-github\memory.md`
+- ✅ 通过 Git 同步到 GitHub 仓库
+- ✅ 支持 Windows 和 macOS 跨平台访问
+- ✅ 换设备或换系统都能继续使用
+
+**Git 配置**：
+- 用户名：lartemac
+- 邮箱：13654569388@139.com
+
+---
 
 ### 启动方式确认
 

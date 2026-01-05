@@ -123,3 +123,45 @@
 ### 工作环境
 - 在 macOS 和 Windows 间切换
 - 使用 GitHub 完成项目同步开发
+
+---
+
+## 2026-01-05 对话记录
+
+### GitHub 项目同步
+
+**操作内容**：
+- ✅ 从远程仓库拉取最新更新
+- ✅ 项目位置：`/Users/lartemacfiles/Desktop/VPT-初诊数据`
+- ✅ 远程仓库：`git@github.com:lartemac/VPT--.git`
+- ✅ 当前分支：main
+
+**更新内容**：
+- `CLAUDE-global.md` - 全局配置文件（60行）
+- `memory.md` - 记忆文件（125行）
+- `sync-claude-config.bat` - Windows同步脚本（36行）
+- `sync-claude-config.sh` - macOS/Linux同步脚本（38行）
+- 共新增：259行代码
+- 更新范围：`6784c57..38fe2f0`
+
+### 全局配置文件设置
+
+**操作内容**：
+- ✅ 查看 `CLAUDE-global.md` 文件内容
+- ✅ 创建 `~/.claude/` 目录
+- ✅ 将 `CLAUDE-global.md` 内容复制到 `~/.claude/CLAUDE.md`
+
+**文件位置**：
+- 项目文件：`/Users/lartemacfiles/Desktop/VPT-初诊数据/CLAUDE-global.md`（可编辑，通过 Git 同步）
+- 系统文件：`~/.claude/CLAUDE.md`（Claude Code 读取位置）
+
+**配置要点**：
+- 语言设置：简体中文
+- 用户介绍：FattyTiger，产品经理兼科研人员
+- 开发需求：微信小程序、支付宝小程序（不会写代码）
+- 研究领域：口腔临床医学、牙体牙髓、统计分析、机器学习、AI
+- 文献偏好：近期高影响因子的权威论文（PubMed、Science、Nature）
+- 个人特点：喜欢自动化和免费软件，追求简洁高效
+- 工作方式：macOS 和 Windows 间切换，使用 GitHub 同步项目
+
+---

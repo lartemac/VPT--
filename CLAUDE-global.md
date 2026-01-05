@@ -32,7 +32,7 @@ memory.md 是我使用 Claude Code 的相关记忆文件，存储在项目文件
 
 每次你启动时，需要读取项目文件夹中的 memory.md 文件查看之前的记录：
 - Windows: D:\cc-github\memory.md
-- macOS: ~/cc-github/memory.md（或你克隆项目的位置）
+- macOS: ~/Desktop/VPT-初诊数据/memory.md
 
 每次我在退出之前，会提醒你保存记录到这个文件
 

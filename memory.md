@@ -35,6 +35,7 @@
 - **同步脚本**：`sync-claude-config.bat` / `sync-claude-config.sh`
 - **Python 工具库**：pypdf, pdfplumber, python-docx, openpyxl, xlrd, python-pptx, Pillow
 - **磁盘清理工具**：`~/Desktop/清理磁盘空间.command`
+- **iPhone 闹钟工具**：`~/Desktop/16点43闹钟.command`（交互式闹钟，音量渐增）
 
 ---
 
@@ -47,6 +48,12 @@
 - ✅ 创建磁盘清理工具
 - ✅ 清理磁盘空间（释放 770 MB+）
 - ✅ 优化 memory.md 结构（创建归档文件）
+- ✅ **开发 iPhone 风格交互式闹钟系统**
+  - 创建 `~/Desktop/16点43闹钟.command`
+  - 功能：交互式时间设置、音量渐增（20%→80%）、iPhone 风格铃声
+  - 三按钮界面：设置闹钟、关闭所有闹钟、测试铃声
+  - 支持 24 小时制输入，后台运行，自动恢复音量
+  - 修复 AppleScript 对话框按钮限制（最多 3 个）和错误处理
 
 ### 2025-01-05
 - ✅ 跨平台记忆文件迁移（E:\ → D:\cc-github）

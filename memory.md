@@ -57,14 +57,15 @@
   - 生成文件：
     - `Claude_Code实战课程_完整版.md` (34 KB, 1,369行, 2,525词)
     - `Claude_Code实战课程_完整版.html` (46 KB，已在浏览器中打开)
+    - `Claude_Code实战课程_完整版.pdf` ✨ (使用Playwright成功生成)
     - `实战课程抓取报告.md` (详细统计信息)
     - `README_ClaudeCode课程.md` (完整使用指南)
     - `快速开始.md` (3分钟上手指南)
     - `任务完成总结.md` (任务执行总结)
   - 工具脚本：`scrape_course_v2.py`, `md_to_html_pdf.py`, `generate_pdf_guide.sh`
-  - PDF生成方案：提供浏览器打印、在线转换、pandoc三种方案
+  - PDF生成：使用Playwright + Chromium成功生成完整PDF文档
   - 课程内容：基础部分(1-5章)、进阶部分(6-12章)、高级部分(13-21章)
-  - 技术栈：Python 3.9 + requests + BeautifulSoup4 + markdown2
+  - 技术栈：Python 3.9 + requests + BeautifulSoup4 + markdown2 + Playwright
 
 ### 2026-01-05
 - ✅ GitHub 项目同步（main 分支）

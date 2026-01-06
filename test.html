@@ -1,0 +1,125 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>什么是编码助手？ | Claude Code 实战课程</title>
+    <script src="head-meta.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="index.html">Claude Code 实战课程（中文）</a>
+        <span class="subtitle">第 02 节 · 什么是编码助手？</span>
+      </div>
+    </header>
+
+<div class="layout">
+<aside class="sidebar" id="sidebar"></aside>
+  <div class="main">
+
+    <nav class="lesson-nav container"></nav>
+
+    <main class="container content">
+      <div class="content-card">
+        <h1>什么是编码助手？</h1>
+        <div class="lesson-meta">
+          原文链接：
+          <a href="https://anthropic.skilljar.com/claude-code-in-action/303235"
+            >https://anthropic.skilljar.com/claude-code-in-action/303235</a
+          >
+          <span class="tag">视频 + 讲义</span>
+        </div>
+        <div class="content-body">
+          <p>
+            编码助手不仅仅是写代码的工具——它是一个使用语言模型来处理复杂编程任务的系统。了解它们在幕后
+            如何运作，能帮助你理解什么才是真正强大的编码伙伴。
+          </p>
+
+          <h2>编码助手如何工作</h2>
+          <p>
+            当你给编码助手一个任务（例如根据报错修复 Bug），它会按类似人类开发者的方式来推进：
+          </p>
+          <img
+            src="https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2Fa46l9irobhg0f5webscixp0bs%2Fpublic%2F1750967940%2F002_-_What_is_a_Coding_Assistant%3F_02.1750967940100.png"
+            alt="编码助手的工作流程"
+          />
+          <ol>
+            <li><strong>收集上下文</strong>：理解错误指向什么、哪些文件受影响、哪些文件相关</li>
+            <li><strong>制定计划</strong>：决定如何解决问题，例如修改代码并运行测试验证</li>
+            <li><strong>采取行动</strong>：真正去修改文件、运行命令并完成修复</li>
+          </ol>
+          <p>
+            关键洞见在于：第一步和最后一步都需要与外部世界交互——读文件、查文档、运行命令、编辑代码等。
+          </p>
+
+          <h2>工具使用的挑战</h2>
+          <p>
+            语言模型本身只能处理文本、输出文本，无法真正读取文件或运行命令。如果你直接让一个独立语言模型去
+            读文件，它会告诉你自己没有这个能力。
+          </p>
+          <p>那编码助手如何解决？它们使用一种巧妙的系统，叫作“工具使用”。</p>
+
+          <h2>工具使用如何运作</h2>
+          <p>
+            当你向编码助手发送请求时，它会自动在消息中加上一些指令，教模型如何请求动作。比如它可能加上：
+            “如果你想读文件，请回复 ‘ReadFile: 文件名’”。
+          </p>
+          <p>完整流程如下：</p>
+          <ol>
+            <li>你提问：“main.go 文件里写了什么代码？”</li>
+            <li>编码助手为你的请求添加工具指令</li>
+            <li>语言模型回应：“ReadFile: main.go”</li>
+            <li>编码助手读取真实文件内容并回传给模型</li>
+            <li>语言模型基于文件内容给出最终答案</li>
+          </ol>
+          <p>
+            这套机制让语言模型“看起来”能够读文件、写代码、运行命令——实际上它只是生成了格式化的文本响应。
+          </p>
+
+          <h2>为什么 Claude 的工具使用很关键</h2>
+          <p>
+            不是所有语言模型都擅长使用工具。Claude 系列模型（Opus、Sonnet、Haiku）在理解工具、调用工具方面
+            尤其强。
+          </p>
+          <img
+            src="https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2Fa46l9irobhg0f5webscixp0bs%2Fpublic%2F1750967942%2F002_-_What_is_a_Coding_Assistant%3F_14.1750967942536.png"
+            alt="Claude 工具使用优势"
+          />
+          <p>强工具使用带来的好处包括：</p>
+
+          <h2>强工具使用的收益</h2>
+          <ul>
+            <li><strong>更难的任务也能完成</strong>：Claude 能组合多种工具，甚至使用从未见过的新工具</li>
+            <li><strong>平台可扩展</strong>：你可以轻松为 Claude Code 增加新工具，Claude 会自适应你的流程</li>
+            <li><strong>更好的安全性</strong>：无需索引代码库即可导航，避免将整个代码库发送到外部服务器</li>
+          </ul>
+
+          <h2>要点回顾</h2>
+          <p>理解编码助手的关键在于：</p>
+          <ul>
+            <li>编码助手通过语言模型完成任务</li>
+            <li>语言模型需要工具才能处理真实世界的编程问题</li>
+            <li>不同模型的工具使用能力差异很大</li>
+            <li>Claude 的工具使用能力提升了安全性、可定制性与长期可用性</li>
+          </ul>
+          <p>
+            正是这种工具使用能力，将一个只会生成文本的模型，转变成能读文件、理解代码库并实际修改项目的强大
+            编码助手。
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer container">
+      下一节：<a href="03-claude-code-in-action.html">Claude Code 实战</a>
+    </footer>
+    </div>
+</div>
+<script src="nav-data.js"></script>
+<script src="sidebar.js"></script>
+<script src="nav.js"></script>
+</body>
+</html>
+

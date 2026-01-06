@@ -51,6 +51,21 @@
   - 统一字体（微软雅黑 11pt）、标题层级（18pt/14pt/12pt）、代码块（Consolas 9pt）
   - 最终文档：`Claude_Code中文教程_完整版.md` + `Claude_Code中文教程_完整版_优化版.docx`
 
+- ✅ **Claude Code 实战课程抓取任务完成**
+  - 成功抓取 https://cholf5.com/claude-code-in-action/ 全部21个章节
+  - 抓取成功率：100%（21/21章节）
+  - 生成文件：
+    - `Claude_Code实战课程_完整版.md` (34 KB, 1,369行, 2,525词)
+    - `Claude_Code实战课程_完整版.html` (46 KB，已在浏览器中打开)
+    - `实战课程抓取报告.md` (详细统计信息)
+    - `README_ClaudeCode课程.md` (完整使用指南)
+    - `快速开始.md` (3分钟上手指南)
+    - `任务完成总结.md` (任务执行总结)
+  - 工具脚本：`scrape_course_v2.py`, `md_to_html_pdf.py`, `generate_pdf_guide.sh`
+  - PDF生成方案：提供浏览器打印、在线转换、pandoc三种方案
+  - 课程内容：基础部分(1-5章)、进阶部分(6-12章)、高级部分(13-21章)
+  - 技术栈：Python 3.9 + requests + BeautifulSoup4 + markdown2
+
 ### 2026-01-05
 - ✅ GitHub 项目同步（main 分支）
 - ✅ 全局配置文件设置（macOS）

@@ -37,9 +37,71 @@
 - **磁盘清理工具**：`~/Desktop/清理磁盘空间.command`
 - **iPhone 闹钟工具**：`~/Desktop/16点43闹钟.command`（交互式闹钟，音量渐增）
 
+### MCP 服务器（2026-01-07 安装）
+- **@yfme/weapp-dev-mcp** - 微信小程序 AI 辅助开发
+- **github-mcp** - GitHub 仓库管理
+- **@playwright/mcp** - 浏览器自动化测试
+- **@modelcontextprotocol/server-filesystem** - 文件系统访问
+- **配置文件**：`C:\Users\Administrator\.claude\mcp-servers.json`
+
+### 设计工具
+- **Pixso**（免费，国产）- UI/UX 设计工具：https://pixso.cn/
+- **WeUI** - 微信官方组件库
+- **TDesign** - 腾讯企业级组件库
+
 ---
 
 ## 最近动态
+
+### 2026-01-07
+- ✅ **微信小程序开发环境完整搭建**
+  - **系统环境检查**：Node.js v24.12.0, npm 11.6.2（已安装）
+  - **安装 4 个核心 MCP 服务器**：
+    - `@yfme/weapp-dev-mcp` (微信小程序 AI 辅助开发，213个包)
+    - `github-mcp` (GitHub 仓库管理，92个包)
+    - `@playwright/mcp` (浏览器自动化测试，3个包)
+    - `@modelcontextprotocol/server-filesystem` (文件系统访问，130个包)
+  - **创建 MCP 配置文件**：`C:\Users\Administrator\.claude\mcp-servers.json`
+
+- ✅ **C 盘空间清理（释放 17.5 GB）**
+  - 清理前：已使用 167.75 GB (84%)，可用 32.23 GB
+  - 清理后：可用约 50 GB（增加 17.5 GB）
+  - 清理项目：
+    - 临时 Windows 安装文件（17.5 GB）
+    - Windows 临时文件夹
+    - 用户临时文件夹
+    - 回收站
+    - npm 缓存
+
+- ✅ **Visual Studio Build Tools 2022 安装**
+  - 版本：17.14.23
+  - 安装组件：
+    - MSVC v143 - VS 2022 C++ x64/x86 生成工具（编译器）
+    - Windows 11 SDK
+    - 用于 Windows 的 C++ CMake 工具
+  - 用途：编译 Node.js 原生模块（如 better-sqlite3）
+  - 状态：✅ 安装成功（待重启验证）
+
+- ✅ **创建完整文档体系**
+  - `C:\Users\Administrator\Downloads\wechat-devtools\完整安装指南.md`
+  - `C:\Users\Administrator\Downloads\wechat-devtools\安装总结报告.md`
+  - `C:\Users\Administrator\Downloads\visual-studio-build-tools\Visual_CPP_编译工具安装指南.md`
+  - `C:\Users\Administrator\Downloads\visual-studio-build-tools\快速安装指南.md`
+  - `C:\Users\Administrator\Downloads\快速扫描指南.md`
+  - `C:\Users\Administrator\Downloads\应用程序移动指南.md`
+  - `C:\Users\Administrator\Downloads\ProgramFiles_移动建议.md`
+
+- ⏳ **待完成任务（重启后）**
+  - 验证 C++ 编译工具安装
+  - 重新安装 SQLite MCP Server (@berthojoris/mcp-sqlite-server)
+  - 测试原生模块编译
+  - 检查是否需要移动 Program Files 中的应用程序到 D/E 盘
+
+- 📝 **推荐工具清单**
+  - 微信开发者工具 v2.01.2510260（需手动安装）
+  - Pixso 设计工具（免费，国产，https://pixso.cn/）
+  - WeUI + TDesign 组件库
+  - SpaceSniffer（磁盘空间可视化工具）
 
 ### 2026-01-06
 - ✅ **Claude Code 中文教程完整版处理**

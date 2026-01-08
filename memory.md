@@ -44,6 +44,20 @@
 - **@modelcontextprotocol/server-filesystem** - 文件系统访问
 - **配置文件**：`C:\Users\Administrator\.claude\mcp-servers.json`
 
+### Mac 开发环境（2026-01-08 配置）
+- **微信开发者工具** v2.01.2510260（已安装）
+- **Visual Studio Code** v1.107.1 ARM64（已安装）
+- **Node.js** v24.12.0（已安装）
+- **npm** v11.6.2（已安装）
+- **VS Code 插件**（7个）：
+  - `crazyurus.miniprogram-vscode-extension` v1.5.1 - 微信小程序开发工具
+  - `qinjia.vscode-wechat` v0.0.6 - VS Code 微信小程序支持
+  - `wuxianqiang.wx-snippets` v1.0.9 - WeChat 代码片段
+  - `iehong.miniprogram-minapp` v1.0.0 - WXML 格式化/高亮/自动补全
+  - `dbaeumer.vscode-eslint` v3.0.20 - JavaScript 代码质量检查
+  - `esbenp.prettier-vscode` v11.0.2 - 代码格式化工具
+  - `hookyqr.beautify` v1.5.0 - HTML/CSS/JS 代码格式化
+
 ### 设计工具
 - **Pixso**（免费，国产）- UI/UX 设计工具：https://pixso.cn/
 - **WeUI** - 微信官方组件库
@@ -52,6 +66,27 @@
 ---
 
 ## 最近动态
+
+### 2026-01-08
+- ✅ **Mac mini 开发环境完整检查与配置**
+  - **系统环境检查**：
+    - ✅ 微信开发者工具 v2.01.2510260（已安装，位于 `/Applications/wechatwebdevtools.app`）
+    - ✅ Node.js v24.12.0 + npm 11.6.2（已安装）
+    - ✅ 微信客户端（已安装）
+  - **Visual Studio Code 安装**：
+    - 版本：v1.107.1 ARM64（Apple Silicon 优化版）
+    - 安装位置：`/Applications/Visual Studio Code.app`
+    - 下载来源：官方稳定版（149 MB）
+    - 安装方式：命令行下载 + 手动安装
+  - **VS Code 插件安装**（7个）：
+    1. `crazyurus.miniprogram-vscode-extension` v1.5.1 - 微信小程序开发工具（预览、打包上传、代码补全）
+    2. `qinjia.vscode-wechat` v0.0.6 - VS Code 微信小程序支持
+    3. `wuxianqiang.wx-snippets` v1.0.9 - WeChat 代码片段
+    4. `iehong.miniprogram-minapp` v1.0.0 - WXML 格式化/高亮/自动补全
+    5. `dbaeumer.vscode-eslint` v3.0.20 - JavaScript 代码质量检查
+    6. `esbenp.prettier-vscode` v11.0.2 - 代码格式化工具
+    7. `hookyqr.beautify` v1.5.0 - HTML/CSS/JS 代码格式化
+  - **状态**：✅ Mac mini 微信小程序开发环境已就绪
 
 ### 2026-01-07
 - ✅ **微信小程序开发环境完整搭建**

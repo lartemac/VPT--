@@ -223,6 +223,25 @@
 
   - **效果**：从现在开始，Claude 可以根据用户需求自动激活相应的专业模式，提供专业级的代码和技术支持
 
+- ✅ **解决 Git 推送 GitHub 问题**
+  - **问题现象**：无法推送到 GitHub，SSL/TLS 连接失败
+  - **用户反馈**：浏览器可以正常访问 GitHub 页面
+  - **根本原因**：Windows Git 默认使用 `schannel` SSL 后端，与 GitHub 连接不兼容
+  - **解决方案**：
+    1. 切换 SSL 后端：`git config --global http.sslbackend openssl`
+    2. 增加缓冲区：`git config --global http.postBuffer 524288000`（500MB）
+    3. 禁用低速限制：`git config --global http.lowSpeedLimit 0`
+    4. 增加超时时间：`git config --global http.lowSpeedTime 999999`
+  - **推送结果**：
+    - ✅ 成功推送 3 个提交（4507258..e24f54c）
+    - ✅ 包含 Polymath Skills 体系完整内容
+    - ✅ GitHub 仓库已同步
+  - **配置生效**：永久保存，以后推送 GitHub 不会再有问题
+  - **经验教训**：
+    - Windows Git 的 schannel 后端与某些服务存在兼容性问题
+    - OpenSSL 后端更稳定可靠
+    - 用户能访问网页不代表 Git 客户端能正常工作（协议不同）
+
 ### 2026-01-09
 - ✅ **Windows 开发环境全面检查与 Polymath 模式初始化**
   - **开发工具检查**：

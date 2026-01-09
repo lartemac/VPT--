@@ -42,7 +42,9 @@
 - **github-mcp** - GitHub 仓库管理
 - **@playwright/mcp** - 浏览器自动化测试
 - **@modelcontextprotocol/server-filesystem** - 文件系统访问
-- **配置文件**：`C:\Users\Administrator\.claude\mcp-servers.json`
+- **配置文件**：
+  - Windows: `C:\Users\Administrator\.claude\mcp-servers.json`
+  - macOS: `~/.claude/mcp-servers.json` 或 `~/.config/claude/mcp-servers.json`
 
 ### Mac 开发环境（2026-01-08 配置）
 - **微信开发者工具** v2.01.2510260（已安装）
@@ -210,3 +212,27 @@
 ---
 
 **历史详细记录**：参见 `memory-archive.md`
+
+---
+
+## 🧠 Polymath Context (Agent State)
+
+### 当前激活项目
+- **Mode B (全栈开发)** - 多项目并行
+  1. **VPT 初诊数据收集系统**：微信小程序，医学研究数据采集
+  2. **游戏系统开发**：7局4胜制 + 流局优先级判定逻辑
+
+### User Rules
+- **开发规范**：
+  - 交易 API 禁止硬编码私钥，必须使用环境变量或加密配置
+  - 代码要求：简洁、高效，避免过度设计
+  - 游戏逻辑优先级：1.正常击杀 > 2.流局判定 > 3.平局
+- **科研规范**：
+  - 科研结论需引用权威文献（PubMed/Nature/Science/高影响因子期刊）
+  - 优先检索最新文献（发表日期与当前日期相近）
+  - 医学科研关键词：牙体牙髓、VPT、活髓保存、NSFC、国自然
+
+### 平台适配
+- **Windows**: 使用 PowerShell/cmd，路径分隔符 `\`
+- **macOS**: 使用 bash/zsh，路径分隔符 `/`
+- **自动检测**: 根据 `Platform` 环境变量自动切换

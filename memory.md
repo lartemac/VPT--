@@ -69,6 +69,64 @@
 
 ## 最近动态
 ### 2026-01-10
+- ✅ **Claude + PPT Generator 项目开发（完整MVP）**
+  - **项目背景**：用户需要将Word文档自动转换为可编辑的PPT，要求AI智能分析、可编辑输出、美观实用
+  - **项目仓库**：https://github.com/lartemac/claude-pptgen20260110
+  - **本地路径**：`D:\claude+pptgen`
+  - **开发时间**：2026-01-10（4小时完成MVP）
+  - **核心功能**：
+    - Word文档智能解析（python-docx）
+    - AI内容分析（Claude API）
+    - 可编辑PPT生成（python-pptx）
+    - 三大风格模板（医学、人工智能、商务）
+    - 智能页数判断（根据内容自动确定3-50页）
+  - **技术栈**：
+    - Python 3.14
+    - python-pptx（PPT生成）
+    - python-docx（Word解析）
+    - anthropic（Claude API）
+    - zhipuai（GLM-4.7 API，备用）
+  - **API配置**：
+    - Claude API Key：ef3075e7a00c47cd9e6b3b5fcab91fb2.7fI9CaaJmhCVEE6g
+    - GLM-4.7 API Key：232b1236880a4699957a592bed87aad2.3gYzmvvyIQN98DZb
+  - **核心文件**：
+    - main.py - 主程序入口
+    - word_parser.py - Word文档解析
+    - ai_analyzer.py - AI内容分析
+    - ppt_generator.py - PPT生成
+    - create_test_doc.py - 测试文档生成
+  - **测试验证**：
+    - ✅ 成功生成8页医学风格PPT
+    - ✅ 成功生成5页商务风格PPT
+    - ✅ 智能页数算法有效（628字→5页）
+  - **用户反馈与改进方向**：
+    - 问题1：结构一致性（目录与内容页数不匹配）→ 需要更尊重原文档结构
+    - 问题2：尊重原文分级标题 → 需要更好的语义理解AI能力
+    - 问题3：缺少大纲编辑界面 → **需要开发GUI版本**
+    - 问题4：文本框布局死板 → 需要智能布局算法（田字格、五角星等）
+    - 问题5：文字超出边界 → 需要自动调整文本框大小
+  - **后续计划**：
+    - 开发完整GUI界面（可编辑大纲预览）
+    - 实现智能布局算法（2x2网格、三角布局等）
+    - 文本框自动调整（防止超出边界）
+    - 章节拆分/合并功能
+    - 页数调整功能（每章默认1页，可扩展到30页）
+
+- ✅ **NanoBanana-PPT-Skills 项目审查与学习**
+  - **仓库地址**：https://github.com/op7418/NanoBanana-PPT-Skills
+  - **审查目的**：学习现有PPT生成工具的优点，设计更好的方案
+  - **核心发现**：
+    - 优点：模块化风格系统、提示词工程优秀、分层设计（封面/内容/数据页）
+    - 致命问题：生成PNG图片（不可编辑），不是真正的.pptx文件
+    - 差异：用户需要可编辑的.pptx，而不是图片
+  - **借鉴元素**：
+    - 风格定义独立（.md文件）
+    - 页面类型自动识别
+    - 详细的提示词模板
+  - **技术选型差异**：
+    - NanoBanana：Google Gemini图像生成 → 输出PNG图片
+    - 我们的方案：Claude文本分析 + python-pptx → 输出可编辑.pptx
+
 - ✅ **解决 Claude Code 启动配置错误**
   - 问题：settings.local.json 中 Bash 命令引号不匹配导致配置文件被跳过
   - 修复：修正第60行的引号错误 `"Bash(cmd /c \"rmdir:*)"` → `"Bash(cmd /c rmdir:*)"`

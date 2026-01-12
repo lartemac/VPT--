@@ -1306,7 +1306,145 @@
     5. `dbaeumer.vscode-eslint` v3.0.20 - JavaScript 代码质量检查
     6. `esbenp.prettier-vscode` v11.0.2 - 代码格式化工具
     7. `hookyqr.beautify` v1.5.0 - HTML/CSS/JS 代码格式化
-  - **状态**：✅ Mac mini 微信小程序开发环境已就绪
+  - **⚠️ Polymath Python 库配置（与 Windows 保持一致）**
+    - **一键安装脚本**：保存为 `~/cc-github/setup_mac_polymath.sh`
+      ```bash
+      #!/bin/bash
+      # Mac Polymath 环境配置脚本
+      # 用途：安装与 Windows 环境一致的 Python 库
+
+      echo "=== Mac Polymath 环境配置 ==="
+      echo ""
+
+      # 检查 Python
+      if ! command -v python3 &> /dev/null; then
+          echo "[错误] 未找到 python3，请先安装 Python"
+          echo "推荐：brew install python@3.14"
+          exit 1
+      fi
+
+      echo "[1/4] 数据分析与统计库（科研/金融基础）"
+      pip3 install --upgrade pandas numpy scipy statsmodels matplotlib seaborn
+      echo ""
+
+      echo "[2/4] 交易与网络库（量化/API）"
+      pip3 install --upgrade ccxt requests websocket-client
+      echo ""
+
+      echo "[3/4] 辅助工具库"
+      pip3 install --upgrade jupyter openpyxl python-docx reportlab markdown2
+      echo ""
+
+      echo "[4/4] Graph Clustering 库"
+      pip3 install --upgrade networkx python-louvain
+      echo ""
+
+      echo "=== 验证安装 ==="
+      python3 -c "
+      import pandas, numpy, scipy, statsmodels
+      import matplotlib, seaborn, ccxt, requests
+      import jupyter, openpyxl, docx, networkx
+      import community
+      print('[✓] 所有库安装成功')
+      print(f'pandas: {pandas.__version__}')
+      print(f'numpy: {numpy.__version__}')
+      print(f'ccxt: {ccxt.__version__}')
+      "
+
+      echo ""
+      echo "=== 安装完成 ==="
+      echo "下一步：运行验证命令"
+      echo "  python3 ~/cc-github/verify_mac_polymath.py"
+      ```
+
+    - **环境验证脚本**：保存为 `~/cc-github/verify_mac_polymath.py`
+      ```python
+      #!/usr/bin/env python3
+      """Mac Polymath 环境验证脚本"""
+
+      import sys
+
+      print("=" * 80)
+      print("Mac Polymath 环境验证")
+      print("=" * 80)
+      print()
+
+      # 库清单
+      libraries = {
+          # 数据分析与统计
+          "pandas": "Pandas",
+          "numpy": "NumPy",
+          "scipy": "SciPy",
+          "statsmodels": "StatsModels",
+          "matplotlib": "Matplotlib",
+          "seaborn": "Seaborn",
+          # 交易与网络
+          "ccxt": "CCXT",
+          "requests": "Requests",
+          "websocket": "WebSocket-Client",
+          # 辅助工具
+          "jupyter": "Jupyter",
+          "openpyxl": "OpenPyXL",
+          "docx": "python-docx",
+          "reportlab": "ReportLab",
+          "markdown2": "markdown2",
+          # Graph Clustering
+          "networkx": "NetworkX",
+          "community": "python-louvain",
+      }
+
+      installed = []
+      missing = []
+
+      for module, name in libraries.items():
+          try:
+              mod = __import__(module)
+              version = getattr(mod, "__version__", "N/A")
+              print(f"[✓] {name:20} {version}")
+              installed.append(name)
+          except ImportError:
+              print(f"[✗] {name:20} 未安装")
+              missing.append(name)
+
+      print()
+      print("=" * 80)
+      print(f"总结: {len(installed)} 个已安装, {len(missing)} 个缺失")
+      print("=" * 80)
+
+      if len(missing) == 0:
+          print()
+          print("✅ 所有库已就绪！Mac Polymath 环境完整")
+          print()
+          print("与 Windows 环境对比:")
+          print("  Windows: Python 3.14.0 + 所有库")
+          print("  Mac: Python 3.x + 所有库")
+          print("  状态: ✅ 完全一致")
+          sys.exit(0)
+      else:
+          print()
+          print(f"⚠️  缺失 {len(missing)} 个库，请运行:")
+          print("  bash ~/cc-github/setup_mac_polymath.sh")
+          sys.exit(1)
+      ```
+
+    - **快速安装命令**（如果不想创建脚本）：
+      ```bash
+      # 一行命令安装所有库
+      pip3 install pandas numpy scipy statsmodels matplotlib seaborn ccxt requests websocket-client jupyter openpyxl python-docx reportlab markdown2 networkx python-louvain
+      ```
+
+    - **验证命令**：
+      ```bash
+      # 快速验证
+      python3 -c "import pandas, numpy, ccxt, networkx, community; print('✓ OK')"
+
+      # 完整验证（使用脚本）
+      python3 ~/cc-github/verify_mac_polymath.py
+      ```
+
+  - **状态**：
+    - ✅ Mac mini 微信小程序开发环境已就绪
+    - ⚠️ **Python 库待安装**（使用上述脚本一键配置）
 
 ### 2026-01-07
 - ✅ **微信小程序开发环境完整搭建**

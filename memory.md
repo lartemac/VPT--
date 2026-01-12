@@ -69,6 +69,58 @@
 
 ## 最近动态
 ### 2026-01-12
+- ✅ **项目文件夹整理：分离系统文件和工作成果**
+  - **整理时间**：2026-01-12
+  - **整理原因**：D:\cc-github 文件夹混杂了系统级文件和工作成果文件，需要分离管理
+  - **整理方案**：
+    - 保留 D:\cc-github 作为 Claude Code 系统级文件和程序存储文件夹
+    - 创建 D:\ccoutput 存储工作成果文件
+    - 使用 Python 脚本自动化移动文件（organize_files.py，已删除）
+
+  - **文件分类统计**：
+
+    **D:\ccoutput（工作成果，61个文件）**
+    1. **Claude_Code教程/** (15个文件)
+       - Claude Code实战课程完整版（HTML/MD/PDF）
+       - Claude Code中文教程（完整版/优化版）
+       - 课程报告和总结文档
+
+    2. **文献验证报告/** (8个文件)
+       - 文献引用质量分析报告（多个版本）
+       - 引用验证总结报告.md
+       - citations_data.json
+
+    3. **工作脚本/** (38个文件)
+       - 文献验证脚本（多种验证方法）
+       - PDF生成脚本
+       - 课程抓取脚本
+       - 工具脚本和配置文件
+
+    **D:\cc-github（系统级文件，保留）**
+    - **版本控制**：.git/, .gitignore
+    - **Claude配置**：.claude/, CLAUDE-global.md
+    - **记忆系统**：memory.md, memory-archive.md
+    - **微信小程序**：app.js/json/wxss, pages/, cloudfunctions/, utils/
+    - **项目配置**：project.config.json, sitemap.json, README.md
+    - **同步脚本**：sync-claude-config.bat/sh
+
+  - **整理效果**：
+    - ✅ D:\cc-github 现在只包含13个系统文件和5个系统目录
+    - ✅ 工作成果文件清晰分类存储在 D:\ccoutput
+    - ✅ 提高文件管理效率，避免混乱
+    - ✅ 便于备份和版本控制
+
+  - **Git提交记录**：
+    - Commit ID：aaa12ce
+    - 提交标题：🗂️ chore: 整理项目文件夹，分离系统文件和工作成果
+    - 修改统计：40 files changed, 354707 deletions(-)
+    - 推送状态：✅ 成功推送到GitHub（main分支）
+
+  - **未来建议**：
+    - 新工作成果文件统一存储到 D:\ccoutput
+    - D:\cc-github 保持简洁，只存储系统级文件
+    - 定期整理 D:\ccoutput，按项目或日期进一步分类
+
 - ✅ **国自然标书文献引用质量验证项目（PubMed + GLM-4语义分析）**
   - **项目背景**：用户申请国自然基金（NSFC），项目名称"基于牙髓血液学的牙髓炎精准诊断与活髓保存治疗预后模型的构建研究"，需要验证标书中33篇参考文献的引用质量
   - **本地路径**：`D:\cc-github\`

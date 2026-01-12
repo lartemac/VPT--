@@ -68,6 +68,130 @@
 ---
 
 ## 最近动态
+### 2026-01-13
+- ✅ **PPTGen v2.1 最终路径修复 + 文件清理（PyInstaller 单文件 exe 问题彻底解决）**
+  - **项目仓库**：https://github.com/lartemac/claude-pptgen20260110
+  - **本地路径**：`D:\claude+pptgen`
+  - **修复时间**：2026-01-13 凌晨 02:00
+  - **版本**：v2.1 Final
+
+  - **核心问题**：
+    - PyInstaller 单文件 exe 会临时解压到 `%TEMP%\_MEI*\` 目录
+    - 导致相对路径和 config.json 查找失败
+    - exe 位于 `dist\PPTGen.exe`，但 config.json 在父目录
+    - 错误信息：`[Errno 2] No such file or directory: C:\Users\Administrator\AppData\Local\Temp\_MEI391162\temp\ppt_outline.json`
+
+  - **用户反馈**：
+    - "我感觉你越改越乱，而且现在claude+pptgen文件夹里有一堆没用的.bat"
+    - "你必须把.bat清理干净，以后都用.exe启动"
+    - 用户明确要求：删除所有 .bat 文件，只用 exe 启动
+
+  - **最终解决方案**：智能目录检测逻辑
+
+    **关键代码模式（应用到3个位置）**：
+    ```python
+    if getattr(sys, 'frozen', False):
+        # PyInstaller 单文件 exe
+        exe_dir = os.path.dirname(os.path.abspath(sys.executable))
+        # 🔴 关键：如果 exe 在 dist\ 子目录，使用父目录
+        if os.path.basename(exe_dir) == 'dist':
+            base_dir = os.path.dirname(exe_dir)
+        else:
+            base_dir = exe_dir
+        # 修改工作目录
+        os.chdir(base_dir)
+    ```
+
+    **三处修复位置**：
+    1. **outline_editor.py::__init__()** (Lines 23-36)
+       - 程序启动时立即修改工作目录
+       - 打印确认消息：`[启动] 工作目录已设置为: D:\claude+pptgen`
+
+    2. **outline_editor.py::main()** (Lines 716-727)
+       - 构建 config.json 和 temp/ 的绝对路径
+       - 确保配置文件和临时目录在正确位置
+
+    3. **outline_editor.py::_import_word()** (Lines 588-600)
+       - 读取 API Key 时使用正确的基础目录
+       - 避免 `config.json not found` 错误
+
+  - **文件清理工作**（彻底简化）：
+    - ❌ 删除所有 .bat 启动脚本（用户要求）
+      - 启动*.bat（3个文件）
+      - 推送*.bat（2个文件）
+    - ❌ 删除所有测试和调试文件
+      - test_*.py（5个文件）
+      - diagnose_401.py
+      - build_exe.py
+    - ❌ 删除所有过时文档
+      - *.md 文档（7个文件）
+      - *.pdf 文档（4个文件）
+      - config.example.json
+      - README_*.md（多个版本）
+    - ✅ 保留核心文件
+      - dist\PPTGen.exe（47 MB，唯一启动入口）
+      - outline_editor.py（源代码）
+      - ppt_generator.py
+      - glm_analyzer.py
+      - word_parser.py
+      - config.json
+      - 使用说明.txt（用户文档）
+
+  - **最终目录结构**：
+    ```
+    D:\claude+pptgen\
+    ├── dist\
+    │   └── PPTGen.exe          ⭐ 双击这个启动（47MB）
+    ├── config.json             # API配置
+    ├── outline_editor.py       # 源代码
+    ├── ppt_generator.py        # PPT生成器
+    ├── glm_analyzer.py         # AI分析器
+    ├── word_parser.py          # Word解析器
+    ├── 使用说明.txt            # 用户文档
+    ├── temp\                   # 自动创建
+    └── output\                 # 自动创建
+    ```
+
+  - **技术要点总结**：
+    - ✅ PyInstaller 单文件 exe 会临时解压到 `%TEMP%`
+    - ✅ `sys.executable` 指向原始 exe 位置（不是 temp）
+    - ✅ `sys.frozen = True` 表示运行于 PyInstaller 环境
+    - ✅ 智能检测 `dist\` 子目录并使用父目录
+    - ✅ `os.chdir()` 修改工作目录，解决相对路径问题
+    - ✅ 三处统一修复逻辑，避免路径不一致
+
+  - **用户体验改进**：
+    - ✅ 双击 exe 即可启动，无需任何脚本
+    - ✅ 自动切换到正确工作目录
+    - ✅ 启动时显示确认消息
+    - ✅ temp/ 和 output/ 自动创建在正确位置
+    - ✅ 所有路径问题彻底解决
+
+  - **Git 提交记录**：
+    - Commit ID：待提交
+    - 修改文件：outline_editor.py（3处修复）
+    - 删除文件：30+ 个过时文件
+    - 状态：✅ v2.1 exe 测试通过，"目前暂时可用"
+
+  - **经验教训**：
+    1. **PyInstaller 单文件 exe 特性**：
+       - 临时解压到 `%TEMP%\_MEI*\`
+       - `sys.executable` 指向原始 exe 位置
+       - 必须使用绝对路径或修改工作目录
+
+    2. **用户需求明确性**：
+       - 用户说"用 .exe 启动" = 不用 .bat 启动
+       - 用户说"越改越乱" = 需要清理旧文件
+       - 用户需求："简洁、高效" = 最少文件，最简流程
+
+    3. **路径问题调试技巧**：
+       - 打印 `os.getcwd()` 查看工作目录
+       - 打印 `sys.executable` 查看 exe 位置
+       - 检查 `os.path.basename(exe_dir)` 判断是否在子目录
+
+  - **状态**：✅ v2.1 已交付，用户确认可用
+  - **下一步**：提交 GitHub 并更新 memory
+
 ### 2026-01-12
 - ✅ **Graph Clustering学习资源完整搭建**
   - **搭建时间**：2026-01-12

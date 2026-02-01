@@ -43,6 +43,7 @@
 - **@playwright/mcp** - 浏览器自动化测试
 - **@modelcontextprotocol/server-filesystem** - 文件系统访问
 - **@modelcontextprotocol/server-google-search** - Google 搜索（2026-02-01 添加）
+- **@modelcontextprotocol/server-tavily** - Tavily AI 优化搜索（2026-02-01 添加）⭐
 - **配置文件**：
   - Windows: `C:\Users\Administrator\.claude\mcp-servers.json`
   - macOS: `~/.claude/mcp-servers.json` 或 `~/.config/claude/mcp-servers.json`
@@ -69,6 +70,55 @@
 ---
 
 ## 最近动态
+
+### 2026-02-01
+- ✅ **Tavily MCP 服务器添加与配置**
+  - **时间**：2026-02-01
+  - **系统**：Windows 11
+  - **配置文件**：`C:\Users\Administrator\.claude\mcp-servers.json`
+
+  - **Tavily 简介**：
+    - 专门为 LLM 和 AI 代理优化的搜索 API
+    - 提供深度搜索、新闻搜索、学术搜索
+    - 返回 JSON 格式的结构化搜索结果
+    - 免费额度：每月 1000 次搜索
+    - 官网：https://tavily.com/
+
+  - **配置内容**：
+    ```json
+    "tavily": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-tavily"],
+      "description": "Tavily MCP 服务器 - AI 优化的搜索 API",
+      "env": {
+        "TAVILY_API_KEY": "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"
+      }
+    }
+    ```
+
+  - **当前 MCP 服务器列表**（6个）：
+    1. **@yfme/weapp-dev-mcp** - 微信小程序 AI 辅助开发
+    2. **github-mcp** - GitHub 仓库管理
+    3. **@playwright/mcp** - 浏览器自动化测试
+    4. **@modelcontextprotocol/server-filesystem** - 文件系统访问
+    5. **@modelcontextprotocol/server-google-search** - Google 搜索（2026-02-01 添加）
+    6. **@modelcontextprotocol/server-tavily** - Tavily AI 搜索（2026-02-01 添加）⭐
+
+  - **Tavily vs 其他搜索方案对比**：
+    | 搜索方案 | 优点 | 缺点 | 适用场景 |
+    |---------|------|------|----------|
+    | **Tavily** | AI优化、结构化输出、免费额度高 | 需要注册 | 日常搜索、AI 辅助 |
+    | **DuckDuckGo** | 完全免费、无需API Key、无限制 | 非AI原生 | 快速查询 |
+    | **Google Search MCP** | 官方支持 | 可能有限制 | 备用方案 |
+    | **Claude WebSearch** | 质量高 | 月度限制 | 英文学术文献 |
+
+  - **状态**：✅ 配置完成，需重启 Claude Code 生效
+
+  - **用户价值**：
+    - ✅ 获得专门为 AI 优化的搜索工具
+    - ✅ 结构化输出更易于解析
+    - ✅ 免费额度充足（1000次/月）
+    - ✅ 作为 DuckDuckGo 的有力补充
 
 ### 2026-02-01
 - 🔧 **电脑卡顿问题诊断与解决（讯飞输入法残留）**

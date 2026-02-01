@@ -1,0 +1,10 @@
+{
+  "comment": "Google Custom Search API 配置文件 - 请填入您的API密钥和搜索引擎ID",
+  "api_key": "YOUR_API_KEY_HERE",
+  "cx_id": "YOUR_CX_ID_HERE",
+  "usage": {
+    "total_queries": 0,
+    "last_reset": "2026-02-01",
+    "daily_limit": 100
+  }
+}

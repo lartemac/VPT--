@@ -37,11 +37,12 @@
 - **磁盘清理工具**：`~/Desktop/清理磁盘空间.command`
 - **iPhone 闹钟工具**：`~/Desktop/16点43闹钟.command`（交互式闹钟，音量渐增）
 
-### MCP 服务器（2026-01-07 安装）
+### MCP 服务器（2026-01-07 安装，2026-02-01 更新）
 - **@yfme/weapp-dev-mcp** - 微信小程序 AI 辅助开发
 - **github-mcp** - GitHub 仓库管理
 - **@playwright/mcp** - 浏览器自动化测试
 - **@modelcontextprotocol/server-filesystem** - 文件系统访问
+- **@modelcontextprotocol/server-google-search** - Google 搜索（2026-02-01 添加）
 - **配置文件**：
   - Windows: `C:\Users\Administrator\.claude\mcp-servers.json`
   - macOS: `~/.claude/mcp-servers.json` 或 `~/.config/claude/mcp-servers.json`
@@ -112,6 +113,57 @@
     - ⭐ 软件选择原则：优先轻量级，避免"全家桶"
 
 ### 2026-02-01
+- 🔧 **Google Custom Search API 配置尝试与发现**
+  - **时间**：2026-02-01
+  - **系统**：Windows 11
+  - **项目背景**：尝试配置 Google Custom Search API 作为网络搜索替代方案
+
+  - **配置过程**：
+    1. ✅ 创建 Google Cloud 项目（项目ID: 255525197612）
+    2. ✅ 创建多个 API Key（最终使用: AIzaSyBkkhzH26BPzprCpHe4r6ODkV9bX-XDdH0）
+    3. ✅ 创建 Custom Search Engine（CX ID: e2b2d1e5cebbc4dab）
+    4. ✅ 在 Google Cloud Console 启用 Custom Search API
+    5. ❌ **反复测试失败，持续报 403 错误**
+
+  - **错误信息**：
+    ```
+    This project does not have the access to Custom Search JSON API.
+    ```
+
+  - **排查尝试**：
+    - ✅ 确认 API 已启用（Custom Search API 状态：已启用）
+    - ✅ 确认 CX ID 有效（搜索引擎可访问）
+    - ✅ 移除 API 所有限制（应用限制：无，API限制：不限制密钥）
+    - ✅ 等待 API 激活（测试间隔 3-5 分钟）
+    - ✅ 尝试多个项目和新 API Key
+    - ✅ 使用 Google 官方示例 CX ID 测试
+    - ❌ 所有尝试均失败
+
+  - **根本原因**：
+    - ⚠️ **Google Custom Search API 已被官方停用/限制访问**
+    - 403 错误不是配置问题，而是服务本身已不可用
+    - 多个 API Key、多个项目均返回相同错误
+
+  - **创建文件**：
+    - `google_search_config.json` - API配置文件（已更新，但无法使用）
+    - `google_search_tool.py` - Google搜索工具脚本（无法工作）
+
+  - **经验教训**：
+    - ❌ **Custom Search API 已被 Google 停用**，不应再尝试配置
+    - ⭐ 需要使用新的搜索服务：**Vertex AI Search** 或其他替代方案
+    - ⭐ Gemini 助手建议使用新版接口：discoveryengine.googleapis.com/v1
+    - ⭐ 需要配置 Engine ID + OAuth/Service Account 认证
+
+  - **后续方案**：
+    1. ✅ **已添加 Google Search MCP 服务器**（@modelcontextprotocol/server-google-search）
+       - 配置文件：`C:\Users\Administrator\.claude\mcp-servers.json`
+       - 需重启 Claude Code 生效
+    2. ⏳ 待配置：Vertex AI Search（discoveryengine.googleapis.com/v1）
+       - 需要 Engine ID: cc20260201_1769935690371
+       - 需要 Service Account 凭证（JSON）
+    3. ⏳ 备选方案：继续使用 DuckDuckGo（已配置好）
+
+### 2026-02-01
 - 🔧 **API服务使用规范制定与工具替代方案**
   - **时间**：2026-02-01
   - **系统**：Windows 11
@@ -126,25 +178,7 @@
     - ✅ **网页读取** → 完全可用Python替代（requests + BeautifulSoup）
     - ⚠️ **图片OCR** → 部分可用Python替代（Tesseract/PaddleOCR，仅提取文字）
     - ❌ **图片理解** → 必须用MCP（理解内容、分析布局）
-    - ❌ **网络搜索** → 难以完全替代（API仍有配额）
-
-  - **Google Custom Search API配置项目**：
-    - **用户状态**：已申请Google Custom Search API
-    - **当前进度**：已获得API Key，待配置CX ID（搜索引擎ID）
-    - **创建文件**：
-      - `google_search_config.json` - API配置文件模板
-      - `google_search_tool.py` - Google搜索工具脚本
-    - **功能特点**：
-      - ✅ 免费版每天100次查询
-      - ✅ 支持命令行和交互式输入
-      - ✅ 自动保存搜索结果到桌面
-      - ✅ 使用次数统计
-      - ✅ 完整的错误处理
-    - **待完成**：
-      1. 创建Google Custom Search Engine获取CX ID
-      2. 在配置文件中填入API Key和CX ID
-      3. 测试搜索功能
-      4. 优化为常规搜索工具
+    - ❌ **网络搜索** → DuckDuckGo可用（但 Google Custom Search API 已停用）
 
   - **语音输入需求调研**：
     - **用户需求**：在Word文档中进行大量语音输入

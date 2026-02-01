@@ -120,6 +120,102 @@
     - ✅ 免费额度充足（1000次/月）
     - ✅ 作为 DuckDuckGo 的有力补充
 
+- ✅ **Tavily AI Skills 安装（5个专业 Skills）**
+  - **时间**：2026-02-01
+  - **安装命令**：`npx skills add tavily-ai/skills -y -g`
+  - **安装位置**：`C:\Users\Administrator\.agents\skills\`
+
+  - **已安装的 Skills**（5个）：
+
+    1. **search** - 智能搜索
+       - **功能**：使用 Tavily API 进行网络搜索
+       - **特点**：
+         - LLM 优化的搜索结果
+         - 支持高级过滤（域名、时间范围、主题）
+         - 4 种搜索深度：ultra-fast / fast / basic / advanced
+         - 支持新闻、金融等主题搜索
+       - **适用场景**：
+         - Mode C（医学科研）：搜索特定的医学主题、疾病信息
+         - Mode B（全栈开发）：查找技术文档、代码示例
+
+    2. **research** - 深度研究 ⭐
+       - **功能**：AI 综合研究，自动引用来源
+       - **特点**：
+         - 自动收集和分析网络数据
+         - 生成带引用的研究报告（MLA/APA/Chicago 格式）
+         - 支持 JSON 结构化输出
+         - 2 种模型：mini（快速，~30s）/ pro（深度，~60-120s）
+       - **适用场景**：
+         - Mode C（医学科研）：查询最新医学文献、临床指南
+         - 综合分析、市场研究、技术对比
+
+    3. **crawl** - 网页爬取
+       - **功能**：爬取网站内容
+       - **适用场景**：批量获取网站数据
+
+    4. **extract** - 数据提取
+       - **功能**：从网页提取结构化数据
+       - **适用场景**：提取关键信息、结构化数据
+
+    5. **tavily-best-practices** - 最佳实践
+       - **功能**：Tavily API 使用指南
+       - **内容**：完整的 API 文档和示例
+
+  - **Skills 配置**：
+    - **目标平台**：Antigravity, Claude Code, Cursor, Gemini CLI
+    - **符号链接**：已创建到所有目标平台
+    - **API Key**：使用 MCP 服务器中配置的 Key（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）
+
+  - **API 使用示例**：
+
+    **基础搜索**：
+    ```bash
+    curl --request POST \
+      --url https://api.tavily.com/search \
+      --header "Authorization: Bearer $TAVILY_API_KEY" \
+      --header 'Content-Type: application/json' \
+      --data '{
+        "query": "最新医学研究",
+        "max_results": 5
+      }'
+    ```
+
+    **深度研究**：
+    ```bash
+    curl --request POST \
+      --url https://api.tavily.com/research \
+      --header "Authorization: Bearer $TAVILY_API_KEY" \
+      --header 'Content-Type: application/json' \
+      --data '{
+        "input": "牙髓炎治疗最新进展",
+        "model": "pro",
+        "citation_format": "apa"
+      }'
+    ```
+
+  - **搜索深度对比**：
+    | 深度 | 延迟 | 相关性 | 内容类型 | 适用场景 |
+    |------|------|--------|----------|----------|
+    | `ultra-fast` | 最低 | 较低 | NLP 摘要 | 实时聊天、自动补全 |
+    | `fast` | 低 | 良好 | 内容块 | 需要内容块但关注延迟 |
+    | `basic` | 中等 | 高 | NLP 摘要 | 通用、平衡（推荐） |
+    | `advanced` | 较高 | 最高 | 内容块 | 精度优先（默认推荐） |
+
+  - **状态**：✅ 安装完成，待重启后测试
+
+  - **用户价值**：
+    - ✅ 获得 5 个专业 AI 搜索/研究 Skills
+    - ✅ 支持医学文献深度研究（research skill + pro 模型）
+    - ✅ 自动引用管理（APA/MLA/Chicago 格式）
+    - ✅ 结构化 JSON 输出，便于数据处理
+    - ✅ 与 Polymath 模式完美配合（Mode C 科研 + Mode B 开发）
+
+  - **下一步计划**：
+    - ⏳ 重启 Claude Code 使配置生效
+    - ⏳ 测试 search skill 基础功能
+    - ⏳ 测试 research skill 深度研究功能
+    - ⏳ 验证与 Polymath 模式的集成
+
 ### 2026-02-01
 - 🔧 **电脑卡顿问题诊断与解决（讯飞输入法残留）**
   - **时间**：2026-02-01

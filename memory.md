@@ -347,6 +347,75 @@
     - **询问机制**：MCP/WebSearch前必须征得用户同意
     - **替代策略**：评估Python脚本的可行性
 
+- 🛠️ **桌面文件转换工具开发与故障修复**
+  - **时间**：2026-02-01 22:00-23:00
+  - **系统**：Windows 11
+  - **背景**：用户需要一个便携的.exe工具，将.py和.md文件转换为HTML并自动在Firefox中打开
+  - **需求特点**：
+    - 桌面上只允许一个.exe文件（无文档、无说明）
+    - 可复制到其他电脑使用
+    - 必须在Firefox中打开结果
+    - 支持拖拽文件（初始需求，后因稳定性问题取消）
+
+  - **开发历程**：
+    1. **第一版：converter.py**
+       - 功能完整：支持拖拽.py和.md文件
+       - 使用tkinterdnd2库实现拖拽
+       - PyInstaller打包：12 MB单文件exe
+
+    2. **第二版：converter_v2.py**
+       - 用户反馈：双击无反应，鼠标沙漏闪烁
+       - 修复措施：添加topmost属性和焦点管理
+       - 问题未完全解决
+
+    3. **第三版：converter_fixed.py** ⭐（最终版）
+       - 问题诊断：tkinterdnd2依赖未正确打包导致崩溃
+       - 解决方案：完全移除拖拽功能，仅保留按钮选择
+       - 核心代码：
+       ```python
+       def select_file():
+           file_path = filedialog.askopenfilename(
+               title="选择要转换的文件",
+               filetypes=[
+                   ("所有支持的文件", "*.py *.md"),
+                   ("Python文件", "*.py"),
+                   ("Markdown文件", "*.md"),
+                   ("所有文件", "*.*")
+               ]
+           )
+       ```
+       - GUI优化：500x300固定窗口，居中显示，简洁界面
+       - 转换功能：
+         - .py文件：语法高亮显示，注释斜体
+         - .md文件：支持表格、代码块、换行
+         - 自动在Firefox中打开HTML结果
+         - Firefox路径检测：C:\Program Files\Mozilla Firefox\firefox.exe
+
+  - **部署问题**：
+    - **现象**：旧版exe文件被系统锁定，无法删除或替换
+    - **原因**：可能是Windows Defender或文件索引服务锁定
+    - **解决方案**：
+      - 使用Windows API标记旧文件在重启时删除
+      - `kernel32.MoveFileExW(old_file, None, MOVEFILE_DELAY_UNTIL_REBOOT)`
+      - 状态：✅ 已标记，等待重启后自动删除
+
+  - **文件位置**：
+    - 修复版源码：`C:\Users\Administrator\Desktop\converter_fixed.py`
+    - 旧版exe：`C:\Users\Administrator\Desktop\文件转HTML工具.exe`（待删除）
+    - 新版exe：待重启后重新打包部署
+
+  - **经验教训**：
+    - ⚠️ PyInstaller打包第三方GUI库（如tkinterdnd2）容易出现依赖缺失
+    - ✅ 简化设计（仅按钮选择）比复杂功能（拖拽）更稳定可靠
+    - ✅ 12 MB单文件exe已包含所有依赖，可独立运行
+    - 💡 Windows文件被锁定时可使用MoveFileEx API标记重启删除
+
+  - **技术栈**：
+    - Python 3.13.11 + tkinter（GUI）
+    - markdown库（MD转HTML）
+    - PyInstaller 6.18.0（打包）
+    - subprocess（Firefox启动）
+
 ### 2026-01-29
 - ✅ **Windows平台医学统计图表复现与优化**
   - **完成时间**：2026-01-29

@@ -36,6 +36,11 @@
 - **Python 工具库**：pypdf, pdfplumber, python-docx, openpyxl, xlrd, python-pptx, Pillow
 - **磁盘清理工具**：`~/Desktop/清理磁盘空间.command`
 - **iPhone 闹钟工具**：`~/Desktop/16点43闹钟.command`（交互式闹钟，音量渐增）
+- **PubMed 文献查询工具**（2026-02-01 迁移）：`E:\pubmedconsult\`
+  - **PUBMEDCONSULT.py** - V1.0 原版（纯 PubMed API，无月度限制）
+  - **PUBMEDCONSULT_V2.py** - V2.0 新版（Tavily + PubMed 双引擎，速度快 7.5 倍）
+  - **使用方式**：由 Claude 调用，用户无需手动操作
+  - **命令格式**：`python "E:\pubmedconsult\PUBMEDCONSULT_V2.py" "查询语句"`
 
 ### MCP 服务器（2026-01-07 安装，2026-02-01 更新）
 - **@yfme/weapp-dev-mcp** - 微信小程序 AI 辅助开发

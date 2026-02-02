@@ -118,9 +118,45 @@ pypdf, pdfplumber, python-docx, openpyxl, xlrd, python-pptx, Pillow
 - Purpose: Conserve limited API calls
 - Local alternatives: Python (requests+BS4) for web scraping
 
+### LOCAL_PYTHON_PRIORITY (Token Saving) ⭐
+- **PRINCIPLE**: Use local Python whenever possible to save tokens
+- **PRIORITY**: Local Python > MCP Services > WebSearch > AI Generation
+
+**Local Python Solutions (Use First)**:
+| Task | Python Libs | Token Saved |
+|------|------------|-------------|
+| File operations | os, pathlib, shutil | 1000+ |
+| Data processing | pandas, numpy | 2000+ |
+| Excel read/write | openpyxl, xlrd, pandas | 1500+ |
+| Word read/write | python-docx | 1500+ |
+| PDF text extraction | pypdf, pdfplumber | 2000+ |
+| Web scraping | requests, BeautifulSoup4 | 1000+ |
+| Image processing | Pillow (PIL) | 1000+ |
+| Data visualization | matplotlib, seaborn | 1500+ |
+| Text processing | re, string, textwrap | 500+ |
+| Date/time | datetime, time | 300+ |
+| Math calculations | math, statistics, scipy | 500+ |
+
+**Use AI Only When**:
+- User asks for explanation/teaching
+- Need creative content generation
+- Complex decision making required
+- No local solution available
+
+**Example**:
+```
+Task: Convert CSV to Excel
+❌ Don't: Ask AI to write code (wastes tokens)
+✅ Do: Write pandas script directly (save tokens)
+```
+
 ---
 
 ## TIMELINE (Compressed)
+
+### 2026-02-03
++ LOCAL_PYTHON_PRIORITY rule added (save tokens)
++ Three core capabilities confirmed: API auto-switch, MCP caution, Python priority
 
 ### 2026-02-01
 + Tavily MCP added (1000次/月)
@@ -229,4 +265,4 @@ pypdf, pdfplumber, python-docx, openpyxl, xlrd, python-pptx, Pillow
 ## END
 
 **Full history**: See `memory-archive.md`
-**Last updated**: 2026-02-03
+**Last updated**: 2026-02-03 (Added LOCAL_PYTHON_PRIORITY rule)

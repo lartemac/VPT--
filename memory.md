@@ -45,6 +45,23 @@
    - LOGIC: 7局4胜 + 流局优先级
    - PRIORITY: 正常击杀 > 流局判定 > 平局
 
+3. **A股数据下载系统** (A-Stock Data Downloader)
+   - PURPOSE: Academic research backtesting (avoid survivorship bias)
+   - TECH: Tushare Pro + Python + Parquet
+   - PATH: E:\BigA\
+   - STATUS: Scripts ready, waiting for token activation (1-24h)
+   - FEATURES:
+     * Include all stocks (L+D+P) to avoid survivorship bias
+     * Use QFQ (前复权) for price continuity
+     * Parquet format for performance
+     * Auto-download adj_factor for manual calculation
+   - SCRIPTS:
+     * tushare_downloader_v2.py (main)
+     * auto_download_all_v2.py (auto-download all)
+     * download_adj_factors_only.py (factors only)
+   - TOKEN: REDACTED_TUSHARE_TOKEN
+   - DEPS: tushare, pandas==2.3.3, pyarrow
+
 ---
 
 ## TOOLS
@@ -160,6 +177,13 @@ Task: Convert CSV to Excel
 
 ## TIMELINE (Compressed)
 
+### 2026-02-08
++ A股数据下载系统开发完成
++ Tushare Pro集成（避免幸存者偏差）
++ 前复权数据+复权因子（学术研究标准）
++ Parquet格式存储（性能优化）
++ pandas降级到2.3.3（兼容tushare）
+
 ### 2026-02-03
 + LOCAL_PYTHON_PRIORITY rule added (save tokens)
 + Three core capabilities confirmed: API auto-switch, MCP caution, Python priority
@@ -229,8 +253,8 @@ Task: Convert CSV to Excel
    - Features: Mini program dev, cloud functions, data export
 
 3. **quantitative-trading** → Mode B
-   - Keywords: 交易, OKX, Binance, API, 量化, 策略
-   - Features: API integration, strategy dev, risk management
+   - Keywords: 交易, 股票, A股, Tushare, 量化, 策略, 回测
+   - Features: API integration, data download, backtesting, survivorship bias avoidance
 
 4. **game-logic** → Mode B
    - Keywords: 游戏, 7局4胜, 流局, 比赛
@@ -271,4 +295,4 @@ Task: Convert CSV to Excel
 ## END
 
 **Full history**: See `memory-archive.md`
-**Last updated**: 2026-02-03 (Added LOCAL_PYTHON_PRIORITY rule)
+**Last updated**: 2026-02-08 (A股数据下载系统)

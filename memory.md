@@ -25,6 +25,12 @@
 - MAC: bash/zsh, `/` separator
 - DETECT: Check `Platform` env var
 
+### LESSONS
+- FILE: lessons.md
+- PURPOSE: 经验教训与失败项目集
+- USAGE: 在需要时查阅，不在每次启动时自动加载
+- RULE: 遇到问题前先检查 lessons.md，避免重复犯错
+
 ---
 
 ## PROJECTS

@@ -49,7 +49,7 @@
    - PURPOSE: Academic research backtesting (avoid survivorship bias)
    - TECH: Tushare Pro + Python + Parquet
    - PATH: E:\BigA\
-   - STATUS: Scripts ready, waiting for token activation (1-24h)
+   - STATUS: Auto-monitoring active (checking every 30min)
    - FEATURES:
      * Include all stocks (L+D+P) to avoid survivorship bias
      * Use QFQ (前复权) for price continuity
@@ -59,8 +59,10 @@
      * tushare_downloader_v2.py (main)
      * auto_download_all_v2.py (auto-download all)
      * download_adj_factors_only.py (factors only)
+     * auto_retry_download.py (auto-monitor, 30min interval)
    - TOKEN: REDACTED_TUSHARE_TOKEN
    - DEPS: tushare, pandas==2.3.3, pyarrow
+   - MONITOR: Started 2026-02-08 23:20, checked 16 times, still waiting
 
 ---
 
@@ -176,6 +178,11 @@ Task: Convert CSV to Excel
 ---
 
 ## TIMELINE (Compressed)
+
+### 2026-02-09
++ 自动监控脚本部署（30min间隔检查）
++ pandas兼容性修复（3.0.0→2.3.3）
++ BigA文件夹清理（删除旧脚本）
 
 ### 2026-02-08
 + A股数据下载系统开发完成
@@ -295,4 +302,4 @@ Task: Convert CSV to Excel
 ## END
 
 **Full history**: See `memory-archive.md`
-**Last updated**: 2026-02-08 (A股数据下载系统)
+**Last updated**: 2026-02-09 (自动监控部署中)

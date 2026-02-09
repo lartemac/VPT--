@@ -49,23 +49,24 @@
    - PURPOSE: Academic research backtesting (avoid survivorship bias)
    - TECH: Tushare Pro + Python + Parquet
    - PATH: E:\BigA\
-   - STATUS: Partial activation - pro_bar ready, stock_basic limited
+   - STATUS: ✅ COMPLETED (2026-02-09)
    - FEATURES:
      * Include all stocks (L+D+P) to avoid survivorship bias
-     * Use QFQ (前复权) for price continuity
+     * Use QFQ (前复权) for price continuity (already adjusted)
      * Parquet format for performance
-     * Auto-download adj_factor for manual calculation
+     * Auto-download adj_factor for backup
    - SCRIPTS:
-     * tushare_downloader_v2.py (main)
-     * auto_download_all_v2.py (auto-download all)
-     * download_adj_factors_only.py (factors only)
-     * auto_retry_download.py (auto-monitor, 30min interval)
-     * test_download_600900.py (test script)
+     * tushare_downloader_v2.py (main downloader)
+     * start_download.py (auto-start script)
    - TOKEN: REDACTED_TUSHARE_TOKEN
    - DEPS: tushare, pandas==2.3.3, pyarrow
-   - TEST: 600900成功下载（3758条日线+3886条因子）
-   - MONITOR: Started 2026-02-08 23:20, checked 27 times
-   - BLOCKING: stock_basic接口每分钟限1次，权限未完全激活
+   - RESULTS:
+     * Daily data: 5799 stocks (100% success)
+     * Adj factors: 5798 stocks (1 failed)
+     * Total files: 11,596 parquet files
+     * Time range: Each stock from listing date to 2026-02-06
+     * File format: CODE-START-END-STATUS.parquet
+   - PERFORMANCE: 86 minutes total (29min daily + 57min factors)
 
 ---
 

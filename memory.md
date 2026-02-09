@@ -49,7 +49,7 @@
    - PURPOSE: Academic research backtesting (avoid survivorship bias)
    - TECH: Tushare Pro + Python + Parquet
    - PATH: E:\BigA\
-   - STATUS: Auto-monitoring active (checking every 30min)
+   - STATUS: Partial activation - pro_bar ready, stock_basic limited
    - FEATURES:
      * Include all stocks (L+D+P) to avoid survivorship bias
      * Use QFQ (前复权) for price continuity
@@ -60,9 +60,12 @@
      * auto_download_all_v2.py (auto-download all)
      * download_adj_factors_only.py (factors only)
      * auto_retry_download.py (auto-monitor, 30min interval)
+     * test_download_600900.py (test script)
    - TOKEN: REDACTED_TUSHARE_TOKEN
    - DEPS: tushare, pandas==2.3.3, pyarrow
-   - MONITOR: Started 2026-02-08 23:20, checked 16 times, still waiting
+   - TEST: 600900成功下载（3758条日线+3886条因子）
+   - MONITOR: Started 2026-02-08 23:20, checked 27 times
+   - BLOCKING: stock_basic接口每分钟限1次，权限未完全激活
 
 ---
 

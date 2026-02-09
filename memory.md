@@ -55,9 +55,11 @@
      * Use QFQ (前复权) for price continuity (already adjusted)
      * Parquet format for performance
      * Auto-download adj_factor for backup
+     * Daily auto-update at 20:00 via Windows Task Scheduler
    - SCRIPTS:
      * tushare_downloader_v2.py (main downloader)
      * start_download.py (auto-start script)
+     * daily_update.py (daily auto-update script)
    - TOKEN: REDACTED_TUSHARE_TOKEN
    - DEPS: tushare, pandas==2.3.3, pyarrow
    - RESULTS:
@@ -66,7 +68,11 @@
      * Total files: 11,596 parquet files
      * Time range: Each stock from listing date to 2026-02-06
      * File format: CODE-START-END-STATUS.parquet
+     * 838 stocks (14.5%) at 6000-record limit (API limit, acceptable)
    - PERFORMANCE: 86 minutes total (29min daily + 57min factors)
+   - FILE STRUCTURE:
+     * E:\BigA\*.parquet (5798 daily data files)
+     * E:\BigA\adjfactor\*_adj_factor.parquet (5798 adj factor files)
 
 ---
 
@@ -184,9 +190,13 @@ Task: Convert CSV to Excel
 ## TIMELINE (Compressed)
 
 ### 2026-02-09
-+ 自动监控脚本部署（30min间隔检查）
-+ pandas兼容性修复（3.0.0→2.3.3）
-+ BigA文件夹清理（删除旧脚本）
++ 数据完整性检查：838只股票达6000条记录限制
++ Tushare Pro API限制确认：pro_bar接口硬限制6000条（约24年数据）
++ 用户决策：接受当前数据（2000年后数据完整）
++ 文件组织：创建/adjfactor子目录，移动5798个复权因子文件
++ 自动更新脚本：daily_update.py（每日20:00自动更新数据）
++ 文件名修正：修正所有parquet文件起始日期与实际数据一致
++ 修复文件名重复后缀问题：_adj_factor_adj_factor → _adj_factor
 
 ### 2026-02-08
 + A股数据下载系统开发完成

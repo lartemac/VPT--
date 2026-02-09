@@ -93,8 +93,36 @@
 4. extract - Data extraction
 5. tavily-best-practices - API guide
 
-### PYTHON_LIBS
-pypdf, pdfplumber, python-docx, openpyxl, xlrd, python-pptx, Pillow
+### PYTHON_LIBS (173 packages)
+
+**Core Data Analysis**:
+- pandas==2.3.3, numpy==2.2.6, polars==1.38.1, scipy==1.17.0
+
+**Machine Learning**:
+- scikit-learn==1.8.0, gplearn==0.4.3, numba==0.61.2, optuna==4.7.0, pygad==3.5.0
+
+**Visualization**:
+- matplotlib==3.10.8, seaborn==0.13.2, plotly==6.5.2
+
+**Financial Data** ⭐:
+- tushare==1.4.24, akshare==1.18.22, yfinance==1.1.0
+- pandas-ta==0.4.71b0, quantstats==0.0.81, vectorbt==0.28.4
+
+**Data Storage**:
+- pyarrow==23.0.0, fastparquet==2025.12.0, SQLAlchemy==2.0.46
+- openpyxl==3.1.5, xlrd==2.0.2
+
+**Web & API**:
+- requests, beautifulsoup4==4.14.3, lxml==6.0.2
+
+**File Processing**:
+- Pillow==12.1.0, pyinstaller==6.18.0
+
+**Document Processing**:
+- pypdf, pdfplumber, python-docx, python-pptx
+
+**Interactive Dev**:
+- IPython==9.10.0, Jupyter widgets
 
 ### TOOLS_PATHS
 - PubMedConsult: E:\pubmedconsult\ (PUBMEDCONSULT_V2.py - Tavily+PubMed dual engine)
@@ -197,6 +225,8 @@ Task: Convert CSV to Excel
 + 自动更新脚本：daily_update.py（每日20:00自动更新数据）
 + 文件名修正：修正所有parquet文件起始日期与实际数据一致
 + 修复文件名重复后缀问题：_adj_factor_adj_factor → _adj_factor
++ 数据验证：将000004.parquet转换为CSV查看数据结构
++ Python库清单更新：记录173个库的分类功能（金融分析、机器学习、可视化）
 
 ### 2026-02-08
 + A股数据下载系统开发完成

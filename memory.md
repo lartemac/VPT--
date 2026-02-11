@@ -49,7 +49,7 @@
    - PURPOSE: Academic research backtesting (avoid survivorship bias)
    - TECH: Tushare Pro + Python + Parquet
    - PATH: E:\BigA\
-   - STATUS: ✅ COMPLETED (2026-02-09)
+   - STATUS: ✅ COMPLETED (2026-02-09) + 数据增强 (2026-02-11)
    - FEATURES:
      * Include all stocks (L+D+P) to avoid survivorship bias
      * Use QFQ (前复权) for price continuity (already adjusted)
@@ -60,6 +60,7 @@
      * tushare_downloader_v2.py (main downloader)
      * start_download.py (auto-start script)
      * daily_update.py (daily auto-update script)
+     * add_market_cap_to_biga.py (market cap enhancer)
    - TOKEN: REDACTED_TUSHARE_TOKEN
    - DEPS: tushare, pandas==2.3.3, pyarrow
    - RESULTS:
@@ -69,7 +70,13 @@
      * Time range: Each stock from listing date to 2026-02-06
      * File format: CODE-START-END-STATUS.parquet
      * 838 stocks (14.5%) at 6000-record limit (API limit, acceptable)
-   - PERFORMANCE: 86 minutes total (29min daily + 57min factors)
+   - MARKET CAP ENHANCEMENT (2026-02-11):
+     * Added fields: 总市值(万元), 流通市值(万元), 换手率(%), 量比(%)
+     * Source: Tushare daily_basic API
+     * Processing: Batch mode (500 files/batch), 0.31s API interval
+     * Progress tracking: market_cap_add_progress.json
+     * Status: Processing (499/5798 files in batch 1)
+   - PERFORMANCE: 86 minutes download (29min daily + 57min factors)
    - FILE STRUCTURE:
      * E:\BigA\*.parquet (5798 daily data files)
      * E:\BigA\adjfactor\*_adj_factor.parquet (5798 adj factor files)
@@ -217,6 +224,20 @@ Task: Convert CSV to Excel
 
 ## TIMELINE (Compressed)
 
+### 2026-02-11
++ A股520回顾性研究筛选项目（已废弃）
+  * 筛选条件：股价5-20元、市值80-500亿、波动率条件、2018-01-01起始
+  * 结果：6只股票通过筛选，但多数2018年后上市（数据不足）
+  * 用户决策：筛选条件过于苛刻，不现实，放弃520项目
++ BigA市值数据增强项目启动
+  * 脚本：add_market_cap_to_biga.py
+  * 功能：为所有5798个parquet文件添加市值和交易量数据
+  * 新增字段：总市值(万元)、流通市值(万元)、换手率(%)、量比(%)
+  * 数据源：Tushare daily_basic API
+  * 批处理模式：500文件/批，API间隔0.31秒（200次/分钟限制）
+  * 进度追踪：market_cap_add_progress.json
+  * 当前状态：处理中（499/5798文件）
+
 ### 2026-02-09
 + 数据完整性检查：838只股票达6000条记录限制
 + Tushare Pro API限制确认：pro_bar接口硬限制6000条（约24年数据）
@@ -346,4 +367,4 @@ Task: Convert CSV to Excel
 ## END
 
 **Full history**: See `memory-archive.md`
-**Last updated**: 2026-02-09 (自动监控部署中)
+**Last updated**: 2026-02-11 (市值数据增强处理中) (自动监控部署中)

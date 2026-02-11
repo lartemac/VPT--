@@ -59,8 +59,9 @@
    - SCRIPTS:
      * tushare_downloader_v2.py (main downloader)
      * start_download.py (auto-start script)
-     * daily_update.py (daily auto-update script)
+     * daily_update_v2.py (daily auto-update w/ market cap)
      * add_market_cap_to_biga.py (market cap enhancer)
+     * get_all_stock_names_v2.py (stock info fetcher)
    - TOKEN: REDACTED_TUSHARE_TOKEN
    - DEPS: tushare, pandas==2.3.3, pyarrow
    - RESULTS:
@@ -224,6 +225,20 @@ Task: Convert CSV to Excel
 
 ## TIMELINE (Compressed)
 
+### 2026-02-12
++ A股系统完善项目完成
+  * daily_update.py升级：新增市值数据获取功能
+    * 创建v2版本：add_market_cap_to_biga.py的市值字段
+    * 新增4个字段：总市值(万元)、流通市值(万元)、换手率(%)、量比(%)
+    * API控制：日线0.62秒/次，复权0.31秒/次
+  * 数据验证完成：抽查10个文件，市值数据完整性100%
+  * 股票信息文件创建：stock_info.parquet
+    * 包含5479只股票的基本信息（代码、名称、行业、上市日期、市场）
+    * 数据来源：Tushare stock_basic API（分市场获取）
+    * 用途：未来查询股票名称、行业分类等
+  * 市场分布：主板3193只、深交所1392只、上交所602只、北交所292只
+  * 行业分布（前10）：软件服务341只、化学原料301只、电子282只等
+
 ### 2026-02-11
 + A股520回顾性研究筛选项目（已废弃）
   * 筛选条件：股价5-20元、市值80-500亿、波动率条件、2018-01-01起始
@@ -367,4 +382,4 @@ Task: Convert CSV to Excel
 ## END
 
 **Full history**: See `memory-archive.md`
-**Last updated**: 2026-02-11 (市值数据增强处理中) (自动监控部署中)
+**Last updated**: 2026-02-12 (A股系统完善完成) (自动监控部署中)

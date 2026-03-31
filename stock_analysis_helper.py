@@ -263,8 +263,12 @@ def analyze_fundamental(ts_code, years=3):
 def get_money_flow(ts_code, days=30):
     """获取个股资金流向数据
 
-    注意：Tushare 普通版可能不支持 moneyflow 接口
-    需要高级权限或使用其他数据源
+    返回字段包括:
+    - 小单: buy_sm_vol/amount, sell_sm_vol/amount
+    - 中单: buy_md_vol/amount, sell_md_vol/amount
+    - 大单: buy_lg_vol/amount, sell_lg_vol/amount
+    - 超大单: buy_elg_vol/amount, sell_elg_vol/amount
+    - 净流入: net_mf_vol/amount
     """
     pro = get_api()
     if not pro:
@@ -276,10 +280,12 @@ def get_money_flow(ts_code, days=30):
     try:
         print(f"💰 获取 {ts_code} 资金流向（近{days}天）...")
         df = pro.moneyflow(ts_code=ts_code, start_date=start_date, end_date=end_date)
-        print(f"⚠️  注意：资金流向数据需要 Tushare 高级权限")
-        return df.tail(days)
+        if df is not None and len(df) > 0:
+            print(f"✅ 获取到 {len(df)} 条资金流向数据")
+            return df.tail(days)
+        return None
     except Exception as e:
-        print(f"⚠️  获取资金流向失败（可能需要高级权限）: {e}")
+        print(f"⚠️  获取资金流向失败: {e}")
         return None
 
 
@@ -360,6 +366,66 @@ def format_fundamental_report(report):
 
     if report['roe_trend']:
         output.append(f"- ROE趋势: {report['roe_trend']}")
+
+    return "\n".join(output)
+
+
+def analyze_money_flow(df, ts_code):
+    """分析资金流向数据并生成报告
+
+    分析维度:
+    - 主力资金净流入（大单+超大单）
+    - 散户资金流向（小单）
+    - 净流入趋势
+    """
+    if df is None or len(df) == 0:
+        return f"\n【资金动向分析】{ts_code}\n❌ 无资金流向数据"
+
+    # 计算主力资金（大单+超大单）净流入
+    df['main_net_in'] = (df['buy_lg_amount'] + df['buy_elg_amount'] -
+                         df['sell_lg_amount'] - df['sell_elg_amount'])
+
+    # 计算散户（小单）净流入
+    df['retail_net_in'] = df['buy_sm_amount'] - df['sell_sm_amount']
+
+    # 近5日、近20日统计
+    recent_5 = df.tail(5)
+    recent_20 = df.tail(20) if len(df) >= 20 else df
+
+    main_5d = recent_5['main_net_in'].sum() / 10000  # 转为万元
+    main_20d = recent_20['main_net_in'].sum() / 10000
+    retail_5d = recent_5['retail_net_in'].sum() / 10000
+    retail_20d = recent_20['retail_net_in'].sum() / 10000
+
+    # 趋势判断
+    trend_5 = "流入" if main_5d > 0 else "流出"
+    trend_20 = "流入" if main_20d > 0 else "流出"
+
+    output = [f"\n【资金动向分析】{ts_code}"]
+    output.append("\n主力资金（大单+超大单）:")
+    output.append(f"  近5日: {main_5d:.2f}万元 ({trend_5})")
+    output.append(f"  近20日: {main_20d:.2f}万元 ({trend_20})")
+
+    output.append("\n散户资金（小单）:")
+    output.append(f"  近5日: {retail_5d:.2f}万元")
+    output.append(f"  近20日: {retail_20d:.2f}万元")
+
+    output.append("\n最近5日明细:")
+    for _, row in recent_5.iterrows():
+        net = row['net_mf_amount'] / 10000
+        output.append(f"  {row['trade_date']}: {net:.2f}万元")
+
+    # 结论
+    if main_5d > 0 and main_20d > 0:
+        conclusion = "✅ 主力资金持续流入，关注"
+    elif main_5d > 0 and main_20d < 0:
+        conclusion = "⚠️  近期有资金介入，观察持续性"
+    elif main_5d < 0 and main_20d < 0:
+        conclusion = "❌ 主力资金持续流出，谨慎"
+    else:
+        conclusion = "➡️  资金流向平衡，观望"
+
+    output.append(f"\n资金结论: {conclusion}")
 
     return "\n".join(output)
 

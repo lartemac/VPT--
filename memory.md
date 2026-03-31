@@ -230,19 +230,20 @@ Task: Convert CSV to Excel
 ## TIMELINE (Compressed)
 
 ### 2026-03-31
-+ GLM模型升级到5.1系列
-  * api_config.json升级到v2.0.0
-  * CLAUDE.md更新为GLM-5.1选择策略
-  * 新增特性：200K上下文、128K输出、深度思考、工具流式输出
-  * 创建fetch_latest_glm_model.py自动获取最新模型
-  * 模型优先级：glm-5.1（最强）> glm-5-turbo（高速）> glm-5（标准）
-  * 规则更新：必须自动使用最新模型，禁止使用已废弃的旧模型
-+ 智谱AI可用模型确认（2026-03-31）
-  * glm-5.1（最新，2026-03-27发布）
-  * glm-5-turbo（高速，2026-03-15发布）
-  * glm-5（标准，2026-02-11发布）
-  * glm-4.7（上一代）
-  * glm-4.6, glm-4.5-air, glm-4.5（更早版本）
++ AI开发工具升级
+  * GLM模型升级到5.1系列（api_config.json v2.0.0）
+  * 安装superpowers-zh（25个AI编程skills）
+  * 安装planning-with-files-zh（文件规划系统）
+  * 确认Tushare moneyflow接口可用（2000+积分）
++ A股四步分析法系统建立
+  * 创建stock-analysis-cn skill（价值/成长/质量/资金/风险五步分析）
+  * 创建stock_analysis_helper.py（Tushare数据获取助手）
+  * 支持多因子筛选、财务分析、资金流向分析
+  * 实战案例：德美化工(观望)、长江电力(谨慎补仓)
++ 跨平台配置同步
+  * 创建.claude-sync/目录同步全局配置
+  * 创建sync_config.py自动检测macOS/Windows平台
+  * CLAUDE.md全局配置已更新到GLM-5.1策略
 
 ### 2026-03-10
 + macOS Python环境补全
@@ -452,4 +453,4 @@ Task: Convert CSV to Excel
 ## END
 
 **Full history**: See `memory-archive.md`
-**Last updated**: 2026-03-31 (GLM模型升级到5.1系列、自动更新机制建立)
+**Last updated**: 2026-03-31 (AI开发工具升级、A股四步分析法系统、跨平台配置同步)

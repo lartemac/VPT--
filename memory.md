@@ -134,6 +134,8 @@
 
 ### TOOLS_PATHS
 - PubMedConsult: E:\pubmedconsult\ (PUBMEDCONSULT_V2.py - Tavily+PubMed dual engine)
+- GLM Helper: ~/Desktop/VPT-初诊数据/glm_helper.py (GLM-5.1 assistant)
+- GLM Model Fetcher: ~/Desktop/VPT-初诊数据/fetch_latest_glm_model.py (auto-update)
 
 ---
 
@@ -177,12 +179,14 @@
 """
 ```
 
-### API_USAGE (GLM-4.7)
+### API_USAGE (GLM-5.1)
 - Auto-select model based on task (no user prompts)
-- glm-4-plus: Medical, research, complex code
-- glm-4-flash: Simple Q&A, quick snippets
-- glm-4-air: Light tasks, batch processing
+- Auto-use latest model (glm-5.1 or higher)
+- glm-5.1: Medical, research, complex code (200K context, 128K output)
+- glm-5-turbo: Fast response, real-time interaction
+- glm-5: Standard complex tasks, deep reasoning
 - API Key: REDACTED_GLM_API_KEY
+- Auto-update: fetch_latest_glm_model.py
 
 ### MCP_SEARCH_LIMITS
 - Ask user BEFORE calling MCP services or WebSearch
@@ -224,6 +228,21 @@ Task: Convert CSV to Excel
 ---
 
 ## TIMELINE (Compressed)
+
+### 2026-03-31
++ GLM模型升级到5.1系列
+  * api_config.json升级到v2.0.0
+  * CLAUDE.md更新为GLM-5.1选择策略
+  * 新增特性：200K上下文、128K输出、深度思考、工具流式输出
+  * 创建fetch_latest_glm_model.py自动获取最新模型
+  * 模型优先级：glm-5.1（最强）> glm-5-turbo（高速）> glm-5（标准）
+  * 规则更新：必须自动使用最新模型，禁止使用已废弃的旧模型
++ 智谱AI可用模型确认（2026-03-31）
+  * glm-5.1（最新，2026-03-27发布）
+  * glm-5-turbo（高速，2026-03-15发布）
+  * glm-5（标准，2026-02-11发布）
+  * glm-4.7（上一代）
+  * glm-4.6, glm-4.5-air, glm-4.5（更早版本）
 
 ### 2026-03-10
 + macOS Python环境补全
@@ -433,4 +452,4 @@ Task: Convert CSV to Excel
 ## END
 
 **Full history**: See `memory-archive.md`
-**Last updated**: 2026-03-10 (macOS Python环境补全、A股个股数据下载与涨跌同步分析)
+**Last updated**: 2026-03-31 (GLM模型升级到5.1系列、自动更新机制建立)

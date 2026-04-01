@@ -51,9 +51,6 @@
    - PATH: E:\BigA\
    - STATUS: ✅ COMPLETED (2026-02-09) + 数据增强 (2026-02-11)
    - FEATURES:
-     * Include all stocks (L+D+P) to avoid survivorship bias
-     * Use QFQ (前复权) for price continuity (already adjusted)
-     * Parquet format for performance
      * Auto-download adj_factor for backup
      * Daily auto-update at 20:00 via Windows Task Scheduler
    - SCRIPTS:
@@ -81,6 +78,14 @@
    - FILE STRUCTURE:
      * E:\BigA\*.parquet (5798 daily data files)
      * E:\BigA\adjfactor\*_adj_factor.parquet (5798 adj factor files)
+
+4. **Kindle越狱项目** (Kindle PW6 Jailbreak)
+   - DEVICE: Kindle Paperwhite 6th Generation
+   - FIRMWARE: 5.12.2.2
+   - STATUS: 进行中（准备阶段）
+   - METHOD: WatchThis越狱（演示模式漏洞）
+   - REFERENCE: 书伴教程 https://bookfere.com/post/970.html
+   - ⚠️ 越狱会清空所有数据，需先备份
 
 ---
 
@@ -228,6 +233,14 @@ Task: Convert CSV to Excel
 ---
 
 ## TIMELINE (Compressed)
+
+### 2026-04-01
++ Kindle越狱项目启动
+  * 设备确认：Kindle Paperwhite 6th Generation (KPW2)
+  * 固件版本：5.12.2.2（可越狱）
+  * 越狱方法：WatchThis（演示模式漏洞）
+  * 参考教程：书伴 https://bookfere.com/post/970.html
+  * ⚠️ 重要提示：越狱会清空所有数据，需先备份
 
 ### 2026-03-31
 + AI开发工具升级
@@ -453,4 +466,4 @@ Task: Convert CSV to Excel
 ## END
 
 **Full history**: See `memory-archive.md`
-**Last updated**: 2026-03-31 (AI开发工具升级、A股四步分析法系统、跨平台配置同步)
+**Last updated**: 2026-04-01 (Kindle越狱项目启动)

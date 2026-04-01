@@ -447,7 +447,71 @@ else:
 ## 未分类经验
 ---
 
-### 20. A股520回顾性研究筛选项目失败（多条件筛选过于苛刻）
+### 20. TaskOutput工具导致上下文窗口溢出（严重错误）
+**日期**：2026-04-01
+**项目**：A股历史数据下载进度检查
+
+**错误现象**：
+- 用户要求检查A股数据下载进度
+- 我使用TaskOutput工具检查后台任务（task_id: b75533c）
+- 任务输出包含9769+行（大量下载日志、FutureWarning等）
+- 完整输出被加载到上下文，导致：`API Error: The model has reached its context window limit`
+- 用户连续询问"你还在吗？"，但模型已达到上下文限制，无法响应
+
+**根本原因**：
+1. ❌ 对长时间运行的下载任务使用`block=true`（默认阻塞模式）获取完整输出
+2. ❌ 任务运行期间频繁检查进度，产生大量日志堆积
+3. ❌ 读取完整的任务输出，而不是过滤关键信息
+4. ❌ 依赖终端输出监控进度，而不是使用进度文件
+
+**正确做法**：
+```python
+# ❌ 错误：使用TaskOutput阻塞检查（会加载所有输出）
+TaskOutput(task_id="b75533c", block=True)  # 9769+行输出！
+
+# ✅ 正确方案1：使用进度文件监控
+# 脚本中定期保存进度到JSON
+import json
+progress = {"total": 5818, "current": 350, "success": 349, "failed": 1}
+with open("download_progress.json", "w") as f:
+    json.dump(progress, f)
+
+# ✅ 正确方案2：使用TaskOutput非阻塞检查
+TaskOutput(task_id="b75533c", block=False)  # 仅获取状态，不加载输出
+
+# ✅ 正确方案3：将日志重定向到文件
+import sys
+sys.stdout = open("download.log", "w", encoding="utf-8")
+# 日志不再堆积在终端输出中
+```
+
+**经验教训**：
+- ⚠️⚠️⚠️ **TaskOutput工具会加载完整输出到上下文，极易导致窗口溢出**
+- ⭐ 长时间运行的任务必须使用进度文件（JSON/CSV）而非终端输出
+- ⭐ 如需检查，使用`block=False`非阻塞模式
+- ⭐ 脚本中应将日志重定向到文件，而非堆积在终端
+- ⭐ 大规模数据处理任务（数千次循环）必须禁用详细输出
+- 💡 上下文窗口是宝贵资源，一次错误操作就会耗尽所有空间
+- 💡 用户连续询问无法响应时，很可能是上下文已满
+
+**代码改进规范**：
+```python
+# ❌ 错误：每次循环都打印进度
+for i, stock in enumerate(stocks):
+    print(f"下载中: {i+1}/{len(stocks)}")  # 5818行输出！
+
+# ✅ 正确：仅每100次打印一次，并重定向到文件
+for i, stock in enumerate(stocks):
+    if (i+1) % 100 == 0:
+        print(f"进度: {i+1}/{len(stocks)}", file=sys.stderr)  # 仅100行
+    # 更新进度文件
+    if (i+1) % 50 == 0:
+        save_progress({"current": i+1, "total": len(stocks)})
+```
+
+---
+
+### 21. A股520回顾性研究筛选项目失败（多条件筛选过于苛刻）
 **日期**：2026-02-11
 **项目**：A股520回顾性研究筛选
 
@@ -557,9 +621,10 @@ else:
 - [ ] 文件命名是否使用了 test_/temp_/debug_ 前缀？→ 改用描述性名称
 - [ ] 是否混淆了 API Key 类型？→ 确认 API 类型
 - [ ] 卸载软件后是否检查了启动项？→ 清理启动项
+- [ ] **是否使用TaskOutput检查长时间运行的任务？→ 使用进度文件或block=False**
 
 ---
 
-**最后更新**：2026-02-11
+**最后更新**：2026-04-01
 **维护者**：FattyTiger
-**版本**：v1.0
+**版本**：v1.1

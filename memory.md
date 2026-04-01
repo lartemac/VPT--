@@ -235,12 +235,25 @@ Task: Convert CSV to Excel
 ## TIMELINE (Compressed)
 
 ### 2026-04-01
++ A股历史数据下载完成（to20260211目录）
+  * 总文件数：5,180个.parquet文件
+  * 数据质量：抽查合格率100%，全量统计通过
+  * 数据范围：5,170个文件截止至2026-02-11（99.8%）
+  * 记录数分布：平均2,940条/文件，最大6,000条（API上限）
+  * 字段完整性：11列/文件，无空值
+  * 数据可用性：可直接用于学术研究、量化回测、统计分析
+  * 检查工具：check_data_quality.py, full_analysis.py
+  * 质量报告：E:\BigA\data_quality_report.txt
 + Kindle越狱项目启动
   * 设备确认：Kindle Paperwhite 6th Generation (KPW2)
   * 固件版本：5.12.2.2（可越狱）
   * 越狱方法：WatchThis（演示模式漏洞）
   * 参考教程：书伴 https://bookfere.com/post/970.html
   * ⚠️ 重要提示：越狱会清空所有数据，需先备份
++ TaskOutput上下文窗口溢出教训
+  * 问题：使用TaskOutput检查长时间运行任务，9769+行输出导致上下文溢出
+  * 教训：长时间任务必须使用进度文件（JSON/CSV）或block=False非阻塞检查
+  * 记录：已添加到lessons.md #20
 
 ### 2026-03-31
 + AI开发工具升级
@@ -466,4 +479,4 @@ Task: Convert CSV to Excel
 ## END
 
 **Full history**: See `memory-archive.md`
-**Last updated**: 2026-04-01 (Kindle越狱项目启动)
+**Last updated**: 2026-04-01 (A股历史数据下载完成、Kindle越狱项目、TaskOutput教训)

@@ -476,7 +476,54 @@ Task: Convert CSV to Excel
 
 ---
 
+### 2026-04-06
++ A股数据更新脚本修复（daily_update_v2.py）
+  * 问题：复权因子文件名重复追加 `_adj_factor` 后缀
+  * 错误示例：`603617-xxx-L_adj_factor_adj_factor_adj_factor_...parquet`
+  * 根本原因：第353行解析文件名时未清理已存在的后缀
+  * 解决方案：添加后缀清理逻辑（第355-357行）
+    ```python
+    if status.endswith('_adj_factor'):
+        status = status[:-11]  # 去掉'_adj_factor'（11个字符）
+    ```
+  * 文件名清理：创建并运行 `clean_adjfactor_filenames.py`
+    - 成功清理：5,187个复权因子文件
+    - 清理率：100%（错误0个）
+    - 清理脚本：E:\BigA\clean_adjfactor_filenames.py
++ 电子书转换脚本修复（convert_to_azw3.py）
+  * 路径更新：Calibre 路径改为 D:\Program Files\Calibre2
+  * 编码修复：添加 UTF-8 输出支持（解决 Windows 中文显示问题）
+  * 文件格式支持优化：
+    - 移除：AZW、AZW3（DRM保护，无法转换）
+    - 移除：DOC（需要 Antiword 工具）
+    - 保留：PDF、EPUB、MOBI、TXT、HTML、HTM、DOCX、RTF
+  * subprocess 调用修复：
+    - 问题：使用 stdout=subprocess.DEVNULL 干扰 ebook-convert 运行
+    - 问题：使用 encoding='gbk' 导致参数解析错误
+    - 解决：移除 stdout 重定向，使用 capture_output=True
+  * 参数优化：
+    - 移除失败参数：--max-line-length、--pdf-hyphenate、--pdf-page-numbers
+    - 保留安全参数：--output-profile kindle_pw、--enable-heuristics、--pretty-print、--chapter-mark pagebreak
+    - 分级处理：TXT/EPUB 等使用默认参数，PDF 使用优化参数
+  * 性能优化：
+    - 按文件大小排序（小文件优先，避免大文件阻塞）
+    - 动态超时设置：小文件（<10MB）2分钟，大文件（≥10MB）5分钟
+    - 显示文件大小和转换耗时
+    - 大文件（>20MB）每30秒显示进度
+  * 转换配置：
+    - 输入目录：E:\kindlebackup
+    - 输出目录：E:\calied
+    - 总文件数：286个
+    - 已转换：约200个（进行中）
++ 工具安装：MarkItDown（微软开源 CLI）
+  * 功能：将各种文档格式转换为 Markdown
+  * 用途：科研文献分析、文档预处理
+  * 安装命令：pip install 'markitdown[all]'
+  * 版本：0.1.5
+
+---
+
 ## END
 
 **Full history**: See `memory-archive.md`
-**Last updated**: 2026-04-01 (A股历史数据下载完成、Kindle越狱项目、TaskOutput教训)
+**Last updated**: 2026-04-06 (A股更新脚本修复、电子书转换脚本优化、复权因子文件名清理、MarkItDown安装)

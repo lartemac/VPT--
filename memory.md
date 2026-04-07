@@ -79,14 +79,6 @@
      * E:\BigA\*.parquet (5798 daily data files)
      * E:\BigA\adjfactor\*_adj_factor.parquet (5798 adj factor files)
 
-4. **Kindle越狱项目** (Kindle PW6 Jailbreak)
-   - DEVICE: Kindle Paperwhite 6th Generation
-   - FIRMWARE: 5.12.2.2
-   - STATUS: 进行中（准备阶段）
-   - METHOD: WatchThis越狱（演示模式漏洞）
-   - REFERENCE: 书伴教程 https://bookfere.com/post/970.html
-   - ⚠️ 越狱会清空所有数据，需先备份
-
 ---
 
 ## TOOLS
@@ -233,6 +225,17 @@ Task: Convert CSV to Excel
 ---
 
 ## TIMELINE (Compressed)
+
+### 2026-04-07
++ Kindle越狱项目完成
+  * 设备：Kindle Paperwhite 6th Generation (KPW2)
+  * 固件：5.12.2.2
+  * 方法：WatchThis越狱（演示模式漏洞）
+  * 状态：✅ 完成
+  * 参考教程：书伴 https://bookfere.com/post/970.html
++ 桌面Python脚本清理
+  * 删除5个测试/诊断脚本
+  * 保留convert_to_azw3.py（完善的电子书转换工具）
 
 ### 2026-04-01
 + A股历史数据下载完成（to20260211目录）
@@ -559,4 +562,4 @@ Task: Convert CSV to Excel
 ## END
 
 **Full history**: See `memory-archive.md`
-**Last updated**: 2026-04-06 (A股更新脚本修复、电子书转换脚本优化、复权因子文件名清理、MarkItDown安装)
+**Last updated**: 2026-04-07 (Kindle越狱完成、桌面Python脚本清理)

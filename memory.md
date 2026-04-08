@@ -226,6 +226,13 @@ Task: Convert CSV to Excel
 
 ## TIMELINE (Compressed)
 
+### 2026-04-08
++ macOS Claude Code 升级完成
+  * 版本：2.1.96
+  * 平台：macOS (Darwin 24.2.0)
+  * 安装 superpowers-zh skills（25个AI编程skills）
+  * 状态：✅ 升级成功
+
 ### 2026-04-07
 + Kindle越狱项目完成
   * 设备：Kindle Paperwhite 6th Generation (KPW2)
@@ -242,14 +249,11 @@ Task: Convert CSV to Excel
     - 禁用HTTP/HTTPS代理环境变量
     - 添加重试机制（最多3次，递增等待时间）
   * 影响：处理网络波动和代理配置问题
-+ Claude Code CLI 升级
++ Claude Code CLI 升级（Windows）
   * 旧版本：通过npm安装（已卸载）
-  * 新版本：v2.1.92 (最新版)
+  * 新版本：v2.1.92
   * 安装位置：C:\Users\Administrator\AppData\Roaming\npm\claude.cmd
-  * 桌面快捷方式：已更新并验证配置正确
   * 配置文件：已恢复个性化CLAUDE.md（4.2KB）
-  * 备份位置：C:\Users\Administrator\Desktop\claude_config_backup_20260408_020719
-  * 备份内容：完整配置（253MB）、历史记录、设置、MCP服务器配置等
 
 ### 2026-04-01
 + A股历史数据下载完成（to20260211目录）
@@ -576,4 +580,4 @@ Task: Convert CSV to Excel
 ## END
 
 **Full history**: See `memory-archive.md`
-**Last updated**: 2026-04-07 (Kindle越狱完成、桌面Python脚本清理、A股更新脚本修复、Claude Code CLI升级至v2.1.92)
+**Last updated**: 2026-04-08 (macOS Claude Code 升级至 2.1.96、合并Windows端04-06/04-07记录)

@@ -21,9 +21,10 @@
 - PATH_MAC: ~/cc-github/
 
 ### PLATFORM
-- WIN: PowerShell, `\` separator
-- MAC: bash/zsh, `/` separator
+- WIN: PowerShell, `\` separator, GPU: NVIDIA RTX 4060 Ti, Python 3.14
+- MAC: bash/zsh, `/` separator, Python 3.14
 - DETECT: Check `Platform` env var
+- NOTE: 两台电脑均未部署本地大模型
 
 ### LESSONS
 - FILE: lessons.md
@@ -45,7 +46,22 @@
    - LOGIC: 7局4胜 + 流局优先级
    - PRIORITY: 正常击杀 > 流局判定 > 平局
 
-3. **A股数据下载系统** (A-Stock Data Downloader)
+3. **Fish Speech S2 Pro** (TTS 语音合成，备用方案)
+   - PURPOSE: 文字转语音、声音克隆
+   - TECH: Python + PyTorch + CUDA/MPS
+   - STATUS: 备用（未部署，有需求时提醒用户）
+   - REPO: https://github.com/fishaudio/fish-speech
+   - STARS: 29.4k
+   - CAPABILITIES:
+     * 多语言TTS（80+语言，中文第一梯队）
+     * 声音克隆（10-30秒参考音频）
+     * 情感标签控制（15000+种标签）
+     * 多角色对话、实时流式生成
+   - HW_REQ: NVIDIA 8GB+ VRAM（Win RTX 4060 Ti 满足）/ Mac M系列可用但较慢
+   - USE_CASES: 视频配音、有声书、游戏NPC、小程序语音、声音克隆
+   - NOTE: 可先用在线版（零安装），本地部署需PyTorch+CUDA+模型权重(4B参数)
+
+4. **A股数据下载系统** (A-Stock Data Downloader)
    - PURPOSE: Academic research backtesting (avoid survivorship bias)
    - TECH: Tushare Pro + Python + Parquet
    - PATH: E:\BigA\
@@ -577,7 +593,41 @@ Task: Convert CSV to Excel
 
 ---
 
+### 2026-04-14
++ GitHub 项目评估（4个项目）
+  * **claude-mem** (53k stars) — 自动记忆插件
+    - 评估结论：❌ 不安装
+    - 原因：与现有memory.md系统重叠、跨平台同步困难、依赖链长、AI压缩消耗额外token
+    - 关联$CMEM代币（Solana），带投机色彩
+  * **fish-speech** (29.4k stars) — 文字转语音（TTS）
+    - 评估结论：✅ 记录为备用方案（未部署）
+    - 能力：80+语言TTS、声音克隆（10-30秒）、情感标签控制
+    - Windows GPU RTX 4060 Ti 满足最低要求（8GB VRAM）
+    - 使用方式：先用在线版，需要时再本地部署
+    - REPO: https://github.com/fishaudio/fish-speech
+  * **antigravity-awesome-skills** (33k stars) — 1404个技能合集
+    - 评估结论：❌ 不安装
+    - 原因：已有superpowers-zh覆盖核心需求、1404个太多导致上下文膨胀、质量参差
+    - 按需使用：未来有特定需求可从在线目录单独找技能
+  * **everything-claude-code (ECC)** (154.5k stars) — 全面增强包
+    - 评估结论：❌ 不安装
+    - 原因：面向专业全栈团队、场景不匹配、会吃掉上下文窗口、与现有配置冲突
+    - 值得借鉴的理念：token优化、战略压缩、上下文管理
++ 工作流优化评估
+  * 评估ECC的四项优化理念是否适合融入工作流：
+    - 模型切换优化：❌ 不需要（已固定glm-5.1）
+    - 自动压缩阈值：❌ 不需要（手动管理memory更精准）
+    - 思考token限制：❌ 不需要（可能影响复杂任务执行）
+    - 战略压缩规则：❌ 不需要（手动memory管理已覆盖此理念）
+  * 结论：现有工作流（手动memory + 固定模型 + 6个MCP）已是最优配置
++ 硬件信息更新
+  - Windows: NVIDIA RTX 4060 Ti, Python 3.14
+  - macOS: Python 3.14
+  - 两台电脑均未部署本地大模型
+
+---
+
 ## END
 
 **Full history**: See `memory-archive.md`
-**Last updated**: 2026-04-08 (macOS Claude Code 升级至 2.1.96、合并Windows端04-06/04-07记录)
+**Last updated**: 2026-04-14 (评估4个GitHub项目、工作流优化评估、硬件信息更新)

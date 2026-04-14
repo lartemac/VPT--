@@ -4,7 +4,7 @@
   "note": "AI API 配置文件 - 自动使用最新模型 GLM-5.1",
   "glm": {
     "name": "智谱 GLM-5.1",
-    "api_key": "REDACTED_GLM_API_KEY",
+    "api_key": "fce5ed65ff984855a782c0ac23f9d331.t4D6sBCa0mWoKLjQ",
     "base_url": "https://open.bigmodel.cn/api/paas/v4/",
     "anthropic_compatible_url": "https://open.bigmodel.cn/api/anthropic/v1/",
     "latest_model": "glm-5.1",

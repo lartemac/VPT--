@@ -7,11 +7,25 @@ GLM-4 网络搜索工具
 
 import sys
 import json
+import os
+from pathlib import Path
 from zhipuai import ZhipuAI
 
-# API 配置
-API_KEY = "REDACTED_GLM_API_KEY"
-MODEL = "glm-4-flash"  # 使用快速、经济的模型
+# API 配置：优先环境变量 → api_config.json
+def _get_api_key():
+    key = os.environ.get("ZHIPU_API_KEY")
+    if key:
+        return key
+    config_path = Path(__file__).parent / "api_config.json"
+    if config_path.exists():
+        try:
+            return json.loads(config_path.read_text())["glm"]["api_key"]
+        except (KeyError, json.JSONDecodeError):
+            pass
+    raise RuntimeError("未找到 API Key：请设置环境变量 ZHIPU_API_KEY 或配置 api_config.json")
+
+API_KEY = _get_api_key()
+MODEL = "glm-4-flash"
 
 def search_with_glm(query, top_k=5, detail_level="简洁"):
     """

@@ -242,6 +242,23 @@ Task: Convert CSV to Excel
 
 ## TIMELINE (Compressed)
 
+### 2026-04-15
++ 安全修复：移除硬编码 API Key（续 04-14 未完成工作）
+  * Python脚本改造：glm47_helper.py, glm_search.py, auto_search.py
+    - 硬编码 API_KEY → 环境变量 ZHIPU_API_KEY → api_config.json 读取
+  * api_config.json：更新为新密钥，加入 .gitignore 排除
+  * api_config.json.template：创建模板文件（不含真实密钥）
+  * .gitignore：添加敏感文件排除规则（api_config.json, *.env, credentials 等）
+  * memory.md / memory-archive.md：清除明文密钥，替换为占位符
+  * Git邮箱：13654569388@139.com → lartemac@users.noreply.github.com
+  * Git历史清理：git-filter-repo（3次）
+    - replace-text：替换所有历史文件中的明文密钥
+    - mailmap：替换提交者邮箱
+  * Force push：重写远程仓库历史
+  * 验证：历史 blob 中无明文密钥，diff 上下文残留不影响安全
+  * 清理：删除含密钥的导出文件（2026-04-14-153744-memory.txt）
+  * 提交：superpowers-zh skills（54个文件）
+
 ### 2026-04-08
 + macOS Claude Code 升级完成
   * 版本：2.1.96
@@ -630,4 +647,4 @@ Task: Convert CSV to Excel
 ## END
 
 **Full history**: See `memory-archive.md`
-**Last updated**: 2026-04-14 (评估4个GitHub项目、工作流优化评估、硬件信息更新)
+**Last updated**: 2026-04-15 (安全修复：移除硬编码 API Key，git 历史清理)

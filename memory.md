@@ -687,4 +687,15 @@ Task: Convert CSV to Excel
 ## END
 
 **Full history**: See `memory-archive.md`
-**Last updated**: 2026-04-15 (安全修复 + Claude Code 智能启动器/Gemini 备用后端)
++ claude-api-switcher 开源项目规划（产品需求已确认）
+  * 定位：Claude Code API 自动切换器，中国大陆用户，轻量工具
+  * 第一期服务商：智谱(直连) + DeepSeek(代理) + 千问(代理)
+  * 安装：pip install claude-api-switcher → config → 重启终端
+  * 配置：~/.claude-api-switcher/config.json，2-3个Key按优先级
+  * 自愈：代理健康检查 + 自动重启 + 降级跳过
+  * 切换提示：显示服务商名 + 限额重置时间
+  * PRD文档：claude-api-switcher-PRD.md
+  * 开源时机：代码写好测试通过后再公开
+  * 状态：需求确认完成，待开发
+
+**Last updated**: 2026-04-15 (安全修复 + 智能启动器 + claude-api-switcher PRD)

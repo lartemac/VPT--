@@ -165,9 +165,13 @@
 ## RULES
 
 ### DEV_RULES
-- NO hardcoded API keys (use env vars)
+- ⚠️⚠️⚠️ NO hardcoded API keys/Token/密码（必须用环境变量或 api_config.json）
+- ⚠️⚠️⚠️ 提交前必须扫描密钥泄露：`grep -rn "api_key\|token\|secret" *.py`
+- ⚠️⚠️⚠️ 新项目第一天就配置 .gitignore 排除敏感文件
+- Git 邮箱：lartemac@users.noreply.github.com（不用真实邮箱）
 - Code: concise, efficient, no over-engineering
 - Game priority: 1.正常击杀 > 2.流局判定 > 3.平局
+- 安全事件记录：lessons.md #22（API Key 泄露）
 
 ### SCI_RULES
 - Cite: PubMed/Nature/Science/high-impact journals

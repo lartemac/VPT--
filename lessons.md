@@ -588,43 +588,150 @@ for i, stock in enumerate(stocks):
 
 ---
 
+## 信息安全相关
+
+### 22. API Key 硬编码导致 GitHub 公开泄露（严重安全事故）
+**日期**：2026-04-14 ~ 2026-04-15
+**严重程度**：⚠️⚠️⚠️ 最高级
+
+**问题概述**：
+- GLM API Key（`232b1236...`）被硬编码在 3 个 Python 脚本中：glm47_helper.py、glm_search.py、auto_search.py
+- Tushare Token（`e63bfa9a...`）被硬编码在 memory.md 中
+- 个人邮箱（`13654569388@139.com`）作为 git 提交者邮箱
+- 所有这些信息被提交到 **公开 GitHub 仓库**，任何人可查看
+- 泄露时间：从 2026-01-28 首次提交到 2026-04-14 修复，长达约 2.5 个月
+
+**泄露范围**：
+| 信息类型 | 泄露位置 | 风险等级 |
+|---------|---------|---------|
+| GLM API Key | Python 脚本 + git 历史 | 🔴 高（可被盗用调用） |
+| Tushare Token | memory.md + git 历史 | 🟡 中（积分被盗用） |
+| 个人手机号+邮箱 | git 提交者信息 | 🔴 高（隐私泄露） |
+
+**修复过程（共 3 天，涉及 3 次 git 历史重写）**：
+
+1. **Python 脚本改造**
+   ```python
+   # ❌ 之前：硬编码
+   API_KEY = "232b1236880a4699957a592bed87aad2.3gYzmvvyIQN98DZb"
+
+   # ✅ 之后：环境变量 → 配置文件
+   def _get_api_key():
+       key = os.environ.get("ZHIPU_API_KEY")
+       if key:
+           return key
+       config_path = Path(__file__).parent / "api_config.json"
+       if config_path.exists():
+           return json.loads(config_path.read_text())["glm"]["api_key"]
+       raise RuntimeError("未找到 API Key")
+   ```
+
+2. **敏感文件隔离**
+   - 创建 `api_config.json.template`（模板，不含真实密钥）
+   - `.gitignore` 添加：`api_config.json`、`*.env`、`credentials*.json`
+   - 所有密钥集中在 `api_config.json`（不提交到 git）
+
+3. **Git 历史清理**（`git-filter-repo`，运行 3 次）
+   - 第 1 次：`--replace-text` 替换所有历史文件中的明文密钥
+   - 第 2 次：`--mailmap` 替换提交者邮箱
+   - 第 3 次：再次 `--replace-text`（漏网之鱼修复）
+   - 最终 `git push --force` 重写远程仓库
+
+4. **跨平台善后**
+   - Windows 本地配置文件（settings.json、api_config.json）不在 git 中，需手动更新
+   - 智谱控制台旧 Key 需手动删除（确认新 Key 正常后）
+
+**根本原因**：
+- ❌ 没有在项目开始时建立密钥管理规范
+- ❌ .gitignore 未排除敏感文件
+- ❌ 代码审查时未检查硬编码密钥
+- ❌ 使用个人手机邮箱作为 git 提交者信息
+
+**经验教训（永久规则）**：
+- ⚠️⚠️⚠️ **永远不要在代码中硬编码任何密钥、Token、密码**
+- ⚠️⚠️⚠️ **项目开始第一天就要配置 .gitignore 排除敏感文件**
+- ⭐ 密钥管理优先级：环境变量 > 配置文件（.gitignore 排除）> 硬编码（禁止）
+- ⭐ Git 提交者邮箱使用 noreply 地址（`username@users.noreply.github.com`）
+- ⭐ 提交代码前执行密钥扫描：`grep -rn "api_key\|token\|secret\|password" *.py`
+- ⭐ `git-filter-repo` 是清理 git 历史中敏感信息的最佳工具
+- ⭐ 密钥泄露后：1. 立即更换新 Key → 2. 清理代码 → 3. 清理 git 历史 → 4. 删除旧 Key
+- 💡 使用 `api_config.json.template` 让团队成员知道需要配置什么
+
+**预防措施**：
+```bash
+# 提交前自动扫描（可加入 git pre-commit hook）
+grep -rn "api_key\|token\|secret\|password" *.py *.json *.md --include="*.py" --include="*.json"
+```
+
+---
+
+### 23. 跨平台本地配置同步的盲区
+**日期**：2026-04-15
+
+**问题**：
+- `api_config.json` 在 `.gitignore` 中，不会通过 git 同步
+- `settings.json`（Claude Code 配置）是本地文件，不同步
+- Windows 和 macOS 各自维护独立的密钥配置
+- 在一个平台更新密钥后，另一个平台不会自动更新
+
+**解决方案**：
+- 创建 `PENDING-TASKS.md` 文件记录跨平台待办任务
+- 在 `memory.md` 中添加 `⚠️ PENDING TASK` 警告区域（每次启动必读）
+- Claude Code 启动时自动检测平台，执行对应待办任务
+
+**经验教训**：
+- ⚠️ .gitignore 中的文件不会跨平台同步，需要手动维护
+- ⭐ 敏感配置文件用 .gitignore 排除是正确的，但需要跨平台更新机制
+- ⭐ 使用"待办文件 + memory 警告"机制确保不遗漏
+
+---
+
 ## 总结与原则
 
 ### 核心原则
 
-1. **简洁高效**
+1. **信息安全（最高优先级）**
+   - 永远不要硬编码密钥、Token、密码
+   - 项目开始第一天就配置 .gitignore 排除敏感文件
+   - Git 邮箱使用 noreply 地址
+   - 提交前扫描密钥泄露
+
+2. **简洁高效**
    - 代码要求：简洁、高效，避免过度设计
    - 功能优先：简化设计比复杂功能更可靠
 
-2. **资源节约**
+3. **资源节约**
    - 优先使用本地工具，避免不必要的 API 调用
    - MCP/WebSearch 前必须征得用户同意
 
-3. **学术规范**
+4. **学术规范**
    - 学术图表不应包含网格线/虚线装饰元素
    - 引用验证需要人工确认，不可完全依赖 AI
 
-4. **跨平台兼容**
+5. **跨平台兼容**
    - 避免硬编码路径
    - 使用平台检测自动切换
+   - .gitignore 中的文件需手动跨平台同步
 
-5. **错误处理**
+6. **错误处理**
    - 遇到问题时，优先检查常用软件的同步/锁定功能
    - API 失败时，考虑替代方案而非反复重试
 
 ### 避免重复犯错的检查清单
 
+- [ ] 🔴 **代码中是否有硬编码的密钥/Token/密码？** → 使用环境变量或配置文件
+- [ ] 🔴 **.gitignore 是否排除了敏感文件？** → api_config.json, *.env, credentials
+- [ ] 🔴 **提交前是否扫描了密钥泄露？** → `grep -rn "api_key\|token\|secret" *.py`
 - [ ] PyInstaller 打包是否使用了第三方 GUI 库？→ 考虑简化功能
 - [ ] 是否使用了硬编码路径？→ 使用平台检测
 - [ ] 学术图表是否包含网格线？→ 删除网格线
 - [ ] 是否直接调用 MCP/WebSearch？→ 先询问用户
 - [ ] 文件命名是否使用了 test_/temp_/debug_ 前缀？→ 改用描述性名称
 - [ ] 是否混淆了 API Key 类型？→ 确认 API 类型
-- [ ] 卸载软件后是否检查了启动项？→ 清理启动项
 - [ ] **是否使用TaskOutput检查长时间运行的任务？→ 使用进度文件或block=False**
 
 ---
 
-**最后更新**：2026-04-01
+**最后更新**：2026-04-15
 **维护者**：FattyTiger
-**版本**：v1.1
+**版本**：v1.2（新增信息安全章节 #22 #23）

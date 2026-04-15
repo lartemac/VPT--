@@ -272,6 +272,28 @@ Task: Convert CSV to Excel
   * 验证：历史 blob 中无明文密钥，diff 上下文残留不影响安全
   * 清理：删除含密钥的导出文件（2026-04-14-153744-memory.txt）
   * 提交：superpowers-zh skills（54个文件）
++ 安全记录更新
+  * lessons.md 新增 #22（API Key泄露事故）、#23（跨平台配置盲区）
+  * 核心原则：信息安全提升为第1优先级
+  * DEV_RULES：新增3条⚠️⚠️⚠️最高级安全规则
++ Claude Code 智能启动器（自动 API 切换）
+  * 问题：智谱 5小时30M token 限额 → 超出后 Claude Code 卡死
+  * 方案：智谱(主) + Gemini(备用)，自动检测无缝切换
+  * 架构：smart_claude.py(检测+切换) + gemini_proxy.py(格式转换代理)
+  * gemini_proxy.py：本地 Anthropic→Gemini 格式转换（支持流式SSE）
+    - 将 Anthropic Messages API 格式转为 Google Gemini 原生格式
+    - 支持流式和非流式两种模式
+    - 支持 system prompt、多轮对话
+    - 端口：4000
+  * smart_claude.py --auto：自动模式
+    - 缓存机制：智谱正常时3分钟内跳过检测（0.03s，无感）
+    - 缓存过期或429 → 检测智谱 → 不可用则启动代理+切Gemini
+    - 智谱恢复后自动切回
+  * .zshrc：claude 命令自动包装（command claude 调用原始二进制）
+  * Gemini API Key：已配置（api_config.json → gemini节）
+  * 新增依赖：google-generativeai, litellm
+  * PENDING-TASKS.md：已更新 Windows 配置步骤
+  * 测试：代理健康检查✅、非流式✅、流式SSE✅、自动模式缓存✅
 
 ### 2026-04-08
 + macOS Claude Code 升级完成
@@ -661,4 +683,4 @@ Task: Convert CSV to Excel
 ## END
 
 **Full history**: See `memory-archive.md`
-**Last updated**: 2026-04-15 (安全修复：移除硬编码 API Key，git 历史清理)
+**Last updated**: 2026-04-15 (安全修复 + Claude Code 智能启动器/Gemini 备用后端)

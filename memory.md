@@ -6,10 +6,14 @@
 
 ## ⚠️ PENDING TASK（每次启动必须检查）
 
-**[2026-04-15] Windows 电脑安全修复（待完成）**
+**[2026-04-15] Windows 电脑安全修复 + 智能启动器配置（待完成）**
 - 触发条件：平台检测为 Windows（`os.name == 'nt'`）
-- 详细步骤：见 `PENDING-TASKS.md`
-- 内容：替换 settings.json、api_config.json 中的旧 API Key
+- 详细步骤：见 `PENDING-TASKS.md`（分三阶段，共11步）
+- 内容：
+  1. 替换 settings.json、api_config.json 中的旧 API Key
+  2. 安装 google-generativeai + 配置 PowerShell 自动包装
+  3. Gemini 代理测试 + 端到端验证
+  4. 用户手动删除智谱旧 Key（最后一步）
 - 完成后：删除此条目和 PENDING-TASKS.md
 
 ---

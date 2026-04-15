@@ -4,6 +4,16 @@
 
 ---
 
+## ⚠️ PENDING TASK（每次启动必须检查）
+
+**[2026-04-15] Windows 电脑安全修复（待完成）**
+- 触发条件：平台检测为 Windows（`os.name == 'nt'`）
+- 详细步骤：见 `PENDING-TASKS.md`
+- 内容：替换 settings.json、api_config.json 中的旧 API Key
+- 完成后：删除此条目和 PENDING-TASKS.md
+
+---
+
 ## META
 
 ### USER

@@ -4,20 +4,6 @@
 
 ---
 
-## ⚠️ PENDING TASK（每次启动必须检查）
-
-**[2026-04-15] Windows 电脑安全修复 + 智能启动器配置（待完成）**
-- 触发条件：平台检测为 Windows（`os.name == 'nt'`）
-- 详细步骤：见 `PENDING-TASKS.md`（分三阶段，共11步）
-- 内容：
-  1. 替换 settings.json、api_config.json 中的旧 API Key
-  2. 安装 google-generativeai + 配置 PowerShell 自动包装
-  3. Gemini 代理测试 + 端到端验证
-  4. 用户手动删除智谱旧 Key（最后一步）
-- 完成后：删除此条目和 PENDING-TASKS.md
-
----
-
 ## META
 
 ### USER
@@ -259,6 +245,18 @@ Task: Convert CSV to Excel
 ---
 
 ## TIMELINE (Compressed)
+
+### 2026-04-16
++ Windows 待办任务全部完成
+  * api_config.json 更新到 v3.0.0（智谱主 + Gemini 备用）
+  * settings.local.json Key 同步为 api_config.json 的 GLM Key
+  * smart_claude.py Windows 兼容修复：UTF-8 编码、settings.local.json 路径
+  * gemini_proxy.py Windows 编码修复
+  * google-generativeai 安装完成
+  * Gemini 代理测试通过（健康检查 + API 请求 + 自动模式）
+  * PowerShell profile 配置 claude 自动包装
+  * 旧密钥 232b1236 残留扫描：无残留
+  * PENDING-TASKS.md 已删除
 
 ### 2026-04-15
 + 安全修复：移除硬编码 API Key（续 04-14 未完成工作）
@@ -698,4 +696,4 @@ Task: Convert CSV to Excel
   * 开源时机：代码写好测试通过后再公开
   * 状态：需求确认完成，待开发
 
-**Last updated**: 2026-04-15 (安全修复 + 智能启动器 + claude-api-switcher PRD)
+**Last updated**: 2026-04-16 (Windows 待办完成 + API Key同步 + Gemini代理 + PowerShell自动包装)

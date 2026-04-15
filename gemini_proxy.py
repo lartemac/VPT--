@@ -21,7 +21,7 @@ from pathlib import Path
 def load_config():
     config_path = Path(__file__).parent / "api_config.json"
     if config_path.exists():
-        with open(config_path) as f:
+        with open(config_path, encoding='utf-8') as f:
             return json.load(f)
     raise RuntimeError("未找到 api_config.json")
 

@@ -22,6 +22,12 @@ import tempfile
 import subprocess
 from pathlib import Path
 
+# Windows 控制台 UTF-8 支持
+if os.name == 'nt':
+    os.system('')  # 启用 ANSI 转义
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+    sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+
 IS_WINDOWS = os.name == 'nt'
 
 def get_project_dir():
@@ -36,14 +42,15 @@ CACHE_TTL = 180  # 缓存有效期：3分钟
 def load_config():
     if not CONFIG_FILE.exists():
         return None
-    with open(CONFIG_FILE) as f:
+    with open(CONFIG_FILE, encoding='utf-8') as f:
         return json.load(f)
 
 
 def get_settings_path():
-    if IS_WINDOWS:
-        return Path(os.environ.get('USERPROFILE', 'C:\\Users\\Administrator')) / '.claude' / 'settings.json'
-    return Path.home() / '.claude' / 'settings.json'
+    base = Path(os.environ.get('USERPROFILE', str(Path.home()))) / '.claude' if IS_WINDOWS else Path.home() / '.claude'
+    local = base / 'settings.local.json'
+    shared = base / 'settings.json'
+    return local if local.exists() else shared
 
 
 def read_cache():
@@ -142,7 +149,7 @@ def update_settings(backend, config):
     if not settings_path.exists():
         return False
 
-    with open(settings_path) as f:
+    with open(settings_path, encoding='utf-8') as f:
         settings = json.load(f)
 
     if 'env' not in settings:
@@ -159,7 +166,7 @@ def update_settings(backend, config):
     for key in ['ANTHROPIC_MODEL']:
         settings['env'].pop(key, None)
 
-    with open(settings_path, 'w') as f:
+    with open(settings_path, 'w', encoding='utf-8') as f:
         json.dump(settings, f, indent=2, ensure_ascii=False)
     return True
 
@@ -287,7 +294,7 @@ def check_status(config):
 
     settings_path = get_settings_path()
     if settings_path.exists():
-        with open(settings_path) as f:
+        with open(settings_path, encoding='utf-8') as f:
             settings = json.load(f)
         url = settings.get('env', {}).get('ANTHROPIC_BASE_URL', '未设置')
         backend = '智谱' if 'bigmodel' in url else 'Gemini' if '127.0.0.1' in url else url

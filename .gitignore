@@ -18,3 +18,14 @@ Thumbs.db
 # 临时文件
 node_modules/
 .svn/
+
+# 敏感信息（包含 API Key、Token 等）
+api_config.json
+google_search_config.json
+*.env
+.env*
+credentials*.json
+*_credentials*.json
+
+# 导出的对话记录（可能含密钥）
+*memory.txt

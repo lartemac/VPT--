@@ -8,49 +8,68 @@ Claude Code 智能启动器
 平台检测: if os.name == 'nt': Windows, else: macOS/Linux
 
 用法:
-  python3 smart_claude.py          # 自动选择后端
-  python3 smart_claude.py --force-gemini  # 强制使用 Gemini
-  python3 smart_claude.py --force-zhipu   # 强制使用智谱
-  python3 smart_claude.py --status        # 仅检查状态
+  python3 smart_claude.py --auto         # 自动模式（被 claude 命令自动调用）
+  python3 smart_claude.py --status       # 检查状态
+  python3 smart_claude.py --force-gemini # 强制 Gemini
+  python3 smart_claude.py --force-zhipu  # 强制智谱
 """
 
 import json
 import os
 import sys
 import time
+import tempfile
 import subprocess
-import signal
 from pathlib import Path
 
-# 平台检测
 IS_WINDOWS = os.name == 'nt'
 
 def get_project_dir():
-    """获取项目目录"""
-    script_dir = Path(__file__).parent.resolve()
-    # 兼容两台电脑的路径
-    if script_dir.name == 'VPT-初诊数据':
-        return script_dir
-    return script_dir
+    return Path(__file__).parent.resolve()
 
 PROJECT_DIR = get_project_dir()
 CONFIG_FILE = PROJECT_DIR / "api_config.json"
+CACHE_FILE = Path(tempfile.gettempdir()) / "claude_api_cache.json"
+CACHE_TTL = 180  # 缓存有效期：3分钟
 
 
 def load_config():
     if not CONFIG_FILE.exists():
-        print(f"❌ 未找到配置文件: {CONFIG_FILE}")
-        sys.exit(1)
+        return None
     with open(CONFIG_FILE) as f:
         return json.load(f)
 
 
 def get_settings_path():
-    """获取 Claude Code settings.json 路径"""
     if IS_WINDOWS:
         return Path(os.environ.get('USERPROFILE', 'C:\\Users\\Administrator')) / '.claude' / 'settings.json'
-    else:
-        return Path.home() / '.claude' / 'settings.json'
+    return Path.home() / '.claude' / 'settings.json'
+
+
+def read_cache():
+    """读取缓存"""
+    try:
+        if CACHE_FILE.exists():
+            cache = json.loads(CACHE_FILE.read_text())
+            age = time.time() - cache.get('ts', 0)
+            if age < CACHE_TTL:
+                return cache
+    except Exception:
+        pass
+    return None
+
+
+def write_cache(backend, zhipu_ok, reset_time=None):
+    """写入缓存"""
+    try:
+        CACHE_FILE.write_text(json.dumps({
+            'ts': time.time(),
+            'backend': backend,
+            'zhipu_ok': zhipu_ok,
+            'reset_time': reset_time
+        }))
+    except Exception:
+        pass
 
 
 def test_zhipu(config):
@@ -69,8 +88,7 @@ def test_zhipu(config):
         }).encode('utf-8')
 
         req = urllib.request.Request(
-            f"{url}/v1/messages",
-            data=data,
+            f"{url}/v1/messages", data=data,
             headers={
                 'Content-Type': 'application/json',
                 'x-api-key': api_key,
@@ -80,39 +98,32 @@ def test_zhipu(config):
 
         start = time.time()
         with urllib.request.urlopen(req, timeout=15) as resp:
-            status = resp.status
-            body = json.loads(resp.read())
             elapsed = time.time() - start
-
-            if status == 200:
-                return True, f"可用 ({elapsed:.1f}s)"
-            return False, f"HTTP {status}"
+            if resp.status == 200:
+                return True, f"可用 ({elapsed:.1f}s)", None
+            return False, f"HTTP {resp.status}", None
 
     except urllib.error.HTTPError as e:
+        reset_time = None
         if e.code == 429:
             try:
                 body = json.loads(e.read())
-                msg = body.get('error', {}).get('message', '限额')
-                # 提取重置时间
+                msg = body.get('error', {}).get('message', '')
                 if '重置' in msg:
                     reset_time = msg.split('重置')[-1].strip('。 ').strip()
-                    return False, f"限额 (重置: {reset_time})"
+                    return False, f"限额 (重置: {reset_time})", reset_time
             except Exception:
                 pass
-            return False, "已达限额 (429)"
-        elif e.code == 401:
-            return False, "认证失败 (401)"
-        else:
-            return False, f"HTTP {e.code}"
+            return False, "已达限额 (429)", None
+        return False, f"HTTP {e.code}", None
     except Exception as e:
-        return False, f"连接失败 ({str(e)[:50]})"
+        return False, f"连接失败", None
 
 
 def test_gemini(config):
     """测试 Gemini API 是否可用"""
     api_key = config['gemini']['api_key']
     model_name = config['gemini'].get('model', 'gemini-2.5-flash')
-
     try:
         import google.generativeai as genai
         genai.configure(api_key=api_key)
@@ -122,14 +133,13 @@ def test_gemini(config):
             return True, f"可用 ({model_name})"
         return False, "无响应"
     except Exception as e:
-        return False, f"连接失败 ({str(e)[:50]})"
+        return False, f"连接失败"
 
 
 def update_settings(backend, config):
     """更新 Claude Code settings.json"""
     settings_path = get_settings_path()
     if not settings_path.exists():
-        print(f"⚠️ 未找到 settings.json: {settings_path}")
         return False
 
     with open(settings_path) as f:
@@ -141,178 +151,176 @@ def update_settings(backend, config):
     if backend == 'zhipu':
         settings['env']['ANTHROPIC_AUTH_TOKEN'] = config['glm']['api_key']
         settings['env']['ANTHROPIC_BASE_URL'] = config['glm'].get('anthropic_url', 'https://open.bigmodel.cn/api/anthropic')
-        if 'ANTHROPIC_MODEL' in settings['env']:
-            del settings['env']['ANTHROPIC_MODEL']
     elif backend == 'gemini':
         proxy_port = config['gemini'].get('proxy_port', 4000)
         settings['env']['ANTHROPIC_AUTH_TOKEN'] = 'gemini-proxy'
         settings['env']['ANTHROPIC_BASE_URL'] = f"http://127.0.0.1:{proxy_port}"
-        if 'ANTHROPIC_MODEL' in settings['env']:
-            del settings['env']['ANTHROPIC_MODEL']
+
+    for key in ['ANTHROPIC_MODEL']:
+        settings['env'].pop(key, None)
 
     with open(settings_path, 'w') as f:
         json.dump(settings, f, indent=2, ensure_ascii=False)
-
     return True
+
+
+def is_proxy_running(port):
+    """检查代理是否在运行"""
+    import socket
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    try:
+        sock.connect(('127.0.0.1', port))
+        sock.close()
+        return True
+    except Exception:
+        sock.close()
+        return False
 
 
 def start_gemini_proxy(config):
     """后台启动 Gemini 代理"""
     proxy_script = PROJECT_DIR / "gemini_proxy.py"
     if not proxy_script.exists():
-        print(f"❌ 未找到代理脚本: {proxy_script}")
-        return None
+        return False
 
     proxy_port = config['gemini'].get('proxy_port', 4000)
-
-    # 检查端口是否已被占用（代理已在运行）
-    import socket
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    try:
-        sock.connect(('127.0.0.1', proxy_port))
-        sock.close()
-        print(f"✅ Gemini 代理已在运行 (端口 {proxy_port})")
+    if is_proxy_running(proxy_port):
         return True
-    except Exception:
-        sock.close()
 
-    # 启动代理
-    env = os.environ.copy()
-    env['GEMINI_API_KEY'] = config['gemini']['api_key']
+    proc = subprocess.Popen(
+        [sys.executable, str(proxy_script)],
+        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+        start_new_session=True
+    )
 
-    if IS_WINDOWS:
-        CREATE_NO_WINDOW = 0x08000000
-        proc = subprocess.Popen(
-            [sys.executable, str(proxy_script)],
-            env=env,
-            creationflags=CREATE_NO_WINDOW,
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL
-        )
-    else:
-        proc = subprocess.Popen(
-            [sys.executable, str(proxy_script)],
-            env=env,
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
-            start_new_session=True
-        )
-
-    # 等待代理启动
     for _ in range(10):
         time.sleep(0.5)
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        try:
-            sock.connect(('127.0.0.1', proxy_port))
-            sock.close()
-            print(f"✅ Gemini 代理已启动 (端口 {proxy_port}, PID: {proc.pid})")
+        if is_proxy_running(proxy_port):
             return True
-        except Exception:
-            sock.close()
-
-    print(f"⚠️ 代理启动超时")
     return False
 
 
+def auto_mode(config):
+    """自动模式：被 claude 命令自动调用，静默执行"""
+    if not config:
+        return  # 无配置文件，跳过
+
+    # 1. 读缓存：智谱上次正常且未过期 → 直接返回，不做任何检测
+    cache = read_cache()
+    if cache and cache.get('zhipu_ok'):
+        return  # 3分钟内检测过智谱正常，跳过
+
+    # 2. 缓存过期或上次异常 → 检测智谱
+    zhipu_ok, msg, reset_time = test_zhipu(config)
+
+    if zhipu_ok:
+        # 智谱恢复了 → 切回智谱
+        write_cache('zhipu', True)
+        update_settings('zhipu', config)
+        return
+
+    # 3. 智谱不可用 → 检测 Gemini
+    write_cache('zhipu', False, reset_time)
+    gemini_ok, gemini_msg = test_gemini(config)
+
+    if gemini_ok:
+        # 启动代理并切换
+        if start_gemini_proxy(config):
+            update_settings('gemini', config)
+            print(f"⚠️ 智谱 {msg} → 已自动切换 Gemini")
+            write_cache('gemini', False, reset_time)
+        else:
+            print(f"⚠️ 智谱 {msg}, Gemini 代理启动失败")
+    else:
+        print(f"⚠️ 智谱 {msg}, Gemini {gemini_msg}")
+        print("   两个 API 都不可用，请等待限额重置")
+
+
+def interactive_mode(force=None):
+    """交互模式：手动选择后端"""
+    config = load_config()
+    if not config:
+        print("❌ 未找到 api_config.json")
+        sys.exit(1)
+
+    backend = force
+    if not backend:
+        print("🔍 检测 API 可用性...\n")
+        zhipu_ok, zhipu_msg, _ = test_zhipu(config)
+        print(f"📡 智谱: {'✅' if zhipu_ok else '❌'} {zhipu_msg}")
+        if zhipu_ok:
+            backend = 'zhipu'
+        else:
+            gemini_ok, gemini_msg = test_gemini(config)
+            print(f"📡 Gemini: {'✅' if gemini_ok else '❌'} {gemini_msg}")
+            backend = 'gemini' if gemini_ok else None
+
+    if not backend:
+        print("\n❌ 两个 API 都不可用")
+        sys.exit(1)
+
+    print(f"\n🔄 切换到: {backend.upper()}")
+    if backend == 'gemini' and not start_gemini_proxy(config):
+        print("❌ 代理启动失败")
+        sys.exit(1)
+
+    update_settings(backend, config)
+    print(f"✅ 已更新 settings.json ({backend})")
+
+    claude_cmd = 'claude.cmd' if IS_WINDOWS else 'claude'
+    os.execvp(claude_cmd, [claude_cmd])
+
+
 def check_status(config):
-    """仅检查状态，不启动"""
+    """状态检查"""
     print("=" * 50)
     print("  Claude Code API 状态检查")
     print("=" * 50)
 
-    # 智谱
+    zhipu_ok, zhipu_msg, reset = test_zhipu(config)
     print(f"\n📡 智谱 GLM ({config['glm']['latest_model']})")
-    ok, msg = test_zhipu(config)
-    print(f"   {'✅' if ok else '❌'} {msg}")
+    print(f"   {'✅' if zhipu_ok else '❌'} {zhipu_msg}")
 
-    # Gemini
+    gemini_ok, gemini_msg = test_gemini(config)
     print(f"\n📡 Gemini ({config['gemini']['model']})")
-    ok, msg = test_gemini(config)
-    print(f"   {'✅' if ok else '❌'} {msg}")
+    print(f"   {'✅' if gemini_ok else '❌'} {gemini_msg}")
 
-    # 当前配置
     settings_path = get_settings_path()
     if settings_path.exists():
         with open(settings_path) as f:
             settings = json.load(f)
-        base_url = settings.get('env', {}).get('ANTHROPIC_BASE_URL', '未设置')
-        print(f"\n🔧 当前后端: {base_url}")
+        url = settings.get('env', {}).get('ANTHROPIC_BASE_URL', '未设置')
+        backend = '智谱' if 'bigmodel' in url else 'Gemini' if '127.0.0.1' in url else url
+        print(f"\n🔧 当前后端: {backend}")
+
+    cache = read_cache()
+    if cache:
+        age = int(time.time() - cache.get('ts', 0))
+        print(f"📋 缓存: {cache.get('backend', '?')} (检测于 {age}s 前)")
 
     print()
 
 
 def main():
+    args = sys.argv[1:]
     config = load_config()
 
-    # 解析参数
-    force = None
-    status_only = False
-    for arg in sys.argv[1:]:
-        if arg == '--force-gemini':
-            force = 'gemini'
-        elif arg == '--force-zhipu':
-            force = 'zhipu'
-        elif arg == '--status':
-            status_only = True
+    if '--auto' in args:
+        auto_mode(config)
+        return
 
-    if status_only:
+    if '--status' in args:
+        if not config:
+            print("❌ 未找到 api_config.json"); return
         check_status(config)
         return
 
-    print("🔍 检测 API 可用性...\n")
-
-    # 确定使用哪个后端
-    backend = None
-
-    if force == 'gemini':
-        print("⚡ 强制使用 Gemini")
-        backend = 'gemini'
-    elif force == 'zhipu':
-        print("⚡ 强制使用智谱")
-        backend = 'zhipu'
+    if '--force-gemini' in args:
+        interactive_mode(force='gemini')
+    elif '--force-zhipu' in args:
+        interactive_mode(force='zhipu')
     else:
-        # 自动检测
-        print(f"📡 测试智谱 ({config['glm']['latest_model']})...", end=" ")
-        zhipu_ok, zhipu_msg = test_zhipu(config)
-        print(f"{'✅' if zhipu_ok else '❌'} {zhipu_msg}")
-
-        if zhipu_ok:
-            backend = 'zhipu'
-        else:
-            print(f"\n📡 测试 Gemini ({config['gemini']['model']})...", end=" ")
-            gemini_ok, gemini_msg = test_gemini(config)
-            print(f"{'✅' if gemini_ok else '❌'} {gemini_msg}")
-
-            if gemini_ok:
-                backend = 'gemini'
-            else:
-                print("\n❌ 两个 API 都不可用，请检查网络或等待限额重置")
-                sys.exit(1)
-
-    # 切换后端
-    print(f"\n🔄 切换到: {backend.upper()}")
-
-    if backend == 'gemini':
-        # 启动 Gemini 代理
-        print("🚀 启动 Gemini 代理...")
-        if not start_gemini_proxy(config):
-            print("❌ 代理启动失败")
-            sys.exit(1)
-
-    # 更新 settings.json
-    if update_settings(backend, config):
-        print(f"✅ settings.json 已更新 ({backend})")
-    else:
-        print(f"⚠️ settings.json 更新失败")
-        sys.exit(1)
-
-    # 启动 Claude Code
-    print(f"\n{'='*50}")
-    print(f"  🚀 启动 Claude Code ({backend})")
-    print(f"{'='*50}\n")
-
-    claude_cmd = 'claude.cmd' if IS_WINDOWS else 'claude'
-    os.execvp(claude_cmd, [claude_cmd])
+        interactive_mode()
 
 
 if __name__ == '__main__':

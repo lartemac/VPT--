@@ -246,6 +246,39 @@ Task: Convert CSV to Excel
 
 ## TIMELINE (Compressed)
 
+### 2026-04-18
++ 路由器 IPv6 配置修复（Clash 节点 IPv4 大规模掉线）
+  * 背景：上游 SSR 节点 IPv4 地址不可用，只能通过 IPv6 连接
+  * 小米路由器（192.168.31.x）IPv6 配置步骤：
+    - 开启 IPv6 → Native 模式 → 只有 WAN 地址，LAN 无分配
+    - 改为 NAT6 模式 → LAN 分配 fd00:6868:6868::/64，电脑获得 IPv6 地址
+  * Windows DNS 修复：设置阿里 IPv6 DNS（2400:3200::1）
+  * 结果：Clash 通过 IPv6 连上存活节点，GitHub/git pull 恢复正常
+  * 知识点：fe80:: 为本地链接地址（不代表公网IPv6）；公网 IPv6 以 2400/2408/2409 开头
+  * NAT6 原理：类似 IPv4 NAT，路由器用1个公网 IPv6 地址代理所有设备
++ Obsidian 评估
+  * 结论：不适合用户需求（需要 AI 全文阅读+智能问答，Obsidian 是纯笔记软件）
+  * CLI 功能：面向开发者，用户目前不需要
++ AI 文献知识库方案调研
+  * 用户需求：上传100+篇论文全文 → AI全文阅读 → 智能问答 → 自动分类
+  * 核心难点：需要 AI 读懂全文（不只是摘要），从正文中精确检索
+  * 调研产品：
+    - Google NotebookLM：最接近需求，免费，50源/笔记本限制
+    - SciSpace：科研专用，免费版限20篇/月
+    - Zotero：文献管理王者，但不做AI问答
+  * 最终推荐方案：本地部署 RAG 系统
+    - 路线A（快速体验）：Ollama + AnythingLLM（桌面软件，零门槛）
+    - 路线B（专业方案）：Ollama + RAGFlow（PDF解析最强，支持表格/公式/图片）
+    - 模型选择：Qwen3:8B（~5GB显存，中文第一梯队）
+    - 方案文档已保存：桌面\本地AI文献知识库方案.md
+  * 待确认：用户电脑内存大小（建议 ≥16GB）
++ IPv6 相关知识（新增 RULES 参考）
+  * Windows IPv6 诊断命令：
+    - ipconfig：查看 IPv6 地址（fe80=本地，2400/2408=公网）
+    - ping -6：测试 IPv6 连通性
+    - Get-NetRoute -AddressFamily IPv6：查看路由表
+    - Set-DnsClientServerAddress：设置 IPv6 DNS
+
 ### 2026-04-16
 + Windows 待办任务全部完成
   * api_config.json 更新到 v3.0.0（智谱主 + Gemini 备用）
@@ -696,4 +729,4 @@ Task: Convert CSV to Excel
   * 开源时机：代码写好测试通过后再公开
   * 状态：需求确认完成，待开发
 
-**Last updated**: 2026-04-16 (Windows 待办完成 + API Key同步 + Gemini代理 + PowerShell自动包装)
+**Last updated**: 2026-04-18 (IPv6修复 + Obsidian评估 + AI文献知识库方案调研)

@@ -246,6 +246,30 @@ Task: Convert CSV to Excel
 
 ## TIMELINE (Compressed)
 
+### 2026-04-19
++ AI 文献知识库方案深化
+  * RAG 技术详解：索引检索机制（向量嵌入 + 语义匹配 + 片段召回）
+  * 确认方向：放弃本地部署大模型，采用"本地 RAG + 云端 API"架构
+  * 方案选定：FastGPT（开源，原生支持智谱 API，专为知识库设计）
+  * 安装方式：Docker Desktop + docker compose 一键启动
+  * 支持数据源：PDF/Word/Excel/TXT 直接上传、网页链接自动抓取、手动粘贴文本
+  * 原则：正文越干净检索越准确，不需要转 PDF
+  * 硬件：32G 内存充足，不用时关掉 Docker Desktop 即可
+  * ⏳ 待办：Windows 安装 Docker Desktop → FastGPT（知识库系统）
+  * ⏳ 待办：NVIDIA 更新缓存清理（C:\ProgramData\NVIDIA Corporation\NVIDIA app\UpdateFramework\ota-artifacts，824MB）
++ Windows C 盘瘦身（180 GB 已用 → 120 GB 已用，释放约 40 GB）
+  * Windows.old 删除：~25 GB（磁盘清理工具）
+  * QQ 音乐卸载：~7 GB
+  * duowan/YY 删除：~1 GB
+  * pip cache 清理：1 GB
+  * WPS addons 缓存清理：6 GB（addons 目录为遗留缓存，非云文档同步目录）
+  * 当前剩余：~60 GB（健康状态）
+  * 未清理（保留）：Chrome(5.2G)、钉钉(3.84G)、夸克(4.46G)、Adobe CameraRaw(2.57G)
+  * NVIDIA 驱动：不更新（当前稳定，近期有翻车更新），关闭自动更新
+  * Node.js：仅 0.32 GB，保留
+  * Python 第三方库：1.93 GB，保留（torch/casadi/scipy 等科研+A股用途）
+  * NVIDIA 更新缓存(ota-artifacts 824MB)：建议手动删除
+
 ### 2026-04-18
 + 路由器 IPv6 配置修复（Clash 节点 IPv4 大规模掉线）
   * 背景：上游 SSR 节点 IPv4 地址不可用，只能通过 IPv6 连接
@@ -729,4 +753,4 @@ Task: Convert CSV to Excel
   * 开源时机：代码写好测试通过后再公开
   * 状态：需求确认完成，待开发
 
-**Last updated**: 2026-04-18 (IPv6修复 + Obsidian评估 + AI文献知识库方案调研)
+**Last updated**: 2026-04-19 (AI文献知识库方案深化 + C盘瘦身40GB)

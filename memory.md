@@ -246,6 +246,13 @@ Task: Convert CSV to Excel
 
 ## TIMELINE (Compressed)
 
+### 2026-04-20
++ FastGPT 知识库部署完成 ✅
+  * 模型问题修复：通过网页端 账号→模型提供商 配置，模型从 active:0 → active:4
+  * MinIO 外部端点修复：172.18.112.1:9000 → host.docker.internal:9000
+  * 当前状态：12个容器全部健康，模型已激活，可正常使用
+  * 访问：http://localhost:4000 (root/1234)，MinIO: http://localhost:9001
+
 ### 2026-04-19
 + AI 文献知识库方案深化
   * RAG 技术详解：索引检索机制（向量嵌入 + 语义匹配 + 片段召回）
@@ -255,7 +262,8 @@ Task: Convert CSV to Excel
   * 支持数据源：PDF/Word/Excel/TXT 直接上传、网页链接自动抓取、手动粘贴文本
   * 原则：正文越干净检索越准确，不需要转 PDF
   * 硬件：32G 内存充足，不用时关掉 Docker Desktop 即可
-  * ⏳ 待办：Windows 安装 Docker Desktop → FastGPT（知识库系统）
+  * FastGPT 安装完成：Docker Desktop v4.68.0 + WSL2
+  * 详见：auto-memory project_fastgpt.md
   * ⏳ 待办：NVIDIA 更新缓存清理（C:\ProgramData\NVIDIA Corporation\NVIDIA app\UpdateFramework\ota-artifacts，824MB）
 + Windows C 盘瘦身（180 GB 已用 → 120 GB 已用，释放约 40 GB）
   * Windows.old 删除：~25 GB（磁盘清理工具）
@@ -753,4 +761,4 @@ Task: Convert CSV to Excel
   * 开源时机：代码写好测试通过后再公开
   * 状态：需求确认完成，待开发
 
-**Last updated**: 2026-04-19 (AI文献知识库方案深化 + C盘瘦身40GB)
+**Last updated**: 2026-04-20 (FastGPT部署完成 + MinIO修复)

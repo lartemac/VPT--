@@ -247,6 +247,12 @@ Task: Convert CSV to Excel
 ## TIMELINE (Compressed)
 
 ### 2026-04-20
++ NCCL文献综述表格填写完成 ✅
+  * 任务：阅读桌面NCCL文件夹中17篇PDF论文，提取信息填入NCCL.xlsx
+  * 表格结构：文献题目 | 发表时间 | 研究目的 | 核心发现 | 创新性 | 局限性
+  * 方法：pdfplumber提取PDF文本 → 3个并行Agent分析 → openpyxl填写Excel
+  * 输出文件：桌面/NCCL_filled.xlsx（原文件被Excel占用，用新文件名保存）
+  * 论文年份范围：2021-2025，涵盖NCCL修复材料、粘接策略、生物力学、诊断、系统综述等方向
 + FastGPT 知识库部署完成 ✅
   * 模型问题修复：通过网页端 账号→模型提供商 配置，模型从 active:0 → active:4
   * MinIO 外部端点修复：172.18.112.1:9000 → host.docker.internal:9000
@@ -761,4 +767,4 @@ Task: Convert CSV to Excel
   * 开源时机：代码写好测试通过后再公开
   * 状态：需求确认完成，待开发
 
-**Last updated**: 2026-04-20 (FastGPT部署完成 + MinIO修复)
+**Last updated**: 2026-04-20 (NCCL文献表格填写 + FastGPT部署完成)

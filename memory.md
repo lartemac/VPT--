@@ -6,3 +6,4 @@
 - [文献综述表格填写工作流](feedback_literature_table.md) — 批量PDF论文提取+Excel填表标准流程，NCCL项目验证高质量
 - [GPT Academic 本地部署](project_gpt_academic.md) — Docker部署，智谱GLM API，20篇NCCL论文已上传待分析
 - [智谱API双通道计费机制](reference_zhipu_api_billing.md) — Coding Plan套餐与原生API独立计费，充值后可用GLM-5.1
+- [基金数据库项目（场内+场外）](project_funddata.md) — Tushare Pro 场内1138万+场外1326万条数据，含多维度筛选工具

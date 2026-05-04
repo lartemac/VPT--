@@ -1,6 +1,6 @@
 ---
 name: 基金研究 Skill
-description: 单支基金全面分析的标准工作流，覆盖基础信息、经理、收益、风险、持仓、规模、机构、对比、风险提示，直接生成 HTML 报告（不再生成 MD）
+description: 单支基金全面分析标准工作流v3（Tushare分批查询+搜索Agent+Python生成HTML+净值曲线图），016520/024240/017998/006195/001917验证通过
 type: feedback
 originSessionId: ae47c039-7b09-453e-bdcb-c20fcda83775
 ---

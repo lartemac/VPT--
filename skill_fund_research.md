@@ -255,7 +255,7 @@ pro.fund_share(ts_code=ts_code)       # 份额变动（trade_date, fd_share）
 ```
 
 ### 文件保存
-- HTML 文件：`桌面/XXXXXX全面报告.html`（唯一输出文件）
+- HTML 文件：`桌面/XXXXXX基金名称全面分析报告.html`（命名格式：代码+名称+全面分析报告，如 `006195国金量化多因子A全面分析报告.html`）
 - 临时查询脚本：用完即删（rm 清理）
 
 ---

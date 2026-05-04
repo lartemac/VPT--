@@ -16,65 +16,20 @@ originSessionId: ae47c039-7b09-453e-bdcb-c20fcda83775
 
 ## 第一步：数据采集（并行执行）
 
-### 1A. Tushare 数据查询（3轮脚本）
+### 1A. Tushare 数据查询（拆分为独立脚本，避免单点失败）
 
-**第一轮：基础信息 + 经理 + 净值 + 持仓 + 分红**
+**脚本1：基础信息 + 经理 + 净值 + 分红 + 净值曲线图（核心数据，优先执行）**
 ```python
-# 用 tushare pro API，token 从 D:\cc-github\api_config.json 读取
+# 用 tushare pro API，token 从 D:\cc-github\api_config.json → cfg['tushare']['token'] 读取
 ts_code = 'XXXXXX.OF'  # 用户给的代码 + .OF 后缀
 
 # 查询接口及关键参数：
 pro.fund_basic(ts_code=ts_code)        # 基金名称、类型、成立日期、费率、业绩基准、管理人
 pro.fund_manager(ts_code=ts_code)      # 历任基金经理、任职/离任日期、简历
 pro.fund_nav(ts_code=ts_code)          # 全量历史净值（unit_nav, accum_nav, net_asset, ann_date）
-pro.fund_portfolio(ts_code=ts_code)    # 持仓明细（symbol, mkv, amount, stk_mkv_ratio, end_date）
 pro.fund_div(ts_code=ts_code)          # 分红记录
-```
 
-**第一轮B：净值曲线图生成（与第一轮A并行）**
-```python
-# 用 matplotlib 生成净值曲线图，标记关键节点
-# 流程：matplotlib → PNG → base64 → 嵌入 HTML <img> 标签
-
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
-import base64
-from io import BytesIO
-
-fig, ax = plt.subplots(figsize=(10, 4.5))
-fig.patch.set_facecolor('#ffffff')
-ax.set_facecolor('#f8f9fa')
-
-# 绘制净值曲线
-ax.plot(dates, navs, color='#2b6cb0', linewidth=1.5, label='单位净值')
-ax.fill_between(dates, navs, alpha=0.08, color='#2b6cb0')
-
-# 标记历史最高点（蓝色圆点 + 标注）
-ax.annotate(f'历史最高\n{max_nav:.4f}\n{date}',
-            xy=..., xytext=..., fontsize=9, fontweight='bold', color='#2b6cb0')
-ax.plot(max_pos, 'o', color='#2b6cb0', markersize=8)
-
-# 标记最大回撤点（红色三角 + 标注百分比）
-ax.annotate(f'最大回撤 {dd_pct:.2f}%\n{nav:.4f}',
-            xy=..., xytext=..., color='#e53e3e')
-ax.plot(dd_pos, 'v', color='#e53e3e', markersize=10)
-
-# 标记回撤修复点（绿色方块 + 标注修复天数）
-ax.annotate(f'回撤修复\n{nav:.4f}',
-            xy=..., color='#38a169')
-ax.plot(recovery_pos, 's', color='#38a169', markersize=8)
-
-# 回撤区间阴影
-ax.axvspan(dd_date, recovery_date, alpha=0.1, color='#e53e3e')
-
-# 转为 base64 嵌入 HTML
-buf = BytesIO()
-fig.savefig(buf, format='png', dpi=150, bbox_inches='tight')
-b64 = base64.b64encode(buf.getvalue()).decode()
-html_img = f'<img src="data:image/png;base64,{b64}" style="width:100%;">'
-plt.close()
+# 完成后输出 JSON 汇总文件（summary_XXXXXX.json）+ base64 图表文件（nav_b64_XXXXXX.txt）
 ```
 
 **关键标记项**：
@@ -84,7 +39,23 @@ plt.close()
 4. 回撤区间阴影（红色半透明背景）
 5. 净值曲线下方浅色填充
 
-**第二轮：收益率计算 + 规模数据**
+**脚本2：持仓 + 份额（独立脚本，含异常处理）**
+```python
+# fund_portfolio 查询大数据集时可能触发 brotli 解码错误
+# 解决方案：按年份分批查询，失败时自动重试
+
+for yr in ['2026', '2025', '2024', '2023']:
+    try:
+        df = pro.fund_portfolio(ts_code=ts_code, end_date=f'{yr}1231')
+        all_data.append(df)
+    except Exception:
+        pass  # 跳过失败年份，用搜索数据补充
+    time.sleep(1)
+
+# 合并去重后输出 portfolio_XXXXXX.json
+pro.fund_share(ts_code=ts_code)       # 份额变动（trade_date, fd_share）
+# 输出 shares_XXXXXX.json
+```
 ```python
 # 注意事项：
 # - fund_share 的列名是 trade_date（非 end_date）、fd_share
@@ -115,6 +86,8 @@ pro.stock_basic(ts_code=symbol)        # 逐只查持仓股票名称和行业
 - `adj_nav`（复权净值）需要 5000 积分，2000 积分可能查不到 → 跳过
 - 场外基金的 `fund_share.fd_share` 单位是万份
 - 批量查 `stock_basic` 时注意频率控制，每批间隔或限制数量（≤80只）
+- **brotli 解码错误**：`fund_portfolio` 查询大数据集（持仓超1000只的量化基金）时可能触发 `urllib3.exceptions.DecodeError`，解决方案是按年份分批查询（`end_date=YYYY1231`），每批 sleep 1秒
+- **API config 路径**：token 在 `cfg['tushare']['token']`（非 `cfg['tushare_token']`）
 
 ### 1B. 联网搜索（后台 Agent 并行）
 
@@ -128,6 +101,10 @@ pro.stock_basic(ts_code=symbol)        # 逐只查持仓股票名称和行业
 7. `"基金名称" 同类排名 晨星评级 银河证券`
 
 搜索目标网站优先级：天天基金网 > 雪球基金 > 东方财富 > 好买基金 > 晨星
+
+**补充数据获取**：当 Tushare 持仓数据缺失时，用 webReader 工具读取天天基金网页补充：
+- `https://fund.eastmoney.com/XXXXXX.html` — 基本信息、阶段涨幅、持仓
+- 注意：天天基金网页部分数据为 JS 动态渲染，webReader 可能无法获取完整持有人结构
 
 ---
 
@@ -156,7 +133,11 @@ pro.stock_basic(ts_code=symbol)        # 逐只查持仓股票名称和行业
 
 ### 重要：直接生成 HTML 报告，不生成 MD 文件
 用户要求最终报告为 HTML 格式（美观、可直接浏览器打开），省去 MD→HTML 转换步骤。
-因此数据采集完成后，直接用 Write 工具写入 HTML 文件，不经过 MD 中间文件。
+由于 HTML 内含 base64 图表（10-17万字符），超过 Write 工具合理长度，改用 Python 脚本生成：
+1. 读取 nav_b64_XXXXXX.txt + summary_XXXXXX.json + shares_XXXXXX.json + portfolio_XXXXXX.json
+2. Python f-string 拼接完整 HTML（注意 f-string 中 `s["key"]` 的引号转义问题）
+3. 写入 `桌面/XXXXXX全面报告.html`
+4. 执行后删除所有临时文件（脚本 + JSON + base64 文本）
 
 ### HTML 报告结构（13章，严格遵循）
 

@@ -7,3 +7,4 @@
 - [GPT Academic 本地部署](project_gpt_academic.md) — Docker部署，智谱GLM API，20篇NCCL论文已上传待分析
 - [智谱API双通道计费机制](reference_zhipu_api_billing.md) — Coding Plan套餐与原生API独立计费，充值后可用GLM-5.1
 - [基金数据库项目（场内+场外）](project_funddata.md) — Tushare Pro 场内1138万+场外1326万条数据，含多维度筛选工具
+- [基金研究 Skill](skill_fund_research.md) — 单支基金全面分析标准工作流（Tushare+搜索+MD/HTML报告），016520验证通过

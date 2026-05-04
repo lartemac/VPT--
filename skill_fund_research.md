@@ -74,10 +74,19 @@ pro.fund_share(ts_code=ts_code)       # 份额变动（trade_date, fd_share）
 **第三轮：份额变动 + 股票名称映射 + 行业分布**
 ```python
 pro.fund_share(ts_code=ts_code)       # 份额变动（trade_date, fd_share）
-pro.stock_basic(ts_code=symbol)        # 逐只查持仓股票名称和行业
 # 按行业汇总 mkv → 行业占比
 # 按报告期取最近4期，每期展示前10-15只重仓股
 ```
+
+**重要：股票名称查询——必须确保报告中不出现"未知"**
+
+用户本地有完整的A股数据库（Tushare Pro 已下载），持仓中所有股票的名称和行业必须查全，不允许出现"未知"。
+
+**查询策略（优先使用本地数据库）**：
+1. **首选**：用 `pro.stock_basic(exchange='', list_status='L', fields='ts_code,name,industry')` 一次性获取全部A股名称+行业，建立本地字典（约5000条），然后用 `df['symbol'].map(stock_dict)` 批量映射
+2. **备选**：如果全量查询失败，对持仓中的 `symbol` 逐只查询 `pro.stock_basic(ts_code=sym)`，但不受80只限制——必须查完所有持仓股票，每20只 sleep 0.3秒
+3. **兜底**：若仍有遗漏，用 Grep 工具在本地数据库文件中搜索代码对应的名称
+4. **禁止**：在最终HTML报告中出现股票名称为"未知"的情况——如有未查到的股票，用 Grep 在网上搜索补充
 
 **Tushare 常见坑（已验证）**：
 - `fund_share` 排序列名是 `trade_date` 不是 `ann_date` 或 `end_date`
@@ -85,7 +94,6 @@ pro.stock_basic(ts_code=symbol)        # 逐只查持仓股票名称和行业
 - `fund_nav` 的 `net_asset` 仅在季末/年末报告期有值（非每天更新），单位是元
 - `adj_nav`（复权净值）需要 5000 积分，2000 积分可能查不到 → 跳过
 - 场外基金的 `fund_share.fd_share` 单位是万份
-- 批量查 `stock_basic` 时注意频率控制，每批间隔或限制数量（≤80只）
 - **brotli 解码错误**：`fund_portfolio` 查询大数据集（持仓超1000只的量化基金）时可能触发 `urllib3.exceptions.DecodeError`，解决方案是按年份分批查询（`end_date=YYYY1231`），每批 sleep 1秒
 - **API config 路径**：token 在 `cfg['tushare']['token']`（非 `cfg['tushare_token']`）
 
@@ -210,7 +218,7 @@ pro.stock_basic(ts_code=symbol)        # 逐只查持仓股票名称和行业
 
 十三、重要数据附录（.section）
   - 净值走势关键节点表格（最新行绿色高亮）
-  - 前任经理完整履历
+  - 全部经理履历表格：现任经理行高亮绿色+标注"现任"，离任经理行标注"前任"（不可省略"前任"标签，否则读者会误以为仍是现任经理）
 
 页脚（.footer）：免责声明 + 数据来源 + 报告时间
 ```

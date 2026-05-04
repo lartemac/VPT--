@@ -31,6 +31,59 @@ pro.fund_portfolio(ts_code=ts_code)    # 持仓明细（symbol, mkv, amount, stk
 pro.fund_div(ts_code=ts_code)          # 分红记录
 ```
 
+**第一轮B：净值曲线图生成（与第一轮A并行）**
+```python
+# 用 matplotlib 生成净值曲线图，标记关键节点
+# 流程：matplotlib → PNG → base64 → 嵌入 HTML <img> 标签
+
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
+import base64
+from io import BytesIO
+
+fig, ax = plt.subplots(figsize=(10, 4.5))
+fig.patch.set_facecolor('#ffffff')
+ax.set_facecolor('#f8f9fa')
+
+# 绘制净值曲线
+ax.plot(dates, navs, color='#2b6cb0', linewidth=1.5, label='单位净值')
+ax.fill_between(dates, navs, alpha=0.08, color='#2b6cb0')
+
+# 标记历史最高点（蓝色圆点 + 标注）
+ax.annotate(f'历史最高\n{max_nav:.4f}\n{date}',
+            xy=..., xytext=..., fontsize=9, fontweight='bold', color='#2b6cb0')
+ax.plot(max_pos, 'o', color='#2b6cb0', markersize=8)
+
+# 标记最大回撤点（红色三角 + 标注百分比）
+ax.annotate(f'最大回撤 {dd_pct:.2f}%\n{nav:.4f}',
+            xy=..., xytext=..., color='#e53e3e')
+ax.plot(dd_pos, 'v', color='#e53e3e', markersize=10)
+
+# 标记回撤修复点（绿色方块 + 标注修复天数）
+ax.annotate(f'回撤修复\n{nav:.4f}',
+            xy=..., color='#38a169')
+ax.plot(recovery_pos, 's', color='#38a169', markersize=8)
+
+# 回撤区间阴影
+ax.axvspan(dd_date, recovery_date, alpha=0.1, color='#e53e3e')
+
+# 转为 base64 嵌入 HTML
+buf = BytesIO()
+fig.savefig(buf, format='png', dpi=150, bbox_inches='tight')
+b64 = base64.b64encode(buf.getvalue()).decode()
+html_img = f'<img src="data:image/png;base64,{b64}" style="width:100%;">'
+plt.close()
+```
+
+**关键标记项**：
+1. 历史最高点（蓝色圆点 + 日期 + 净值）
+2. 最大回撤点（红色三角 + 回撤百分比 + 日期 + 净值）
+3. 回撤修复点（绿色方块 + 修复日期 + 修复耗时天数）
+4. 回撤区间阴影（红色半透明背景）
+5. 净值曲线下方浅色填充
+
 **第二轮：收益率计算 + 规模数据**
 ```python
 # 注意事项：
@@ -105,7 +158,7 @@ pro.stock_basic(ts_code=symbol)        # 逐只查持仓股票名称和行业
 用户要求最终报告为 HTML 格式（美观、可直接浏览器打开），省去 MD→HTML 转换步骤。
 因此数据采集完成后，直接用 Write 工具写入 HTML 文件，不经过 MD 中间文件。
 
-### HTML 报告结构（12章，严格遵循）
+### HTML 报告结构（13章，严格遵循）
 
 ```
 页头（.header）：标题 + 基金代码 + 报告日期 + 数据来源
@@ -122,54 +175,59 @@ pro.stock_basic(ts_code=symbol)        # 逐只查持仓股票名称和行业
   - 现任经理详情（学历、履历列表、在管基金表格）
   - 经理风格分析（info-box）
 
-三、历年收益率表现（.section）
+三、净值走势曲线（.section）
+  - 嵌入 base64 编码的 PNG 净值曲线图（width:100%）
+  - 图例说明（历史最高/最大回撤/回撤修复 的颜色含义）
+  - 图下方标注关键数据摘要行
+
+四、历年收益率表现（.section）
   - 年度收益率表格（绿涨红跌）
   - 区间收益率汇总
   - 关键观察（有序列表）
 
-四、风险指标分析（.section）
+五、风险指标分析（.section）
   - 核心风险指标表格
   - 风险等级评定表格
   - 持有盈利概率表格
 
-五、基金规模变动（.section）
+六、基金规模变动（.section）
   - 份额变动表格 + 可视化进度条（.progress-bar）
   - 净资产变动表格（万元+亿元双列）
   - 规模分析（warn-box 提示清盘风险）
 
-六、投资方向与持仓详情（.section）
+七、投资方向与持仓详情（.section）
   - 投资风格表格
   - 十大重仓股表格（行业 tag 标签）
   - 行业分布表格 + 可视化进度条
   - 持仓分析（warn-box 提示集中度风险）
   - 历史持仓变迁表格
 
-七、仓位变动情况（.section）
+八、仓位变动情况（.section）
   - 大类资产配置表格（关键转折点绿色背景高亮）
   - 仓位核心发现（info-box）
 
-八、机构投资者与持有人结构（.section）
+九、机构投资者与持有人结构（.section）
   - 持有人结构表格（机构大举入场行绿色高亮）
   - 机构动向分析（info-box）
 
-九、同类基金收益对比（.section）
+十、同类基金收益对比（.section）
   - 同类排名表格（优秀/良好 tag）
   - 与基准对比表格（超额收益高亮）
   - 风险收益对比表格
 
-十、负面信息与风险提示（.section）
+十一、负面信息与风险提示（.section）
   - 已核实信息列表
   - 核心风险点 → 红色边框卡片网格（.risk-grid > .risk-item）
     - risk-high（红色左边框）、risk-mid（橙色左边框）
   - 补充建议
 
-十一、深度解读与投资建议（.section）
+十二、深度解读与投资建议（.section）
   - 基金画像总结（warn-box，一句话定位 + 4条结论）
   - 适合/不适合投资者对比表
   - 关键关注指标列表
   - 综合评分表格（金色星级 ★ + 空星 ☆）
 
-十二、重要数据附录（.section）
+十三、重要数据附录（.section）
   - 净值走势关键节点表格（最新行绿色高亮）
   - 前任经理完整履历
 

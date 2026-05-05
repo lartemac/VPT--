@@ -1,0 +1,757 @@
+{
+  "claims": [
+    {
+      "claim": "不可复性牙髓炎的传统治疗是根管治疗，该方 法虽能保存患牙，但会导致牙齿长期脆性增加［1］。",
+      "refs": [
+        1
+      ]
+    },
+    {
+      "claim": "现代牙髓炎治疗理念已转向“微创修复与再生”，活 髓保存治疗（vital pulp therapy，VPT）成为核心［2］。",
+      "refs": [
+        2
+      ]
+    },
+    {
+      "claim": "对于适应证内的不可复性牙髓炎，VPT（如冠髓切断 术）是一种成功率与根管治疗相当、并能保留牙髓 活力的可靠选择［3‐5］。",
+      "refs": [
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "claim": "基于充分证据，欧洲牙髓病学 学会（European Society of Endodontology，ESE）2019年 共 识［6］，美 国 牙 髓 病 协 会（America Association of Endodontology，AAE）2021 年立场声明［7］，以及我国 2025年专家共识均明确指出，VPT是部分成熟恒牙 不可复性牙髓炎应优先考虑的治疗方案［8］。",
+      "refs": [
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "claim": "一方面，成牙本质细胞能通过分泌抗菌物质和 沉积修复性牙本质来阻断感染［9‐11］；",
+      "refs": [
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "claim": "另一方面，牙髓炎 症具有高度局限化特点，即使冠髓炎症严重，根髓通 常仍保持健康［12‐13］。",
+      "refs": [
+        12,
+        13
+      ]
+    },
+    {
+      "claim": "先天免疫细胞在感染灶边缘形 成的“免疫隔离带”将病变限制在局部［14‐15］。",
+      "refs": [
+        14,
+        15
+      ]
+    },
+    {
+      "claim": "这种炎 症的空间梯度分布，为通过冠髓切断术移除感染冠 髓、保留健康根髓以促进愈合提供了根本依据［16］。",
+      "refs": [
+        16
+      ]
+    },
+    {
+      "claim": "（如自发性痛、夜间痛和放射性痛等）长期以来被视 为判断牙髓活力状态的重要参考，患牙疼痛的发生 率随病理表现的严重程度而增加，而疼痛的性质及 其加重或缓解的因素与组织学诊断之间不相关［16］。",
+      "refs": [
+        16
+      ]
+    },
+    {
+      "claim": "果无法精准界定牙髓感染与炎症的实际程度［10］。",
+      "refs": [
+        10
+      ]
+    },
+    {
+      "claim": "Wolters等［17］于2017年提出的连续演变分类系统将牙 髓炎视为一个在时间与空间上连续演变的动态过程， 突破了传统“可复性/不可复性”的二元对立框架。",
+      "refs": [
+        17
+      ]
+    },
+    {
+      "claim": "极深 龋则指龋损低密度影波及整个牙本质厚度［6］。",
+      "refs": [
+        6
+      ]
+    },
+    {
+      "claim": "而极深龋组中细菌已侵入 第三期牙本质或直接进入牙髓，引发相应区域的局 限性感染或坏死［18］。",
+      "refs": [
+        18
+      ]
+    },
+    {
+      "claim": "另有前瞻 性研究对有牙髓炎症状的深龋和极深龋恒牙进行 部分牙髓切断术，结果发现所有失败病例均为极深 龋患牙，提示极深龋往往伴随更严重的牙髓感染与 炎症反应［19］。",
+      "refs": [
+        19
+      ]
+    },
+    {
+      "claim": "因此，治疗前分析影像学低密度影的 范围，有助于间接评估细菌的渗透水平和牙髓病理 反应的严重程度［18］，为临床决策提供重要参考。",
+      "refs": [
+        18
+      ]
+    },
+    {
+      "claim": "苍白、深灰或深红色，这些肉眼可见的形态学变化 可为术中判断牙髓活力状态提供初步依据［20‐21］。",
+      "refs": [
+        20,
+        21
+      ]
+    },
+    {
+      "claim": "但 依赖视觉观察组织颜色与质地，缺乏量化标准，观 察者一致性低［22］。",
+      "refs": [
+        22
+      ]
+    },
+    {
+      "claim": "尽管ESE与AAE指南给 出了推荐范围（≤5 min或5 ~ 10 min）［6‐7］，但回顾性研 究显示，在1 ~ 25 min的宽泛时间内VPT均可获得高 成功率［23‐24］；",
+      "refs": [
+        6,
+        7,
+        23,
+        24
+      ]
+    },
+    {
+      "claim": "此外，止血时间易受患者血压、麻醉剂 中肾上腺素浓度及冲洗液等多种因素干扰，并非独 立的可靠预测指标［24‐25］。",
+      "refs": [
+        24,
+        25
+      ]
+    },
+    {
+      "claim": "Cankar 等［26］通过该技术获取不同龋病阶段牙齿的 牙髓信号分布图，发现T2值与龋齿进展严重程度呈 负相关。",
+      "refs": [
+        26
+      ]
+    },
+    {
+      "claim": "激光多普勒血流仪与脉搏血氧测 定仪等无创技术准确性较高［27‐29］，但因成本、操作复 杂性及环境干扰等因素，难以常规应用于临床。",
+      "refs": [
+        27,
+        28,
+        29
+      ]
+    },
+    {
+      "claim": "二、基于分子标志物的牙髓状态辅助判定 基于既往研究所揭示的与牙髓状态判定存在 相关性的分子标志物［30‐42］，本文系统梳理了这些标 志物的表达特点、临床病理关联，并对其指导 VPT 决策的价值与局限进行了总结（表1）。",
+      "refs": [
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42
+      ]
+    },
+    {
+      "claim": "相比之下，肿瘤坏死因 子α（tumor necrosis factor‐α，TNF‐α）虽有一定鉴别意 义（AUC为0.812），但灵敏度较低（59.1%）［32］；",
+      "refs": [
+        32
+      ]
+    },
+    {
+      "claim": "证实是区分可复性与不可复性炎症的关键指标，且在 化脓性牙髓炎中其水平与牙髓血pH值呈负相关［30］。",
+      "refs": [
+        30
+      ]
+    },
+    {
+      "claim": "此外，IL‐1α、IL‐17A、IL‐22等有助于鉴别有症状与无 症状的不可复性牙髓炎亚型［34‐35］。",
+      "refs": [
+        34,
+        35
+      ]
+    },
+    {
+      "claim": "神经肽与痛觉因 子 如 P 物 质、降 钙 素 基 因 相 关 肽（calcitonin gene related peptide，CGRP）主要反映疼痛程度及神经源 性炎症，但与牙髓修复潜能无直接因果关系［31］。",
+      "refs": [
+        31
+      ]
+    },
+    {
+      "claim": "而抗炎与 调节因子［如 IL‐10、转化生长因子 β （transforming growth factor‐β，TGF‐β）］则参与调控炎症向修复过 渡，需结合促炎因子的比值进行综合分析［31］。",
+      "refs": [
+        31
+      ]
+    },
+    {
+      "claim": "近年 来，DNA 损伤标志物（如 8‐OHdG、γ‐H2AX）及活性 氧可量化遗传毒性损伤，其高水平提示细胞修复系 统负荷加重、组织坏死风险升高，但由于检测技术 复杂，尚难以实现椅旁快速检测［39‐41］。",
+      "refs": [
+        39,
+        40,
+        41
+      ]
+    },
+    {
+      "claim": "研究发现 高敏 C 反应蛋白（high‐sensitivity C‐reactive protein， hs‐CRP）表现出 100% 的诊断灵敏度及 89% 的特异 度，可客观反映疼痛程度及严重的炎症表型［44］。",
+      "refs": [
+        44
+      ]
+    },
+    {
+      "claim": "2. 牙髓血检测揭示炎症空间异质性：近期研究 发现，原位即时检测炎症标志物为突破术中评估瓶 颈、革新诊疗模式提供了前景广阔的方案［45］。",
+      "refs": [
+        45
+      ]
+    },
+    {
+      "claim": "Loo 等［34］研究发现， 在可复性牙髓炎中，冠髓区域的炎症反应更为集中 和活跃，与根方样本相比，冠髓血液中IL‐1RA、IL‐8、",
+      "refs": [
+        34
+      ]
+    },
+    {
+      "claim": "牙髓本身具有内在修复能力，直 接牙髓盖髓术保守治疗可在暴露牙髓下方诱导形 成修复性硬组织桥，从而维持其活力［8］。",
+      "refs": [
+        8
+      ]
+    },
+    {
+      "claim": "以MMP‐9为例，尽管其被证实 与组织降解及VPT预后显著相关（AUC为0.948）［36］， 但多项Meta分析指出，受采样样本（牙髓血、牙本质 液或牙髓组织）、检测技术及临床诊断标准不一的影 响，MMP‐9 的异质性极高（I2 = 99%），部分研究甚至 未发现其在不可复性与可复性炎症间的差异有统 计学意义［47］。",
+      "refs": [
+        36,
+        47
+      ]
+    },
+    {
+      "claim": "因此可靠的分子诊断应依赖于多重 标志物组合分析：由酸性成纤维细胞生长因子FGF acid、IL‐6、IL‐1α 与基质金属蛋白酶抑制剂 1（tissue inhibitor of metalloproteinase‐1，TIMP‐1）组成的4种生 物标志物组合，能够有效区分有症状的不可复性牙 髓炎与可复性牙髓炎，其多维度数据拟合模型可将 AUC 提升至 0.92，显著优于临床经验判断［38］。",
+      "refs": [
+        38
+      ]
+    },
+    {
+      "claim": "但因其高溶解度、诱导的牙本质桥存在“隧道样缺 陷”及远期成功率随随访时间显著下降［50］，已逐渐 退出不可复性牙髓炎VPT的首选。",
+      "refs": [
+        50
+      ]
+    },
+    {
+      "claim": "第二代以MTA为代表的硅酸钙类材料，通过水 合反应生成钙硅水合物与氢氧化钙，从而具备与氢 氧化钙相当的抑菌性能［51］。",
+      "refs": [
+        51
+      ]
+    },
+    {
+      "claim": "其分子机制表现为 动态双向调控炎症（早期短暂促炎、后期抗炎），通 过 Axl/Akt/NF‐κB 通路诱导巨噬细胞向 M2 型极 化［52］，激活 Wnt/β‐catenin、MAPK、AKT 等多条信号 通路促进牙髓干细胞增殖、迁移与成牙本质分 化［53‐55］；",
+      "refs": [
+        52,
+        53,
+        54,
+        55
+      ]
+    },
+    {
+      "claim": "同时通过钙敏感受体 CaSR 感知钙离子与 pH 环境［56］，早期抑制自噬以促进增殖，后期激活自 噬以促进矿化。",
+      "refs": [
+        56
+      ]
+    },
+    {
+      "claim": "这些机制使 MTA 能从牙本质释放 多种生长因子，促进羟基磷灰石形成，从而形成高 质量的硬组织屏障［57‐58］。",
+      "refs": [
+        57,
+        58
+      ]
+    },
+    {
+      "claim": "一项前瞻性临床研究显 示，牙髓切断术后使用 MTA直接盖髓 3年随访成功 率达 92.7%［59］。",
+      "refs": [
+        59
+      ]
+    },
+    {
+      "claim": "但 MTA 存在操作敏感、凝固时间长 及可能导致牙冠变色的局限性［58］。",
+      "refs": [
+        58
+      ]
+    },
+    {
+      "claim": "“有症状”与“无症状”不可复性牙髓炎的鉴别，需要 IL‐1α、IL‐13、TGF‐α及MMP‐2等多因子联合检测［34］。",
+      "refs": [
+        34
+      ]
+    },
+    {
+      "claim": "在分子层面，iRoot BP Plus 通过 FGFR 介导的 ERK、 JNK 和 Akt 通路促进细胞迁移［60］，激活 MAPK 通路 诱导干细胞成牙本质分化，并能快速诱导自噬［61］；",
+      "refs": [
+        60,
+        61
+      ]
+    },
+    {
+      "claim": "（如TGF‐α）的转换，揭示了牙髓损伤与修复间的动态 平衡机制［39‐40］。",
+      "refs": [
+        39,
+        40
+      ]
+    },
+    {
+      "claim": "此外，既往研究也探讨了牙髓炎中 通过线粒体转移介导的巨噬细胞极化调控［48］，以及 通过抑制连接蛋白 Connexin43以增强自噬流、恢复 炎症牙髓成牙本质向分化等过程［49］，均强调了炎症 控制与修复机制间的内在关联。",
+      "refs": [
+        48,
+        49
+      ]
+    },
+    {
+      "claim": "恒牙不可逆牙髓炎时，通过髓腔开窗置入滤膜实现 持续减压引流，显著改善血液微循环，随访4年疗效 稳定，前景良好［74］。",
+      "refs": [
+        74
+      ]
+    },
+    {
+      "claim": "PI3K/Akt 及 CaMKⅡ通路促进成牙本质分化［62］，对 IL‐6和IL‐8呈差异化调控（健康细胞抑制IL‐6，炎症 环境中短暂促 IL‐6后抑制；",
+      "refs": [
+        62
+      ]
+    },
+    {
+      "claim": "持续促 IL‐8）［63］，并同样 可诱导巨噬细胞 M2 极化以发挥抗炎作用［64］。",
+      "refs": [
+        63,
+        64
+      ]
+    },
+    {
+      "claim": "此 外，两者不含三氧化二铋，相较于 MTA 具有更好的 颜色稳定性，临床研究显示其短期至中期成功率与 MTA相当或更优［65‐66］。",
+      "refs": [
+        65,
+        66
+      ]
+    },
+    {
+      "claim": "然而，最新研究 表明，轻微且受控的炎症反应是触发修复性成矿的 必要条件［75］。",
+      "refs": [
+        75
+      ]
+    },
+    {
+      "claim": "材料如硅酸钙释放的钙离子，不仅是 矿化的原料，更是重要的信号分子，能够激活一系 列炎性介质的适度表达，从而启动伤口愈合程 序［75‐76］。",
+      "refs": [
+        75,
+        76
+      ]
+    },
+    {
+      "claim": "组织工程水凝胶（如牙本质基质水凝胶）已进 入临床试验，可诱导管状牙本质再生并实现降解与 组织形成同步，但来源受限、制备复杂［67］。",
+      "refs": [
+        67
+      ]
+    },
+    {
+      "claim": "多孔玻 璃支架处于动物实验阶段，纳米孔隙促进组织长 入，但缺乏长期人类数据［68］。",
+      "refs": [
+        68
+      ]
+    },
+    {
+      "claim": "仿生肽类（如 P11‐4） 仅限体外/离体研究，能模拟细胞外基质、促进干细 胞迁移，但机械性能弱且临床路径不明［69］。",
+      "refs": [
+        69
+      ]
+    },
+    {
+      "claim": "天然纳 米复合物（如纳米蜂胶、姜黄素）已进入临床试验， 具广谱抗菌抗炎及高生物利用度，但术后可能出现 初期敏感反应［70］。",
+      "refs": [
+        70
+      ]
+    },
+    {
+      "claim": "混合型复合材料（如 ACTIVA BioACTIVE）已于临床应用，兼具离子释放与机械强 度，但直接露髓盖髓证据不足［71‐72］。",
+      "refs": [
+        71,
+        72
+      ]
+    },
+    {
+      "claim": "在小 型猪模型中，它可有效阻隔口腔微生物侵入，促进 牙本质桥形成，同时缓解缺氧状态，诱导M2型巨噬 细胞极化，推动牙髓由炎性向修复转化［73］，该材料 已商品化并应用于临床。",
+      "refs": [
+        73
+      ]
+    },
+    {
+      "claim": "材料类别 组织工程水凝胶［67］",
+      "refs": [
+        67
+      ]
+    },
+    {
+      "claim": "（4）关于患者年龄，既往关 于中老年患者牙髓修复潜力衰退的观点已被5年长 期随访数据反驳，数据显示各年龄段VPT成功率高 度趋同，年龄已不构成独立危险因素［78］。",
+      "refs": [
+        78
+      ]
+    },
+    {
+      "claim": "（5）关于 冠方永久修复时机，传统观念倾向于延长观察期暂 缓修复，然而系统评价揭示微渗漏是导致VPT晚期 失败的关键诱因，即刻修复不仅成功率可达89.9%， 且每延迟 1 d 成功率下降 0.088%，提示临床过度延 长观察期实则增加了失败风险［81‐82］。",
+      "refs": [
+        81,
+        82
+      ]
+    },
+    {
+      "claim": "Khanagar等［83］的系统 综述表明，基于卷积神经网络（convolutional neural network，CNN）的AI模型在根尖周病变诊断、牙根纵 裂识别、根管形态分析等多个核心任务中展现出高 准确性，证实了AI处理牙髓疾病相关影像与临床数 据的强大潜力（偏倚风险90%、适用性70%），但此类 模型向临床转化仍需克服泛化性、可解释性及数据标 准化等核心挑战。",
+      "refs": [
+        83
+      ]
+    },
+    {
+      "claim": "在颌面部疾病领域，基于CT/CBCT 的深度学习和影像组学模型已在其自动诊断、分 割、分类和预测方面展现出巨大潜力，性能与专家 相当的模型有潜力成为临床实用工具，实现更早 期、精准和个性化的诊疗，然而现有研究多依赖单 模态、单中心数据，严重制约了模型的泛化能力［84］。",
+      "refs": [
+        84
+      ]
+    }
+  ],
+  "refs": {
+    "1": {
+      "full": "Gulabivala K，Ng YL. Factors that affect the outcomes of root canal treatment and retreatment：A reframing of the principles ［J］. Int Endod J，2023，56（Suppl 2）：82‐115. DOI：10.1111/ iej.13897. -",
+      "title": "Factors that affect the outcomes of root canal treatment and retreatment：A reframing of the principles"
+    },
+    "2": {
+      "full": "Duncan HF. Present status and future directions ‐ Vital pulp treatment and pulp preservation strategies［J］. Int Endod J，2022， 55（Suppl 3）：497‐511. DOI：10.1111/iej.13688. -",
+      "title": "Present status and future directions ‐ Vital pulp treatment and pulp preservation strategies"
+    },
+    "3": {
+      "full": "Asgary S，Eghbal MJ，Shahravan A，et al. Outcomes of root canal therapy or full pulpotomy using two endodontic biomaterials in mature permanent teeth：A randomized controlled trial［J］. Clin Oral Investig，2022，26（3）：3287‐3297. DOI：10.1007/s00784‐ 021‐04310‐y. -",
+      "title": "Outcomes of root canal therapy or full pulpotomy using two endodontic biomaterials in mature permanent teeth：A randomized controlled trial"
+    },
+    "4": {
+      "full": "Taha NA，Abuzaid AM，Khader YS. A randomized controlled clinical trial of pulpotomy versus root canal therapy in mature teeth with irreversible pulpitis：outcome，quality of life，and patients' satisfaction［J］. J Endod，2023，49（6）：624‐631.e2. DOI：10.1016/j.joen.2023.04.001. -",
+      "title": "A randomized controlled clinical trial of pulpotomy versus root canal therapy in mature teeth with irreversible pulpitis：outcome，quality of life，and patients' satisfaction"
+    },
+    "5": {
+      "full": "Zhu L，Liu W，Deng X，et al. Full Pulpotomy versus root canal therapy in mature teeth with irreversible pulpitis：A randomized controlled trial［J］. BMC Oral Health，2024，24（1）：1231. DOI： 构建VPT预后模型应致力于：（1）整合临床、影像 （如CBCT）及潜在的分子标志物等多模态数据；（2）采 用图神经网络等先进算法挖掘数据间复杂关联；（3）追 求模型的生物学可解释性；（4）严格遵循权威质量评 估框架。这将有望推动从被动应对到主动预测的诊 疗模式转变，攻克VPT临床预后不确定性的难题。 五、总结 恒牙不可复性牙髓炎的治疗理念正经历深刻转 - 10.1186/s12903‐024‐05011‐0. -",
+      "title": "Full Pulpotomy versus root canal therapy in mature teeth with irreversible pulpitis：A randomized controlled trial"
+    },
+    "6": {
+      "full": "Duncan HF，Galler KM，Tomson PL，et al. European Society of Endodontology position statement：Management of deep caries and the exposed pulp［J］. Int Endod J，2019，52（7）：923‐934. DOI：10.1111/iej.13080. -",
+      "title": "European Society of Endodontology position statement：Management of deep caries and the exposed pulp"
+    },
+    "7": {
+      "full": "AAE position statement on vital pulp therapy［J］. J Endod，2021， 47（9）：1340‐1344. DOI：10.1016/j.joen.2021.07.015. -",
+      "title": "AAE position statement on vital pulp therapy［J］. J Endod，2021， 47（9）：1340‐1344. "
+    },
+    "8": {
+      "full": "Zhang L，Lin C，Chen Z，et al. Expert consensus on pulpotomy in the management of mature permanent teeth with pulpitis［J］. Int J Oral Sci，2025，17（1）：4. DOI：10.1038/s41368‐024‐00333‐9. -",
+      "title": "Expert consensus on pulpotomy in the management of mature permanent teeth with pulpitis"
+    },
+    "9": {
+      "full": "Jang JH，Shin HW，Lee JM，et al. An overview of pathogen recognition receptors for innate immunity in dental pulp［J］. Mediators Inflamm，2015：794143. DOI：10.1155/2015/794143. -",
+      "title": "An overview of pathogen recognition receptors for innate immunity in dental pulp"
+    },
+    "10": {
+      "full": "Lin LM，Ricucci D，Saoud TM，et al. Vital pulp therapy of mature permanent teeth with irreversible pulpitis from the perspective of pulp biology［J］. Aust Endod J，2020，46（1）：154‐ 166. DOI：10.1111/aej.12392. -",
+      "title": "Vital pulp therapy of mature permanent teeth with irreversible pulpitis from the perspective of pulp biology"
+    },
+    "11": {
+      "full": "Ricucci D，Loghin S，Lin LM，et al. Is hard tissue formation in the dental pulp after the death of the primary odontoblasts a regenerative or a reparative process?［J］. J Dent，2014，42（9）： 1156‐1170. DOI：10.1016/j.jdent.2014.06.012 -",
+      "title": "Is hard tissue formation in the dental pulp after the death of the primary odontoblasts a regenerative or a reparative process?"
+    },
+    "12": {
+      "full": "Ricucci D，Siqueira JF Jr，Li Y，et al. Vital pulp therapy： Histopathology and histobacteriology ‐ based guidelines to treat teeth with deep caries and pulp exposure［J］. J Dent，2019，86： 41‐52. DOI：10.1016/j.jdent.2019.05.022. -",
+      "title": "Vital pulp therapy： Histopathology and histobacteriology ‐ based guidelines to treat teeth with deep caries and pulp exposure"
+    },
+    "13": {
+      "full": "Ricucci D，Siqueira JF Jr，Loghin S，et al. Pulp and apical tissue response to deep caries in immature teeth：A histologic and histobacteriologic study［J］. J Dent，2017，56：19‐32. DOI：10. 1016/j.jdent.2016.10.005. -",
+      "title": "Pulp and apical tissue response to deep caries in immature teeth：A histologic and histobacteriologic study"
+    },
+    "14": {
+      "full": "Hahn CL，Liewehr FR. Innate immune responses of the dental pulp to caries［J］. J Endod，2007，33（6）：643‐651. DOI：10. 1016/j.joen.2007.01.001. -",
+      "title": "Innate immune responses of the dental pulp to caries"
+    },
+    "15": {
+      "full": "Hahn CL，Liewehr FR. Update on the adaptive immune responses of the dental pulp［J］. J Endod，2007，33（7）：773‐781. DOI： 10.1016/j.joen.2007.01.002. -",
+      "title": "Update on the adaptive immune responses of the dental pulp"
+    },
+    "16": {
+      "full": "Ricucci D，Loghin S，Siqueira JF Jr. Correlation between clinical and histologic pulp diagnoses［J］. J Endod，2014，40（12）：1932‐ 1939. DOI：10.1016/j.joen.2014.08.010. -",
+      "title": "Correlation between clinical and histologic pulp diagnoses"
+    },
+    "17": {
+      "full": "Wolters WJ，Duncan HF，Tomson PL，et al. Minimally invasive endodontics：A new diagnostic system for assessing pulpitis and subsequent treatment needs［J］. Int Endod J，2017，50（9）：825‐ 829. DOI：10.1111/iej.12793. -",
+      "title": "Minimally invasive endodontics：A new diagnostic system for assessing pulpitis and subsequent treatment needs"
+    },
+    "18": {
+      "full": "Demant S， Dabelsteen S， Bjørndal L. A macroscopic and histological analysis of radiographically well ‐ defined deep and extremely deep carious lesions：Carious lesion characteristics as indicators of the level of bacterial penetration and pulp response ［J］. Int Endod J，2021，54（3）：319‐330. DOI：10.1111/iej.13424. -",
+      "title": "A macroscopic and histological analysis of radiographically well ‐ defined deep and extremely deep carious lesions：Carious lesion characteristics as indicators of the level of bacterial penetration and pulp response"
+    },
+    "19": {
+      "full": "Careddu R，Duncan HF. A prospective clinical study investigating the effectiveness of partial pulpotomy after relating preoperative symptoms to a new and established classification of pulpitis［J］. Int Endod J，2021，54（12）：2156‐2172. DOI：10.1111/iej.13629. -",
+      "title": "A prospective clinical study investigating the effectiveness of partial pulpotomy after relating preoperative symptoms to a new and established classification of pulpitis"
+    },
+    "20": {
+      "full": "Kahler B，Taha NA，Lu J，et al. Vital pulp therapy for permanent teeth with diagnosis of irreversible pulpitis：Biological basis and - outcome［J］. Aust Dent J，2023，68（Suppl 1）：S110‐S122. DOI： 10.1111/adj.12997. -",
+      "title": "Vital pulp therapy for permanent teeth with diagnosis of irreversible pulpitis：Biological basis and - outcome"
+    },
+    "21": {
+      "full": "刘红艳，郑思怡，韦曦. 不可复性牙髓炎的活髓保存治疗：生物 学基础与临床进展［J］. 口腔医学，2024，44（6）：401‐407. DOI： 10.13591/j.cnki.kqyx.2024.06.001. -",
+      "title": "不可复性牙髓炎的活髓保存治疗：生物 学基础与临床进展"
+    },
+    "22": {
+      "full": "Aminabadi NA，Parto M，Emamverdizadeh P，et al. Pulp bleeding color is an indicator of clinical and histohematologic status of primary teeth［J］. Clin Oral Investig，2017，21（5）：1831‐1841. DOI：10.1007/s00784‐017‐2098‐y. -",
+      "title": "Pulp bleeding color is an indicator of clinical and histohematologic status of primary teeth"
+    },
+    "23": {
+      "full": "Linsuwanont P，Wimonsutthikul K，Pothimoke U，et al. Treatment outcomes of mineral trioxide aggregate pulpotomy in vital permanent teeth with carious pulp exposure：The retrospective study［J］. J Endod，2017，43（2）：225‐230. DOI：10.1016/j.joen. 2016.10.027. -",
+      "title": "Treatment outcomes of mineral trioxide aggregate pulpotomy in vital permanent teeth with carious pulp exposure：The retrospective study"
+    },
+    "24": {
+      "full": "Philip N，Suneja B. Minimally invasive endodontics：A new era for pulpotomy in mature permanent teeth［J］. Br Dent J，2022， 233（12）：1035‐1041. DOI：10.1038/s41415‐022‐5316‐1. -",
+      "title": "Minimally invasive endodontics：A new era for pulpotomy in mature permanent teeth"
+    },
+    "25": {
+      "full": "Santos JM，Pereira JF，Marques A，et al. Vital pulp therapy in permanent mature posterior teeth with symptomatic irreversible pulpitis：A systematic review of treatment outcomes［J］. Medicina （Kaunas），2021，57（6）：573. DOI：10.3390/medicina57060573. -",
+      "title": "Vital pulp therapy in permanent mature posterior teeth with symptomatic irreversible pulpitis：A systematic review of treatment outcomes"
+    },
+    "26": {
+      "full": "Cankar K，Vidmar J，Nemeth L，et al. T2 mapping as a tool for assessment of dental pulp response to caries progression：An in vivo MRI study［J］. Caries Res，2020，54（1）：24 ‐35. DOI： 10.1159/000501901. -",
+      "title": "T2 mapping as a tool for assessment of dental pulp response to caries progression：An in vivo MRI study"
+    },
+    "27": {
+      "full": "Nemeth L，Birk L，Birk L，et al. Laser‐Doppler microvascular flow of dental pulp in relation to caries progression［J］. Lasers Med Sci，2022，37（3）：1549‐1557. DOI：10.1007/s10103‐021‐ 03402‐1. -",
+      "title": "Laser‐Doppler microvascular flow of dental pulp in relation to caries progression"
+    },
+    "28": {
+      "full": "Yang K，Guo F，Zhou Z，et al. Laser doppler flowmetry to detect pulp vitality，clinical reference range and coincidence rate for pulpal blood flow in permanent maxillary incisors in Chinese children：A clinical study［J］. BMC Oral Health，2023，23（1）： 283. DOI：10.1186/s12903‐023‐02747‐z. -",
+      "title": "Laser doppler flowmetry to detect pulp vitality，clinical reference range and coincidence rate for pulpal blood flow in permanent maxillary incisors in Chinese children：A clinical study"
+    },
+    "29": {
+      "full": "廖静，刘思毅. 牙髓炎诊断系统和牙髓状态评估方法的研究进 展［J］. 中华口腔医学杂志，2025，60（11）：1225‐1231. DOI： 10.3760/cma.j.cn112144‐20250604‐00204. -",
+      "title": "牙髓炎诊断系统和牙髓状态评估方法的研究进 展"
+    },
+    "30": {
+      "full": "Chen J，Liu S，Gong W，et al. Screening for objective indicators in pulp blood to distinguish the degree of pulpitis［J］. Clin Oral Investig，2025，29（11）：544. DOI：10.1007/s00784‐025‐06632‐7. -",
+      "title": "Screening for objective indicators in pulp blood to distinguish the degree of pulpitis"
+    },
+    "31": {
+      "full": "Rechenberg DK，Galicia JC，Peters OA. Biological markers for pulpal inflammation：A systematic review［J］. PLoS One，2016， 11（11）：e0167289. DOI：10.1371/journal.pone.0167289. -",
+      "title": "Biological markers for pulpal inflammation：A systematic review"
+    },
+    "32": {
+      "full": "Nawal RR， Yadav S， Duncan HF， et al. Discriminatory performance of the pulpal inflammatory biomarkers；interleukin‐ 8 and TNF‐α in patients with symptoms indicative of reversible and irreversible pulpitis：A diagnostic accuracy study［J］. Int Endod J，2024，57（9）：1200‐1211. DOI：10.1111/iej.14078. -",
+      "title": "Discriminatory performance of the pulpal inflammatory biomarkers；interleukin‐ 8 and TNF‐α in patients with symptoms indicative of reversible and irreversible pulpitis：A diagnostic accuracy study"
+    },
+    "33": {
+      "full": "Sabeti MA，Nikghalb K，Pakzad R，et al. The relationship between pulpal diagnostic conditions and potential inflammatory biomarkers［J］. Int Endod J，2026，59（1）：23‐37. DOI：10.1111/ iej.70030. -",
+      "title": "The relationship between pulpal diagnostic conditions and potential inflammatory biomarkers"
+    },
+    "34": {
+      "full": "Loo A，Cen R，Wang J，et al. Symptom correlation and spatial - distribution of inflammatory mediators in pulpitis：A preliminary study［J］. Int Endod J，2025，58（10）：1565‐1581. DOI：10.1111/ iej.14275. -",
+      "title": "Symptom correlation and spatial - distribution of inflammatory mediators in pulpitis：A preliminary study"
+    },
+    "35": {
+      "full": "Sabeti MA，Nikghalb KD，Pakzad R，et al. Expression of selected inflammatory mediators with different clinical characteristics of pulpal inflammation［J］. J Endod，2024，50（3）：336‐343. DOI： 10.1016/j.joen.2023.11.016. -",
+      "title": "Expression of selected inflammatory mediators with different clinical characteristics of pulpal inflammation"
+    },
+    "36": {
+      "full": "Sharma R，Kumar V，Logani A，et al. Association between concentration of active MMP ‐9 in pulpal blood and pulpotomy outcome in permanent mature teeth with irreversible pulpitis：A preliminary study［J］. Int Endod J，2021，54（4）：479‐489. DOI： 10.1111/iej.13437. -",
+      "title": "Association between concentration of active MMP ‐9 in pulpal blood and pulpotomy outcome in permanent mature teeth with irreversible pulpitis：A preliminary study"
+    },
+    "37": {
+      "full": "Ha HT，Kosmynina S，Verocq A，et al. Human atlas of tooth decay progression：Identification of cellular mechanisms driving the switch from dental pulp repair toward irreversible pulpitis［J］. Adv Sci（Weinh），2026，13（8）：e10096. DOI：10.1002/advs. 202510096. -",
+      "title": "Human atlas of tooth decay progression：Identification of cellular mechanisms driving the switch from dental pulp repair toward irreversible pulpitis"
+    },
+    "38": {
+      "full": "Brizuela C，Meza G，Mercadé M，et al. Inflammatory biomarkers in dentinal fluid as an approach to molecular diagnostics in pulpitis［J］. Int Endod J，2020，53（9）：1181‐1191. DOI：10. 1111/iej.13343. -",
+      "title": "Inflammatory biomarkers in dentinal fluid as an approach to molecular diagnostics in pulpitis"
+    },
+    "39": {
+      "full": "Lin L，Dong H，Lai F，et al. circ_0002456/FUS interaction inhibits NF ‐ κB signaling to attenuate DNA damage and inflammatory responses in hDPSCs［J］. Stem Cell Res Ther，2025，16（1）：276. DOI：10.1186/s13287‐025‐04391‐6. -",
+      "title": "circ_0002456/FUS interaction inhibits NF ‐ κB signaling to attenuate DNA damage and inflammatory responses in hDPSCs"
+    },
+    "40": {
+      "full": "Lai F，Zhang J，Lin L，et al. The circ_0042103/TAF15/NER axis regulates inflammation and DNA damage in pulpitis［J］. Stem Cell Res Ther，2026，17（1）：29. DOI：10.1186/s13287‐025‐ 04817‐1. -",
+      "title": "The circ_0042103/TAF15/NER axis regulates inflammation and DNA damage in pulpitis"
+    },
+    "41": {
+      "full": "Zhang Y，Huang X，Luo Y，et al. A carbon dot nanozyme hydrogel enhances pulp regeneration activity by regulating oxidative stress in dental pulpitis［J］. J Nanobiotechnology， 2024，22（1）：537. DOI：10.1186/s12951‐024‐02810‐z. -",
+      "title": "A carbon dot nanozyme hydrogel enhances pulp regeneration activity by regulating oxidative stress in dental pulpitis"
+    },
+    "42": {
+      "full": "Ok CY，Park S，Jang HO，et al. Involvement of the visfatin/toll‐ like receptor 4 signaling axis in human dental pulp cell senescence：Protection via toll ‐ like receptor 4 blockade［J］. J Dent Sci，2023，18（3）：1177‐1188. DOI：10.1016/j.jds.2022. 10.008. -",
+      "title": "Involvement of the visfatin/toll‐ like receptor 4 signaling axis in human dental pulp cell senescence：Protection via toll ‐ like receptor 4 blockade"
+    },
+    "43": {
+      "full": "Hirsch V，Wolgin M，Mitronin AV，et al. Inflammatory cytokines in normal and irreversibly inflamed pulps：A systematic review ［J］. Arch Oral Biol，2017，82：38‐46. DOI：10.1016/j.archoralbio. 2017.05.008. -",
+      "title": "Inflammatory cytokines in normal and irreversibly inflamed pulps：A systematic review"
+    },
+    "44": {
+      "full": "Muñoz P，Ruíz‐Pérez VH，Martínez‐Martínez A，et al. Rapid point‐of‐care quantification of high‐sensitivity C‐reactive protein in pulpal blood as an objective biomarker for irreversible pulpitis： A pilot diagnostic accuracy study［J］. Front Dent Med，2026，6： 1729860. DOI：10.3389/fdmed.2025.1729860. -",
+      "title": "Rapid point‐of‐care quantification of high‐sensitivity C‐reactive protein in pulpal blood as an objective biomarker for irreversible pulpitis： A pilot diagnostic accuracy study"
+    },
+    "45": {
+      "full": "Inda‐Webb ME，Jimenez M，Liu Q，et al. Sub‐1.4 cm3 capsule for detecting labile inflammatory biomarkers in situ［J］. Nature， 2023，620（7973）：386‐392. DOI：10.1038/s41586‐023‐06369‐x. -",
+      "title": "Sub‐1.4 cm3 capsule for detecting labile inflammatory biomarkers in situ"
+    },
+    "46": {
+      "full": "Abdelaziz MS，Abdelsalam N，Fayyad DM. Assessment of the number of missing tooth surfaces and the molecular findings on the outcomes of vital pulp therapy using 2 calcium silicate materials：A randomized clinical study［J］. J Endod，2025，51 （6）：658‐665. DOI：10.1016/j.joen.2025.03.001. -",
+      "title": "Assessment of the number of missing tooth surfaces and the molecular findings on the outcomes of vital pulp therapy using 2 calcium silicate materials：A randomized clinical study"
+    },
+    "47": {
+      "full": "Rai A，Jain S，Khan MA，et al. Biomarkers of reversible and irreversible pulpitis：Systematic review and Meta‐analysis［J］. J Pharm Bioallied Sci， 2025，17（Suppl 1）：S188 ‐ S190. DOI： 10.4103/jpbs.jpbs_1806_24. -",
+      "title": "Biomarkers of reversible and irreversible pulpitis：Systematic review and Meta‐analysis"
+    },
+    "48": {
+      "full": "Gong X，Zhu L，Wang C，et al. Dental pulp stem cells orchestrate macrophage polarisation in pulpitis via mitochondrial transfer［J］. Int Endod J，2026，59（4）：694‐707. DOI：10.1111/iej.70097. -",
+      "title": "Dental pulp stem cells orchestrate macrophage polarisation in pulpitis via mitochondrial transfer"
+    },
+    "49": {
+      "full": "Hu P，Chen Y，Long P，et al. From cells to animals：Connexin43 suppression enhances autophagic flux to restore odontogenesis in inflamed dental pulp［J］. Int Endod J，2026，59（1）：134‐152. DOI：10.1111/iej.70044. -",
+      "title": "From cells to animals：Connexin43 suppression enhances autophagic flux to restore odontogenesis in inflamed dental pulp"
+    },
+    "50": {
+      "full": "Barthel CR，Rosenkranz B，Leuenberg A，et al. Pulp capping of carious exposures：Treatment outcome after 5 and 10 years：A retrospective study［J］. J Endod，2000，26（9）：525‐528. DOI： 10.1097/00004770‐200009000‐00010. -",
+      "title": "Pulp capping of carious exposures：Treatment outcome after 5 and 10 years：A retrospective study"
+    },
+    "51": {
+      "full": "Aeinehchi M，Eslami B，Ghanbariha M，et al. Mineral trioxide aggregate（MTA）and calcium hydroxide as pulp‐capping agents in human teeth：A preliminary report［J］. Int Endod J，2003，36 （3）：225‐231. DOI：10.1046/j.1365‐2591.2003.00652.x. -",
+      "title": "Mineral trioxide aggregate（MTA）and calcium hydroxide as pulp‐capping agents in human teeth：A preliminary report"
+    },
+    "52": {
+      "full": "Yeh HW，Chiang CF，Chen PH，et al. Axl involved in mineral trioxide aggregate induces macrophage polarization［J］. J Endod， 2018，44（10）：1542‐1548. DOI：10.1016/j.joen.2018.07.005. -",
+      "title": "Axl involved in mineral trioxide aggregate induces macrophage polarization"
+    },
+    "53": {
+      "full": "Kim YJ，Kim WJ，Bae SW，et al. Mineral trioxide aggregate ‐ induced AMPK activation stimulates odontoblastic differentiation of human dental pulp cells［J］. Int Endod J，2021，54（5）：753‐ 767. DOI：10.1111/iej.13460. -",
+      "title": "Mineral trioxide aggregate ‐ induced AMPK activation stimulates odontoblastic differentiation of human dental pulp cells"
+    },
+    "54": {
+      "full": "Wang MC，Tu HF，Chang KW，et al. The molecular functions of Biodentine and mineral trioxide aggregate in lipopolysaccharide‐ induced inflamed dental pulp cells［J］. Int Endod J，2021，54 （8）：1317‐1327. DOI：10.1111/iej.13513. -",
+      "title": "The molecular functions of Biodentine and mineral trioxide aggregate in lipopolysaccharide‐ induced inflamed dental pulp cells"
+    },
+    "55": {
+      "full": "Chen YW，Ho CC，Huang TH，et al. The ionic products from mineral trioxide aggregate‐induced odontogenic differentiation of dental pulp cells via activation of the Wnt/β ‐ catenin signaling pathway［J］. J Endod，2016，42（7）：1062‐1069. DOI：10.1016/j. joen.2016.04.019. -",
+      "title": "The ionic products from mineral trioxide aggregate‐induced odontogenic differentiation of dental pulp cells via activation of the Wnt/β ‐ catenin signaling pathway"
+    },
+    "56": {
+      "full": "Kimura M，Sase T，Higashikawa A，et al. High pH ‐ sensitive TRPA1 activation in odontoblasts regulates mineralization［J］. J Dent Res，2016，95（9）：1057‐1064. DOI：10.1177/0022034516 644702. -",
+      "title": "High pH ‐ sensitive TRPA1 activation in odontoblasts regulates mineralization"
+    },
+    "57": {
+      "full": "Sarkar NK，Caicedo R，Ritwik P，et al. Physicochemical basis of the biologic properties of mineral trioxide aggregate［J］. J Endod， 2005，31（2）：97 ‐ 100. DOI：10.1097/01. don. 0000133155. 04468.41. -",
+      "title": "Physicochemical basis of the biologic properties of mineral trioxide aggregate"
+    },
+    "58": {
+      "full": "Tzanetakis GN，Papanakou S，Koletsi D，et al. Outcome of partial pulpotomy in immature permanent teeth with symptomatic irreversible pulpitis：A prospective case series assessment［J］. J Endod，2023，49（9）：1120‐1128. DOI：10.1016/j.joen.2023. 07.003. -",
+      "title": "Outcome of partial pulpotomy in immature permanent teeth with symptomatic irreversible pulpitis：A prospective case series assessment"
+    },
+    "59": {
+      "full": "Taha NA， Ahmad MB， Ghanim A. Assessment of mineral trioxide aggregate pulpotomy in mature permanent teeth with carious exposures［J］. Int Endod J，2017，50（2）：117‐125. DOI： - 10.1111/iej.12605. -",
+      "title": "Assessment of mineral trioxide aggregate pulpotomy in mature permanent teeth with carious exposures"
+    },
+    "60": {
+      "full": "Zhang J，Zhu LX，Cheng X，et al. Promotion of dental pulp cell migration and pulp repair by a bioceramic putty involving FGFR‐ mediated signaling pathways［J］. J Dent Res，2015，94（6）：853‐ 862. DOI：10.1177/0022034515572020. -",
+      "title": "Promotion of dental pulp cell migration and pulp repair by a bioceramic putty involving FGFR‐ mediated signaling pathways"
+    },
+    "61": {
+      "full": "Lu J，Li Z，Wu X，et al. iRoot BP Plus promotes osteo/ odontogenic differentiation of bone marrow mesenchymal stem cells via MAPK pathways and autophagy［J］. Stem Cell Res Ther，2019，10（1）：222. DOI：10.1186/s13287‐019‐1345‐3. -",
+      "title": "iRoot BP Plus promotes osteo/ odontogenic differentiation of bone marrow mesenchymal stem cells via MAPK pathways and autophagy"
+    },
+    "62": {
+      "full": "Luo Z，Kohli MR，Yu Q，et al. Biodentine induces human dental pulp stem cell differentiation through mitogen ‐ activated protein kinase and calcium ‐/calmodulin ‐ dependent protein kinase Ⅱ pathways［J］. J Endod，2014，40（7）：937‐942. DOI：10.1016/j. joen.2013.11.022. -",
+      "title": "Biodentine induces human dental pulp stem cell differentiation through mitogen ‐ activated protein kinase and calcium ‐/calmodulin ‐ dependent protein kinase Ⅱ pathways"
+    },
+    "63": {
+      "full": "Wang MC，Chang KW，Lin SC，et al. Biodentine but not MTA induce DSPP expression of dental pulp cells with different severity of LPS ‐ induced inflammation［J］. Clin Oral Investig， 2023，27（3）：1207‐1214. DOI：10.1007/s00784‐022‐04734‐0. -",
+      "title": "Biodentine but not MTA induce DSPP expression of dental pulp cells with different severity of LPS ‐ induced inflammation"
+    },
+    "64": {
+      "full": "Abuarqoub D，Aslam N，Zaza R，et al. The immunomodulatory and regenerative effect of BiodentineTM on human THP ‐1 cells and dental pulp stem cells：In vitro study［J］. Biomed Res Int， 2022：2656784. DOI：10.1155/2022/2656784. -",
+      "title": "The immunomodulatory and regenerative effect of BiodentineTM on human THP ‐1 cells and dental pulp stem cells：In vitro study"
+    },
+    "65": {
+      "full": "Zeng Q，Zhou C，Li M，et al. Concentrated growth factor combined with iRoot BP Plus promotes inflamed pulp repair：An in vitro and in vivo study［J］. BMC Oral Health，2023，23（1）： 225. DOI：10.1186/s12903‐023‐02903‐5. -",
+      "title": "Concentrated growth factor combined with iRoot BP Plus promotes inflamed pulp repair：An in vitro and in vivo study"
+    },
+    "66": {
+      "full": "Rao Q，Kuang J，Mao C，et al. Comparison of iRoot BP Plus and calcium hydroxide as pulpotomy materials in permanent incisors with complicated crown fractures：A retrospective study［J］. J Endod，2020，46（3）：352‐357. DOI：10.1016/j.joen.2019.12.010. -",
+      "title": "Comparison of iRoot BP Plus and calcium hydroxide as pulpotomy materials in permanent incisors with complicated crown fractures：A retrospective study"
+    },
+    "67": {
+      "full": "Holiel AA，Mahmoud EM，Abdel ‐ Fattah WM. Tomographic evaluation of direct pulp capping using a novel injectable treated dentin matrix hydrogel：A 2‐year randomized controlled clinical trial［J］. Clin Oral Investig，2021，25（7）：4621‐4634. DOI：10. 1007/s00784‐021‐03775‐1. -",
+      "title": "Tomographic evaluation of direct pulp capping using a novel injectable treated dentin matrix hydrogel：A 2‐year randomized controlled clinical trial"
+    },
+    "68": {
+      "full": "Liu J，Chen CA，Zhu X，et al. Potential of tailored amorphous multiporous calcium silicate glass for pulp capping regenerative endodontics：A preliminary assessment［J］. J Dent，2021，109： 103655. DOI：10.1016/j.jdent.2021.103655. -",
+      "title": "Potential of tailored amorphous multiporous calcium silicate glass for pulp capping regenerative endodontics：A preliminary assessment"
+    },
+    "69": {
+      "full": "Araújo IJS，Guimarães GN，Machado RA，et al. Self‐assembly peptide P（11）‐4 induces mineralization and cell ‐ migration of odontoblast‐like cells［J］. J Dent，2022，121：104111. DOI：10. 1016/j.jdent.2022.104111. -",
+      "title": "Self‐assembly peptide P（11）‐4 induces mineralization and cell ‐ migration of odontoblast‐like cells"
+    },
+    "70": {
+      "full": "Elasser DM，Sobhy SM，Taha RRO，et al. Natural nanoparticles versus the gold standard in direct pulp capping：A randomized clinical trial［J］. Saudi Dent J，2025，37：7. DOI：10.1007/s44445‐ 025‐00009‐y. -",
+      "title": "Natural nanoparticles versus the gold standard in direct pulp capping：A randomized clinical trial"
+    },
+    "71": {
+      "full": "İnci MA，Korkut E. Is bioactive glass an effective agent in pulp‐ capping treatments?：A randomized controlled clinical trial with one‐year follow‐up［J］. J Contemp Dent Pract，2022，23（11）： 1128‐1135. DOI：10.5005/jp‐journals‐10024‐3428. -",
+      "title": "Is bioactive glass an effective agent in pulp‐ capping treatments?：A randomized controlled clinical trial with one‐year follow‐up"
+    },
+    "72": {
+      "full": "Kunert M，Lukomska‐Szymanska M. Bio‐inductive materials in direct and indirect pulp capping：A review article［J］. Materials （Basel），2020，13（5）：1204. DOI：10.3390/ma13051204 -",
+      "title": "Bio‐inductive materials in direct and indirect pulp capping：A review article"
+    },
+    "73": {
+      "full": "Guo Y，Chen F，Wang Q，et al. Polydopamine@Zinc oxide coated macroporous membrane for antibacterial protection and early pulp repair in pulpitis［J］. Mater Today Bio，2025，34： 102109. DOI：10.1016/j.mtbio.2025.102109. -",
+      "title": "Polydopamine@Zinc oxide coated macroporous membrane for antibacterial protection and early pulp repair in pulpitis"
+    },
+    "74": {
+      "full": "郑颖，陈雪姣，王倩. 单向滤膜减压保髓新技术用于不可复性 牙髓炎活髓保存治疗 1 例［J］. 中华口腔医学杂志，2024，59 （1）：85‐88. DOI：10.3760/cma.j.cn112144‐20230912‐00154. -",
+      "title": "单向滤膜减压保髓新技术用于不可复性 牙髓炎活髓保存治疗 1 例"
+    },
+    "75": {
+      "full": "Qiao L，Zheng X，Xie C，et al. Bioactive materials in vital pulp therapy：Promoting dental pulp repair through inflammation modulation［J］. Biomolecules，2025，15（2）：258. DOI：10.3390/ biom15020258. -",
+      "title": "Bioactive materials in vital pulp therapy：Promoting dental pulp repair through inflammation modulation"
+    },
+    "76": {
+      "full": "Yavuz Y，Kotanli S，Dogan MS，et al. Examination of 6 and 12 month follow ‐ up of calcium hydroxide and calcium silicate materials used in direct and indirect pulp capping［J］. Adv Clin Exp Med，2025，34（8）：1289‐1298. DOI：10.17219/acem/194504. -",
+      "title": "Examination of 6 and 12 month follow ‐ up of calcium hydroxide and calcium silicate materials used in direct and indirect pulp capping"
+    },
+    "77": {
+      "full": "Taha NA，Al‐Khatib H. 4‐Year Follow‐up of full pulpotomy in symptomatic mature permanent teeth with carious pulp exposure using a stainproof calcium silicate‐based material［J］. J Endod， 2022，48（1）：87‐95. DOI：10.1016/j.joen.2021.09.008. -",
+      "title": "4‐Year Follow‐up of full pulpotomy in symptomatic mature permanent teeth with carious pulp exposure using a stainproof calcium silicate‐based material"
+    },
+    "78": {
+      "full": "Taha NA，Abdelkhader SZ. Outcome of full pulpotomy using Biodentine in adult patients with symptoms indicative of irreversible pulpitis［J］. Int Endod J，2018，51（8）：819‐828. DOI：10.1111/iej.12903. -",
+      "title": "Outcome of full pulpotomy using Biodentine in adult patients with symptoms indicative of irreversible pulpitis"
+    },
+    "79": {
+      "full": "Jassal A，Nawal RR，Yadav S，et al. Outcome of partial and full pulpotomy in cariously exposed mature molars with symptoms indicative of irreversible pulpitis：A randomized controlled trial ［J］. Int Endod J，2023，56（3）：331 ‐ 344. DOI：10.1111/iej. 13872. -",
+      "title": "Outcome of partial and full pulpotomy in cariously exposed mature molars with symptoms indicative of irreversible pulpitis：A randomized controlled trial"
+    },
+    "80": {
+      "full": "Shah A，Pv A，Sharma S，et al. The outcome of full and deep pulpotomy in teeth with extremely deep carious lesion and symptomatic irreversible pulpitis：A non ‐ inferiority randomized controlled trial［J］. Int Endod J，2025，58（5）：715‐726. DOI： 10.1111/iej.14205. -",
+      "title": "The outcome of full and deep pulpotomy in teeth with extremely deep carious lesion and symptomatic irreversible pulpitis：A non ‐ inferiority randomized controlled trial"
+    },
+    "81": {
+      "full": "Tan SY，Yu VSH，Lim KC，et al. Long‐term pulpal and restorative outcomes of pulpotomy in mature permanent teeth［J］. J Endod， 2020，46（3）：383‐390. DOI：10.1016/j.joen.2019.11.009. -",
+      "title": "Long‐term pulpal and restorative outcomes of pulpotomy in mature permanent teeth"
+    },
+    "82": {
+      "full": "冼雪红，李琛，蒋宏伟. 微创牙髓治疗后的牙体修复界面处理 细节考量［J］. 中国实用口腔科杂志，2018，11（4）：204‐208. DOI：10.19538/j.kq.2018.04.003. -",
+      "title": "微创牙髓治疗后的牙体修复界面处理 细节考量"
+    },
+    "83": {
+      "full": "Khanagar SB，Alfadley A，Alfouzan K，et al. Developments and performance of artificial intelligence models designed for application in endodontics：A systematic review［J］. Diagnostics （Basel），2023，13（3）：414. DOI：10.3390/diagnostics13030414. -",
+      "title": "Developments and performance of artificial intelligence models designed for application in endodontics：A systematic review"
+    },
+    "84": {
+      "full": "Hung KF，Ai QYH，Wong LM，et al. Current applications of deep learning and radiomics on CT and CBCT for maxillofacial diseases［J］. Diagnostics， 2022，13（1）：110. DOI：10.3390/ diagnostics13010110.",
+      "title": "Current applications of deep learning and radiomics on CT and CBCT for maxillofacial diseases"
+    }
+  }
+}

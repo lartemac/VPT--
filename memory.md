@@ -1,7 +1,8 @@
 # Memory Index
 
 - [FaceFusion 本地人脸处理工具](reference_facefusion.md) — 开源免费 AI 人脸处理平台（换脸/唇形同步/增强），完全本地运行，用户硬件可支持
-- [FastGPT 知识库 RAG 修复完成](project_fastgpt.md) — 空Cites已修复（dimensions补丁），待验证对话功能
+- [FastGPT 已清理](project_fastgpt.md) — 2026-05-05完全删除（容器+镜像+卷+本地文件），Docker仅保留GPT Academic
+- [opendataloader-pdf 安装](project_opendataloader_pdf.md) — PDF解析工具，Benchmark #1（0.907），JDK17装在D盘
 - [MiniMind 从零训练小模型](project_minimind.md) — 47.3k star，64M参数GPT从零训练，已评估通过待研究
 - [文献综述表格填写工作流](feedback_literature_table.md) — 批量PDF论文提取+Excel填表标准流程，NCCL项目验证高质量
 - [GPT Academic 本地部署](project_gpt_academic.md) — Docker部署，智谱GLM API，20篇NCCL论文已上传待分析
@@ -9,3 +10,5 @@
 - [基金数据库项目（场内+场外）](project_funddata.md) — Tushare Pro 场内1138万+场外1326万条数据，含多维度筛选工具
 - [基金研究 Skill](skill_fund_research.md) — 单支基金全面分析标准工作流（v3：Tushare+搜索+Python生成HTML+净值曲线图），016520/024240/017998/006195/001917验证通过
 - [用户持仓与投资偏好](user_portfolio.md) — 低频长期持有风格，当前持仓001917（盈利30%考虑加仓），已清仓024240/006533
+- [Agency-Agents 已安装](reference_agency_agents.md) — 160个AI专家agent已装到~/.claude/agents/（MIT），覆盖产品/工程/学术/金融等18领域
+- [CLI-Anything 备用](reference_cli_anything.md) — 33.4k star CLI封装器（Apache 2.0），源码D:\CLI-Anything，需要时再安装插件

@@ -9,8 +9,16 @@ type: project
 ### 工作流概览
 1. **PDF解析**：opendataloader-pdf（需JDK17）→ 干净Markdown
 2. **断言提取**：Python正则提取正文+表格中带[n]角标的句子 → JSON
-3. **并行验证**：4个后台Agent同时通过PubMed API验证不同批次
+3. **智能分组并行验证**：根据断言数量动态拆分Agent数量（2-10个），通过PubMed API验证
 4. **报告生成**：汇总为HTML报告保存到桌面
+
+### 智能拆分逻辑
+- ≤15条断言 → 2个Agent
+- 16-40条 → 3个Agent
+- 41-80条 → 4个Agent
+- 81-130条 → 6个Agent
+- >130条 → 最多10个Agent
+- 原则：每个Agent负责12-18条，同一文献的多条断言尽量分到同一Agent避免重复检索
 
 ### Skill文件位置
 - `~/.claude/commands/verify-citations.md`

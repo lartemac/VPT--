@@ -15,3 +15,5 @@
 - [引用真实性检验 Skill](skill_citation_verification.md) — PDF论文引用验证标准流程（/verify-citations），智能分组Agent并行，已验证江千舟62条断言
 - [AI短视频自动生成工具](project_ai_short_video.md) — 4工具横评：MoneyPrinterTurbo(56k星/Colab云端零成本)首选，Pixelle-Video(AI原创画面)备选
 - [PDF转MD必须用opendataloader-pdf](feedback_opendataloader_pdf.md) — 用户明确要求：所有PDF转MD必须优先用opendataloader-pdf，不用其他方法
+- [Google Gemini API 不可作备用](feedback_google_api.md) — 已验证失败（2026-05-10），中国大陆网络环境不可靠，代理脚本已删除，唯一路径为智谱GLM
+- [DeepSeek API 切换配置](reference_deepseek_api.md) — 原生Anthropic兼容，无需代理，预置settings-deepseek.json，改文件名即可切换

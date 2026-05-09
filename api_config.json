@@ -1,0 +1,32 @@
+{
+  "version": "3.0.0",
+  "updated": "2026-04-16",
+  "note": "AI API 配置文件 - 智谱主 + Gemini 备用",
+  "glm": {
+    "name": "智谱 GLM-5.1",
+    "api_key": "fce5ed65ff984855a782c0ac23f9d331.t4D6sBCa0mWoKLjQ",
+    "base_url": "https://open.bigmodel.cn/api/paas/v4/",
+    "anthropic_url": "https://open.bigmodel.cn/api/anthropic",
+    "latest_model": "glm-5.1"
+  },
+  "gemini": {
+    "name": "Google Gemini 2.5 Flash",
+    "api_key": "AIzaSyD9i-DUgNoBoJjfvRF7k2-HPzhIRP-UQyg",
+    "model": "gemini-2.5-flash",
+    "proxy_port": 4000,
+    "role": "fallback"
+  },
+  "deepseek": {
+    "name": "DeepSeek V4",
+    "api_key": "见 settings-deepseek.json（本地 .claude 目录，不入 Git）",
+    "base_url": "https://api.deepseek.com/anthropic",
+    "main_model": "deepseek-v4-pro[1m]",
+    "light_model": "deepseek-v4-flash",
+    "role": "backup"
+  },
+  "tushare": {
+    "name": "Tushare Pro",
+    "token": "e63bfa9a805512aca05dcca1df35d035618f2aba8fc946a36a13b94e",
+    "mcp_url": "https://api.tushare.pro/mcp/?token=e63bfa9a805512aca05dcca1df35d035618f2aba8fc946a36a13b94e"
+  }
+}

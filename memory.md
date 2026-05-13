@@ -18,4 +18,4 @@
 - [Google Gemini API 不可作备用](feedback_google_api.md) — 已验证失败（2026-05-10），中国大陆网络环境不可靠，代理脚本已删除，唯一路径为智谱GLM
 - [DeepSeek API 切换配置](reference_deepseek_api.md) — 原生Anthropic兼容，无需代理，预置settings-deepseek.json，改文件名即可切换
 - [GCF龈沟液文献综述项目](project_gcf_literature_review.md) — 9篇PDF→HTML报告+16张高清PNG图表（2026-05-11），macOS JDK17+opendataloader-pdf已安装
-- [四相轮动回测项目](project_rotation_backtest.md) — 两轮回测（2024-2026策略对比+2020-2026长周期）+调仓计算器Excel，2026-05-12/13完成
+- [四相轮动回测项目](project_rotation_backtest.md) — 回测+调仓计算器+债基替换评估+蒙特卡洛压力测试(6场景×1万路径)，2026-05-14更新

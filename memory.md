@@ -9,7 +9,7 @@
 - [智谱API双通道计费机制](reference_zhipu_api_billing.md) — Coding Plan套餐与原生API独立计费，充值后可用GLM-5.1
 - [基金数据库项目（场内+场外）](project_funddata.md) — Tushare Pro 场内1138万+场外1326万条数据，含多维度筛选工具
 - [基金研究 Skill](skill_fund_research.md) — 单支基金全面分析标准工作流（v3：Tushare+搜索+Python生成HTML+净值曲线图），016520/024240/017998/006195/001917验证通过
-- [用户持仓与投资偏好](user_portfolio.md) — 四相轮动组合策略（债基+量化+黄金+美股+长电），25万仓位，策略一每季提取6000
+- [用户持仓与投资偏好](user_portfolio.md) — 低频长期持有风格，当前持仓001917（盈利30%考虑加仓），已清仓024240/006533
 - [Agency-Agents 已安装](reference_agency_agents.md) — 160个AI专家agent已装到~/.claude/agents/（MIT），覆盖产品/工程/学术/金融等18领域
 - [CLI-Anything 备用](reference_cli_anything.md) — 33.4k star CLI封装器（Apache 2.0），源码D:\CLI-Anything，需要时再安装插件
 - [引用真实性检验 Skill](skill_citation_verification.md) — PDF论文引用验证标准流程（/verify-citations），智能分组Agent并行，已验证江千舟62条断言

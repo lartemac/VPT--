@@ -20,3 +20,5 @@
 - [GCF龈沟液文献综述项目](project_gcf_literature_review.md) — 9篇PDF→HTML报告+16张高清PNG图表（2026-05-11），macOS JDK17+opendataloader-pdf已安装
 - [四相轮动回测项目](project_rotation_backtest.md) — 回测+调仓计算器+债基替换评估+蒙特卡洛压力测试(6场景×1万路径)，2026-05-14更新
 - [小米MiMo API Claude Code配置](reference_mimo_claude_code.md) — settings-mimo.json已创建，支持按量付费/Token Plan双模式，1M上下文，2026-05-13
+- [Windows待办：superpowers插件](todo_windows_superpowers.md) — 更新marketplace+安装superpowers插件，Mac端已完成v5.1.0（2026-05-14）
+- [Mac模型切换注意事项](feedback_mac_model_switch.md) — settings.local.json被进程自动管理，切换时必须删整个文件而非只删env（2026-05-14）

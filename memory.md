@@ -22,3 +22,4 @@
 - [小米MiMo API Claude Code配置](reference_mimo_claude_code.md) — settings-mimo.json已创建，支持按量付费/Token Plan双模式，1M上下文，2026-05-13
 - [Windows待办：superpowers插件](todo_windows_superpowers.md) — 更新marketplace+安装superpowers插件，Mac端已完成v5.1.0（2026-05-14）
 - [Mac模型切换注意事项](feedback_mac_model_switch.md) — settings.local.json被进程自动管理，切换时必须删整个文件而非只删env（2026-05-14）
+- [知乎搜索 MCP 接入](project_zhihu_mcp.md) — 全网搜索+知乎搜索MCP已配到三个settings文件，Bearer鉴权，每日各1000次额度（2026-05-17）

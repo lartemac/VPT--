@@ -22,4 +22,5 @@
 - [小米MiMo API Claude Code配置](reference_mimo_claude_code.md) — settings-mimo.json已创建，支持按量付费/Token Plan双模式，1M上下文，2026-05-13
 - [Windows待办：superpowers插件](todo_windows_superpowers.md) — 更新marketplace+安装superpowers插件，Mac端已完成v5.1.0（2026-05-14）
 - [Mac模型切换注意事项](feedback_mac_model_switch.md) — settings.local.json被进程自动管理，切换时必须删整个文件而非只删env（2026-05-14）
+- [家庭收支预测模型 v3](project_family_budget_v3.md) — Sinking Fund浮动蓄水池+双模吃饭+60月压力测试，最终脚本输出嵌入式HTML报告（2026-05-27）
 - [知乎全网搜索（通用联网搜索）](project_zhihu_mcp.md) — **所有联网搜索优先用此工具**，Bash调用search.py，Windows/Mac双平台，每日1000次（2026-05-19）

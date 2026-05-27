@@ -1,16 +1,18 @@
 ---
 name: 引用真实性检验 Skill
-description: 中文学术论文引用文献真实性检验标准工作流：PDF解析→断言提取→PubMed验证→HTML报告，已验证62条断言
+description: 多格式引用验证六步工作流：多格式→MD→两层提取→文献确认→分组验证→HTML报告，已验62断言+12文献（2026-05-27重大升级）
 type: project
 ---
 
-## 引用真实性检验 Skill（2026-05-05 创建）
+## 引用真实性检验 Skill（2026-05-05 创建，2026-05-27 重大升级）
 
-### 工作流概览
-1. **PDF解析**：opendataloader-pdf（需JDK17）→ 干净Markdown
-2. **断言提取**：Python正则提取正文+表格中带[n]角标的句子 → JSON
-3. **智能分组并行验证**：根据断言数量动态拆分Agent数量（2-10个），通过PubMed API验证
-4. **报告生成**：汇总为HTML报告保存到桌面
+### 六步工作流
+1. **多格式→MD**：PDF(opendataloader-pdf) / .doc(Word COM/textutil) / .docx(pandoc) → 统一Markdown
+2. **两层统一提取**：①正则匹配所有方括号写法（不区分角标/正文）②上下文补充识别事实性陈述+追溯文献
+3. **文献确认**：生成断言-文献对应表 → 用户确认解析正确性/编号对应/遗漏/误提取 → 锁单
+4. **分组并行验证**：按断言数量动态拆分Agent（2-10个），PubMed API(英文)+WebSearch(中文)
+5. **HTML报告**：统计卡片+比例条+重点问题+逐条详情 → 保存桌面
+6. **更新Memory+GitHub同步**
 
 ### 智能拆分逻辑
 - ≤15条断言 → 2个Agent
@@ -18,11 +20,12 @@ type: project
 - 41-80条 → 4个Agent
 - 81-130条 → 6个Agent
 - >130条 → 最多10个Agent
-- 原则：每个Agent负责12-18条，同一文献的多条断言尽量分到同一Agent避免重复检索
+- 原则：每个Agent负责12-18条，同一文献尽量分到同一Agent
 
 ### Skill文件位置
-- `~/.claude/commands/verify-citations.md`
-- 调用方式：`/verify-citations [PDF路径]`
+- `~/.claude/commands/verify-citations.md`（执行文件）
+- `D:\cc-github\verify-citations.md`（仓库同步副本）
+- 调用方式：`/verify-citations [文件路径]`（支持 PDF / .doc / .docx / .txt）
 
 ### 验证标准
 - ✅准确：断言与摘要结论完全一致
@@ -66,5 +69,15 @@ type: project
 | 中文验证 | WebSearch多源交叉（CNKI/万方/百度学术/期刊官网） |
 | **判定标准** | **断言准确性**（准确/部分准确/不准确/无法验证） |
 
-## Why: 用户作为科研人员经常需要检验论文引用真实性，需可复用的标准流程；当输入格式不同时需灵活调整
-## How to apply: 当用户提供PDF论文要求检验引用时，使用 /verify-citations 命令启动标准流程；当用户提供.doc申请书时，采用变体流程直接检验参考文献列表
+### 2026-05-27 更新日志
+
+| 改动 | 说明 |
+|------|------|
+| 多格式支持 | 第一步从仅PDF扩展为 PDF/doc/docx/txt 四种格式 |
+| 统一提取 | 消除角标/非角标的二分法，两层策略覆盖所有引用写法 |
+| 文献确认 | 新增第三步，断言-文献对应表供用户确认后锁单 |
+| 文件入仓库 | verify-citations.md 纳入 D:\cc-github\ 实现跨平台同步 |
+| 中文验证 | 记录 WebSearch 局限性，负面结果不如 PubMed API 确定 |
+
+## Why: 用户作为科研人员+PM经常需要检验论文/申请书引用真实性，需可复用的完整流程；Skill随实际使用持续暴露设计缺陷并迭代改进
+## How to apply: 输入任意格式学术文件，使用 /verify-citations 命令启动六步流程

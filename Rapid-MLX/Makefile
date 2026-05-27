@@ -1,0 +1,81 @@
+.PHONY: help smoke check full benchmark update-baselines lint test stress soak clean
+
+# Pick the interpreter:
+#   1. Active venv ($VIRTUAL_ENV/bin/python) — wins so contributors using
+#      a 3.10/3.11/3.13 venv get their venv's python regardless of PATH.
+#   2. Versioned binaries that actually run a >=3.10 interpreter — we
+#      must run --version because pyenv shims appear on PATH for *every*
+#      version even if only one is installed, and macOS's bare 'python'
+#      is often system 3.9 (below requires-python).
+#   3. python3 last-resort fallback (lets the user see a clean error if
+#      nothing on the system meets the version requirement).
+# Override explicitly with: make smoke PY=python3.13
+PY ?= $(shell \
+  if [ -n "$$VIRTUAL_ENV" ] && [ -x "$$VIRTUAL_ENV/bin/python" ]; then \
+    echo "$$VIRTUAL_ENV/bin/python"; exit 0; \
+  fi; \
+  for cand in python3.13 python3.12 python3.11 python3.10 python3; do \
+    path=$$(command -v $$cand 2>/dev/null) || continue; \
+    "$$path" -c 'import sys; sys.exit(0 if sys.version_info >= (3,10) else 1)' \
+      2>/dev/null && echo "$$path" && exit 0; \
+  done; \
+  echo python3)
+HF_HUB_CACHE ?= $(shell echo $$HF_HUB_CACHE)
+DOCTOR := $(PY) -m vllm_mlx.cli doctor
+
+DEV_TEST := $(PY) scripts/dev_test.py
+
+help:
+	@echo "Rapid-MLX developer targets:"
+	@echo ""
+	@echo "  Dev testing (scripts/dev_test.py):"
+	@echo "    make lint               ruff lint (~10s)"
+	@echo "    make test               pytest unit suite (~30s)"
+	@echo "    make smoke              lint + unit (~1 min)"
+	@echo "    make stress             8-scenario stress test (needs server)"
+	@echo "    make soak               10-min agent soak test (needs server)"
+	@echo ""
+	@echo "  Doctor (regression harness — see harness/README.md):"
+	@echo "    make check              ~10 min, qwen3.5-4b (auto starts server)"
+	@echo "    make full               ~1-2 hr, 3 models + 11 agents"
+	@echo "    make benchmark          overnight, all local models"
+	@echo "    make update-baselines TIER=check  re-record baseline"
+	@echo ""
+	@echo "  Env: HF_HUB_CACHE=$(HF_HUB_CACHE)"
+
+# ---------- dev testing (scripts/dev_test.py) ----------
+lint:
+	$(DEV_TEST) lint
+
+test:
+	$(DEV_TEST) unit
+
+smoke:
+	$(DEV_TEST) smoke
+
+stress:
+	$(DEV_TEST) stress
+
+soak:
+	$(DEV_TEST) soak
+
+# ---------- doctor tiers (regression harness) ----------
+check:
+	$(DOCTOR) check
+
+full:
+	$(DOCTOR) full
+
+benchmark:
+	$(DOCTOR) benchmark
+
+update-baselines:
+	@if [ -z "$(TIER)" ]; then \
+		echo "error: TIER is required. Example: make update-baselines TIER=check"; \
+		exit 2; \
+	fi
+	$(DOCTOR) $(TIER) --update-baselines
+
+clean:
+	rm -rf harness/runs/*
+	@echo "Cleared harness/runs/ — baselines kept."

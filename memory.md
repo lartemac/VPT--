@@ -12,7 +12,7 @@
 - [用户持仓与投资偏好](user_portfolio.md) — 低频长期持有风格，当前持仓001917（盈利30%考虑加仓），已清仓024240/006533
 - [Agency-Agents 已安装](reference_agency_agents.md) — 160个AI专家agent已装到~/.claude/agents/（MIT），覆盖产品/工程/学术/金融等18领域
 - [CLI-Anything 备用](reference_cli_anything.md) — 33.4k star CLI封装器（Apache 2.0），源码D:\CLI-Anything，需要时再安装插件
-- [引用真实性检验 Skill](skill_citation_verification.md) — PDF论文引用验证标准流程（/verify-citations），智能分组Agent并行，已验证江千舟62条断言
+- [引用真实性检验 Skill](skill_citation_verification.md) — PDF论文+申请书双模式引用验证（/verify-citations），已验江千舟62断言+黄颖思12文献（2026-05-27更新）
 - [AI短视频自动生成工具](project_ai_short_video.md) — 4工具横评：MoneyPrinterTurbo(56k星/Colab云端零成本)首选，Pixelle-Video(AI原创画面)备选
 - [PDF转MD必须用opendataloader-pdf](feedback_opendataloader_pdf.md) — 用户明确要求：所有PDF转MD必须优先用opendataloader-pdf，不用其他方法
 - [Google Gemini API 不可作备用](feedback_google_api.md) — 已验证失败（2026-05-10），中国大陆网络环境不可靠，代理脚本已删除，唯一路径为智谱GLM

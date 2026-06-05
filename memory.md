@@ -1,5 +1,6 @@
 # Memory Index
 
+- [Nature 图表指南完整翻译（2026-06-05）](project_nature_figure_guide.md) — Nature Research Figure Guide 6章完整中文翻译，HTML+打印优化PDF双格式，含~30张对比图+色板表+10大拒稿原因
 - [FaceFusion 本地人脸处理工具](reference_facefusion.md) — 开源免费 AI 人脸处理平台（换脸/唇形同步/增强），完全本地运行，用户硬件可支持
 - [FastGPT 已清理](project_fastgpt.md) — 2026-05-05完全删除（容器+镜像+卷+本地文件），Docker仅保留GPT Academic
 - [opendataloader-pdf 安装](project_opendataloader_pdf.md) — PDF解析工具，Benchmark #1（0.907），JDK17装在D盘

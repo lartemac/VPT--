@@ -28,3 +28,4 @@
 - [家庭收支预测模型 v3](project_family_budget_v3.md) — Sinking Fund浮动蓄水池+双模吃饭+60月压力测试，最终脚本输出嵌入式HTML报告（2026-05-27）
 - [知乎全网搜索（通用联网搜索）](project_zhihu_mcp.md) — **所有联网搜索优先用此工具**，Bash调用search.py，Windows/Mac双平台，每日1000次（2026-05-19）
 - [VPT文献综述项目（2026-05-29）](project_vpt_literature_review.md) — 24篇论文PDF→MD→提取填表→中科院分区/IF查询→中文翻译，全流程Agent并行处理
+- [联网搜索工具状态与规则（2026-06-07）](reference_search_tools.md) — WebSearch/WebFetch在DeepSeek下不可用，优先用知乎搜索(Bash)+PubMed API替代

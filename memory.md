@@ -28,5 +28,7 @@
 - [家庭收支预测模型 v3](project_family_budget_v3.md) — Sinking Fund浮动蓄水池+双模吃饭+60月压力测试，最终脚本输出嵌入式HTML报告（2026-05-27）
 - [知乎全网搜索（通用联网搜索）](project_zhihu_mcp.md) — **所有联网搜索优先用此工具**，Bash调用search.py，Windows/Mac双平台，每日1000次（2026-05-19）
 - [VPT文献综述项目（2026-05-29）](project_vpt_literature_review.md) — 24篇论文PDF→MD→提取填表→中科院分区/IF查询→中文翻译，全流程Agent并行处理
+- [湛江三日游行程规划（2026-06-15）](project_zhanjiang_trip.md) — 一家三口高铁+网约车紧凑版，HTML行程单+PDF已生成至桌面，知乎搜索全流程验证可用
+- [HTML转PDF禁止fpdf2（2026-06-15）](feedback_no_fpdf2_for_html_to_pdf.md) — 必须用浏览器渲染引擎，fpdf2/reportlab程序化库排版稀烂不可用
 - [联网搜索工具状态与规则（2026-06-07）](reference_search_tools.md) — WebSearch/WebFetch在DeepSeek下不可用，优先用知乎搜索(Bash)+PubMed API替代
 - [VPT宣讲PPT项目](project_vpt_ppt.md) — 牙髓炎活髓保存治疗54页宣讲PPT（含42个图片占位符），桌面脚本可重新生成（2026-06-04）

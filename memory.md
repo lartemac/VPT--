@@ -1,5 +1,7 @@
 # Memory Index
 
+- [20260630 A股保险+美股ETF+黄金模型分析](project_20260630biga.md) — 桌面20260630biga文件夹：五大保险股PEV分析(报告+分红)、28只美股QDII基金跟踪排名(场内+场外)、黄金价格四因子归因模型R²=0.97
+- [Git仓库API密钥安全修复（2026-06-30）](feedback_api_key_cleanup.md) — 6个文件中的智谱/Google/Tushare/知乎密钥全部替换为占位符，已推送到GitHub
 - [穷通宝鉴-丙火巳月命理分析（2026-06-16）](project_bazi_cbing_siyue.md) — 丙火生于巳月调候用神理论+五部经典支撑+1986年男命八字实例分析（透癸藏庚癸配置）
 - [VPT随访数据分析项目（2026-06-06）](project_vpt_analysis.md) — 111例活髓切断术完整统计分析：KM生存分析+Cox回归+Fisher+MWU+病例系列，HTML+PDF双格式教学级报告
 - [Nature 图表指南完整翻译（2026-06-05）](project_nature_figure_guide.md) — Nature Research Figure Guide 6章完整中文翻译，HTML+打印优化PDF双格式，含~30张对比图+色板表+10大拒稿原因

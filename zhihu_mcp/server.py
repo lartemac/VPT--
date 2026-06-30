@@ -13,7 +13,7 @@ import ssl
 
 sys.stdin = io.TextIOWrapper(sys.stdin.buffer, encoding="utf-8", errors="replace")
 
-ACCESS_SECRET = "11d88bdc650f2bf0ad13bab266277fffc2a3383e"
+ACCESS_SECRET = "YOUR_ZHIHU_ACCESS_SECRET"
 ZHIHU_SEARCH_URL = "https://developer.zhihu.com/api/v1/content/zhihu_search"
 GLOBAL_SEARCH_URL = "https://developer.zhihu.com/api/v1/content/global_search"
 

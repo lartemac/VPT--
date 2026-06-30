@@ -25,8 +25,8 @@ originSessionId: ba60bf23-fe51-4ee2-8253-1c55887a0e86
 - 资源包页面目前最高只到GLM-4.7，但账户充值后可按定价调用GLM-5.1
 
 ### 两个API Key说明
-- `18b369bbcd6c4ec3bffcc2ed3866c8fb.GjwNzwYcHeTIvUjx` — 原生API通道Key
-- `fce5ed65ff984855a782c0ac23f9d331.t4D6sBCa0mWoKLjQ` — 编码工具通道Key
+- `YOUR_GLM_NATIVE_KEY` — 原生API通道Key
+- `YOUR_GLM_CODING_KEY` — 编码工具通道Key
 - 两个Key同属一个账户，但走不同通道，权限不同
 
 ### 客服确认原文要点

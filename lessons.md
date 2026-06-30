@@ -596,7 +596,7 @@ for i, stock in enumerate(stocks):
 
 **问题概述**：
 - GLM API Key（`232b1236...`）被硬编码在 3 个 Python 脚本中：glm47_helper.py、glm_search.py、auto_search.py
-- Tushare Token（`e63bfa9a...`）被硬编码在 memory.md 中
+- Tushare Token（`YOUR_TUSHARE_TOKEN`）被硬编码在 memory.md 中
 - 个人邮箱（`13654569388@139.com`）作为 git 提交者邮箱
 - 所有这些信息被提交到 **公开 GitHub 仓库**，任何人可查看
 - 泄露时间：从 2026-01-28 首次提交到 2026-04-14 修复，长达约 2.5 个月

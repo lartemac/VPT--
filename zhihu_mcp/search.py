@@ -12,7 +12,7 @@ import sys, io, json, time, urllib.request, urllib.parse, ssl
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
-ACCESS_SECRET = "11d88bdc650f2bf0ad13bab266277fffc2a3383e"
+ACCESS_SECRET = "YOUR_ZHIHU_ACCESS_SECRET"
 URLS = {
     "global": "https://developer.zhihu.com/api/v1/content/global_search",
     "zhihu": "https://developer.zhihu.com/api/v1/content/zhihu_search",

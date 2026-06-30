@@ -31,7 +31,7 @@ python3 ~/cc-github/zhihu_mcp/search.py "关键词" 数量 模式
 知乎全网搜索 > WebSearch > 其他搜索方式
 
 ### API 参数
-- Access Secret：`11d88bdc650f2bf0ad13bab266277fffc2a3383e`
+- Access Secret：`YOUR_ZHIHU_ACCESS_SECRET`（已另行保存）
 - 每日额度：1000 次（站内+全网共享）
 - 全网搜索 API：`https://developer.zhihu.com/api/v1/content/global_search`
 - 站内搜索 API：`https://developer.zhihu.com/api/v1/content/zhihu_search`

@@ -1,5 +1,6 @@
 # Memory Index
 
+- [VPT微信小程序云开发项目（2026-09-02）](project_weapp_vpt_mvp.md) — ~/WeChatProjects/82671230weapp（GitHub: lartemac/82671230weapp），四页面+四云函数(含statsEngine统计引擎)+三集合，v2.0统计模块+UI脱敏完成
 - [长江电力600900深度技术分析（2026-08-05）](project_cj_power_analysis.md) — 三年日线+60分钟K线+全套技术指标(MA/MACD/RSI/KDJ/布林/ATR/WR/MFI)，支撑位压力位+买卖点识别+一月前瞻+持仓建议(成本¥28)，桌面HTML报告含5张专业图表
 - [四节点递增筛选A股全市场（2026-08-05）](project_increasing_stock_screen.md) — Tushare四日期(2024-02-06/09-24/2025-04-09/2026-03-24)全市场收盘价递增筛选，5248只中1832只满足，长江电力排名1741(+17.0%)，桌面HTML报告含搜索排序
 - [20260630 A股保险+美股ETF+黄金模型分析](project_20260630biga.md) — 桌面20260630biga文件夹：五大保险股PEV分析(报告+分红)、28只美股QDII基金跟踪排名(场内+场外)、黄金价格四因子归因模型R²=0.97

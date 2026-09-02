@@ -14,6 +14,10 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="repla
 
 # 密钥从本地配置文件读取（该文件已加入 .gitignore，不会上传到 GitHub）
 def _load_secret():
+    # 优先环境变量（手动提供，不留盘）
+    env_key = os.environ.get("ZHIHU_ACCESS_SECRET", "")
+    if env_key:
+        return env_key
     cfg = os.path.join(os.path.dirname(os.path.abspath(__file__)), "zhihu_secret.json")
     try:
         with open(cfg, "r", encoding="utf-8") as f:

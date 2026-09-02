@@ -24,7 +24,10 @@ EXT_MIME = {
 
 
 def load_api_key():
-    """从本地密钥文件读取 API Key（该文件已加入 .gitignore，不上传）"""
+    """读取 API Key：优先环境变量 DEEPSEEK_API_KEY（手动提供，不留盘），其次本地密钥文件"""
+    env_key = os.environ.get("DEEPSEEK_API_KEY", "")
+    if env_key:
+        return env_key
     try:
         with open(SECRET_FILE, "r", encoding="utf-8") as f:
             return json.load(f).get("api_key", "")

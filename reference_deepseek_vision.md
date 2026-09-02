@@ -30,7 +30,8 @@ type: reference
 - 结论：日常随手搜用 Web Search，科研/精准/免费用知乎 API
 
 ## Mac 端同步待办（跨平台）
-vision.py 会随 Git 同步到 Mac，但以下需在 Mac 端手动补：
-1. 创建 `~/cc-github/vision_secret.json`，内容 `{"api_key":"<DeepSeek Key>"}`（密钥不入 Git，需手动放）
-2. 在 Mac 的 `~/.claude/CLAUDE.md` 加同样的「图片处理规则」（CLAUDE.md 不入 Git，不同步）
-3. 知乎搜索同理需 Mac 端 `zhihu_mcp/zhihu_secret.json`
+vision.py / search.py 会随 Git 同步到 Mac，均支持「手动提供密钥」（不落盘，用户明确要求）：
+- 看图时：用户手动提供 DeepSeek Key → 环境变量 `DEEPSEEK_API_KEY` 传入
+- 知乎搜索时：用户手动提供知乎 Key → 环境变量 `ZHIHU_ACCESS_SECRET` 传入
+- 无需在 Mac 端预建任何密钥文件
+- 唯一待办：在 Mac 的 `~/.claude/CLAUDE.md` 加同样的「图片处理规则」（CLAUDE.md 不入 Git，不同步）

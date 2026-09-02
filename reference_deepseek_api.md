@@ -20,6 +20,7 @@ originSessionId: 495ad864-1c24-4ef4-a5f0-92654dd55575
 | `deepseek-v4-flash` | 轻量快速模型（Haiku/SubAgent） | 支持非思考模式 |
 | `deepseek-chat` | 旧名称 | **2026/07/24 弃用**，对应 v4-flash 非思考模式 |
 | `deepseek-reasoner` | 旧名称 | **2026/07/24 弃用**，对应 v4-flash 思考模式 |
+| `deepseek-v4-flash-vision-exp` | 视觉模型（实验版） | 图片输入(JPEG/PNG/GIF/WebP)：描述/OCR/图表分析，2026-08-21上线 |
 
 ## 关键参数
 
@@ -125,8 +126,10 @@ max_tokens, stop_sequences, stream, system, temperature(0.0~2.0), top_p, tools(n
 ### 忽略（不影响运行）
 anthropic-beta, anthropic-version, container, mcp_servers, metadata, service_tier, top_k, cache_control, is_error
 
-### 不支持
-image, document, search_result, redacted_thinking, server_tool_use, web_search_tool_result, code_execution_tool_result, mcp_tool_use, mcp_tool_result, container_upload
+### 不支持（pro/flash 文本模型）
+document, search_result, redacted_thinking, server_tool_use, web_search_tool_result, code_execution_tool_result, mcp_tool_use, mcp_tool_result, container_upload
+
+> 注：`image` 现已由视觉模型 `deepseek-v4-flash-vision-exp` 支持（见 reference_deepseek_vision.md）；Web Search 现由 DeepSeek 原生支持。
 
 ## 安全说明
 

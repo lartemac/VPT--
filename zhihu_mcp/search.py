@@ -8,11 +8,20 @@
   python search.py "口腔医学" 10         # 全网搜索，10条
   python search.py "VPT活髓" 5 zhihu     # 站内搜索，5条
 """
-import sys, io, json, time, urllib.request, urllib.parse, ssl
+import sys, io, os, json, time, urllib.request, urllib.parse, ssl
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
-ACCESS_SECRET = "YOUR_ZHIHU_ACCESS_SECRET"
+# 密钥从本地配置文件读取（该文件已加入 .gitignore，不会上传到 GitHub）
+def _load_secret():
+    cfg = os.path.join(os.path.dirname(os.path.abspath(__file__)), "zhihu_secret.json")
+    try:
+        with open(cfg, "r", encoding="utf-8") as f:
+            return json.load(f).get("ACCESS_SECRET", "")
+    except Exception:
+        return ""
+
+ACCESS_SECRET = _load_secret() or "YOUR_ZHIHU_ACCESS_SECRET"
 URLS = {
     "global": "https://developer.zhihu.com/api/v1/content/global_search",
     "zhihu": "https://developer.zhihu.com/api/v1/content/zhihu_search",

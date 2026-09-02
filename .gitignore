@@ -22,6 +22,8 @@ node_modules/
 # 敏感信息（包含 API Key、Token 等）
 api_config.json
 google_search_config.json
+zhihu_mcp/zhihu_secret.json
+vision_secret.json
 *.env
 .env*
 credentials*.json

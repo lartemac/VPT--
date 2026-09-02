@@ -25,7 +25,8 @@
 - [AI短视频自动生成工具](project_ai_short_video.md) — 4工具横评：MoneyPrinterTurbo(56k星/Colab云端零成本)首选，Pixelle-Video(AI原创画面)备选
 - [PDF转MD必须用opendataloader-pdf](feedback_opendataloader_pdf.md) — 用户明确要求：所有PDF转MD必须优先用opendataloader-pdf，不用其他方法
 - [Google Gemini API 不可作备用](feedback_google_api.md) — 已验证失败（2026-05-10），中国大陆网络环境不可靠，代理脚本已删除，唯一路径为智谱GLM
-- [DeepSeek API 配置与使用](reference_deepseek_api.md) — V4模型+Anthropic兼容+Claude Code接入+兼容性细节（2026-05-14更新）
+- [DeepSeek API 配置与使用](reference_deepseek_api.md) — V4模型+Anthropic兼容+Claude Code接入+兼容性细节（2026-09-02更新，新增vision模型）
+- [DeepSeek视觉模型+vision.py脚本（2026-09-02）](reference_deepseek_vision.md) — deepseek-v4-flash-vision-exp看图/OCR/图表分析，主对话自动调用，测试通过；Web Search现已可用
 - [GCF龈沟液文献综述项目](project_gcf_literature_review.md) — 9篇PDF→HTML报告+16张高清PNG图表（2026-05-11），macOS JDK17+opendataloader-pdf已安装
 - [四相轮动回测项目](project_rotation_backtest.md) — 回测+调仓计算器+债基替换评估+蒙特卡洛压力测试(6场景×1万路径)，2026-05-14更新
 - [小米MiMo API Claude Code配置](reference_mimo_claude_code.md) — settings-mimo.json已创建，支持按量付费/Token Plan双模式，1M上下文，2026-05-13
@@ -36,5 +37,5 @@
 - [VPT文献综述项目（2026-05-29）](project_vpt_literature_review.md) — 24篇论文PDF→MD→提取填表→中科院分区/IF查询→中文翻译，全流程Agent并行处理
 - [湛江三日游行程规划（2026-06-15）](project_zhanjiang_trip.md) — 一家三口高铁+网约车紧凑版，HTML行程单+PDF已生成至桌面，知乎搜索全流程验证可用
 - [HTML转PDF禁止fpdf2（2026-06-15）](feedback_no_fpdf2_for_html_to_pdf.md) — 必须用浏览器渲染引擎，fpdf2/reportlab程序化库排版稀烂不可用
-- [联网搜索工具状态与规则（2026-06-07）](reference_search_tools.md) — WebSearch/WebFetch在DeepSeek下不可用，优先用知乎搜索(Bash)+PubMed API替代
+- [联网搜索工具状态与规则](reference_deepseek_vision.md) — WebSearch现已可用(产生额外Token费)，知乎API(免费1000次/天)仍优先，PubMed备选
 - [VPT宣讲PPT项目](project_vpt_ppt.md) — 牙髓炎活髓保存治疗54页宣讲PPT（含42个图片占位符），桌面脚本可重新生成（2026-06-04）
